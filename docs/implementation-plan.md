@@ -200,9 +200,9 @@ audit_events: every arrow above emits one
 
 Phase 0: Foundation
 - [x] TALL stack: Livewire 3 installed, base layout in place
-- [ ] `Clock` service + demo advance control
-- [ ] Roles/teams seeder with one demo user per role
-- [ ] `audit_events` hash chain, `audit:verify`, immutability triggers
+- [x] `Clock` service + demo advance control (`App\Support\Clock`, `rsl:clock`, admin widget on Home)
+- [x] Roles/teams seeder with one demo user per role (`App\Support\Roles` is the permission matrix)
+- [x] `audit_events` hash chain, `audit:verify`, immutability triggers (sign-ins, sign-outs and clock moves are already logged)
 
 Phase 1: Source records
 - [ ] Migrations + models for all channel tables, versioning columns, `RecordRegistry`

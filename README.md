@@ -6,11 +6,20 @@ Laravel 12 · Livewire 3 (TALL) · Sanctum · Spatie Permission · Resend · Pes
 composer setup        # install, .env, key, migrate, npm build
 php artisan db:seed   # super_admin role + user (SUPER_ADMIN_* in .env)
 composer dev          # server, queue, logs, vite
+php artisan rsl:clock advance 7   # move the demo calendar (or use Home as super admin)
+php artisan audit:verify          # check the audit log has not been tampered with
 composer test
 ```
 
 Built assets in `public/build` are compiled and committed by GitHub Actions
 (`.github/workflows/build-assets.yml`), so production deploys are a plain `git pull`.
+
+## Demo accounts
+
+One officer per role, all `@rsl.test` (seeded outside production only): `l.thamae` risk analyst,
+`n.lebona` refund auditor, `p.mokoena` Special Sectors, `m.sello` team lead (second sign-off),
+`t.ramone` rule owner, `k.molapo` data team, `r.nthako` internal audit. Password: `DEMO_USER_PASSWORD`
+in `.env`, or the one the seeder prints. Super admin: `SUPER_ADMIN_EMAIL` / `SUPER_ADMIN_PASSWORD`.
 
 ## Where things are
 

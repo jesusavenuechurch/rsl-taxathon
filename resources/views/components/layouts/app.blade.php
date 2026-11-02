@@ -4,12 +4,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $title ?? config('app.name') }}</title>
+    <title>{{ isset($title) ? $title.' · ' : '' }}{{ config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
 <body class="min-h-screen bg-slate-50 font-sans text-slate-900 antialiased">
-    {{ $slot }}
+    @auth
+        <header class="border-b border-slate-200 bg-white">
+            <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
+                <a href="{{ route('home') }}" class="font-bold tracking-tight">RSL Case Review</a>
+                <div class="flex flex-wrap items-center gap-4 text-sm">
+                    <span @class([
+                        'rounded-full px-3 py-1 font-semibold',
+                        'bg-amber-100 text-amber-900' => app(\App\Support\Clock::class)->isSimulated(),
+                        'bg-slate-100 text-slate-700' => ! app(\App\Support\Clock::class)->isSimulated(),
+                    ]) title="All dates in the system use this day">
+                        Today: {{ app(\App\Support\Clock::class)->today()->format('j M Y') }}
+                        @if (app(\App\Support\Clock::class)->isSimulated()) (demo) @endif
+                    </span>
+                    <span class="text-slate-600">{{ auth()->user()->name }}</span>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="text-slate-600 underline hover:text-slate-900">Sign out</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+    @endauth
+
+    <main class="mx-auto max-w-6xl px-4 py-8">
+        {{ $slot }}
+    </main>
+
     @livewireScripts
 </body>
 </html>

@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Support\Roles;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\PermissionRegistrar;
 
@@ -15,10 +16,19 @@ class RolesAndPermissionsSeeder extends Seeder
     {
         app(PermissionRegistrar::class)->forgetCachedPermissions();
 
-        // Permissions and further roles get added once the domain is defined.
-        Role::firstOrCreate(['name' => 'super_admin']);
+        foreach (Roles::PERMISSIONS as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+        foreach (Roles::matrix() as $role => $permissions) {
+            Role::firstOrCreate(['name' => $role])->syncPermissions($permissions);
+        }
 
-        if (User::role('super_admin')->exists()) {
+        $this->createSuperAdmin();
+    }
+
+    private function createSuperAdmin(): void
+    {
+        if (User::role(Roles::SUPER_ADMIN)->exists()) {
             $this->command?->info('Super admin already exists.');
 
             return;
@@ -31,9 +41,9 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $user = User::firstOrCreate(
             ['email' => $email],
-            ['name' => 'Super Admin', 'password' => Hash::make($password), 'email_verified_at' => now()],
+            ['name' => 'Super Admin', 'password' => $password, 'email_verified_at' => now()],
         );
-        $user->assignRole('super_admin');
+        $user->assignRole(Roles::SUPER_ADMIN);
 
         $this->command?->info("Super admin: {$email}");
         if (! env('SUPER_ADMIN_PASSWORD')) {

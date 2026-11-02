@@ -1,7 +1,25 @@
 <?php
 
+use App\Livewire\Auth\Login;
+use App\Livewire\Home;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', fn () => redirect()->route(Auth::check() ? 'home' : 'login'));
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', Login::class)->name('login');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/home', Home::class)->name('home');
+
+    Route::post('/logout', function (Request $request) {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+    })->name('logout');
 });
