@@ -1,0 +1,55 @@
+# Builds the CSS/JS on GitHub and commits public/build, so the production
+# server never needs Node: deploying stays a plain `git pull`.
+#
+# Runs whenever something that affects the built assets changes. Blade
+# views count because Tailwind scans them for class names.
+name: Build assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'resources/**'
+      - 'composer.lock'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.js'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-assets-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Tailwind also scans Blade views inside vendor/ (Laravel's
+      # pagination links), so install the PHP packages without running
+      # any of their scripts. The runner image ships PHP and Composer.
+      - run: composer install --no-dev --no-scripts --no-interaction --prefer-dist --ignore-platform-reqs
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Commit public/build if it changed
+        run: |
+          git add -A public/build
+          if git diff --cached --quiet; then
+            echo "Assets already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Build assets [skip ci]"
+          git push
