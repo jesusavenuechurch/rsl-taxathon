@@ -1,0 +1,15 @@
+record_id,tin,name,sector,district,registered,vat_registered,group_id,source_system
+COM-00001,TN1000101-3,Mohale Wholesale (Pty) Ltd,Wholesale FMCG,Maseru,2011-03-14,Yes,,eTax registration
+COM-00002,TN1000214-8,Butha-Buthe General Dealers (Pty) Ltd,Retail FMCG,Butha-Buthe,2008-07-02,Yes,,eTax registration
+COM-00003,TN1000327-1,Maluti Foods Distributors (Pty) Ltd,Wholesale FMCG (exporter),Maseru,2014-01-20,Yes,G-MALUTI,eTax registration
+COM-00004,TN1000430-6,Thaba Trading (Pty) Ltd,Wholesale FMCG,Maseru,2016-05-09,Yes,G-THABA,eTax registration
+COM-00005,TN1000543-2,Senqu Imports (Pty) Ltd,Wholesale FMCG (importer),Maseru,2017-09-11,Yes,G-SENQU,eTax registration
+COM-00006,TN1000656-9,Katse Retail Group (Pty) Ltd,Retail FMCG,Maseru,2015-02-27,Yes,G-KATSE,eTax registration
+COM-00007,TN1000769-4,Qiloane Hardware & Building Supplies (Pty) Ltd,Retail hardware,Maseru,2012-10-03,Yes,G-QILOANE,eTax registration
+COM-00008,TN1000872-0,Lebelo Cash & Carry (Pty) Ltd,Wholesale FMCG,Leribe,2013-06-18,Yes,,eTax registration
+COM-00009,TN1000985-5,Highveld Retail Lesotho (Pty) Ltd,Retail FMCG,Maseru,2019-11-05,Yes,G-HIGHVELD,eTax registration
+COM-00010,TN1001098-7,Pitseng Beverages (Pty) Ltd,Beverages distribution,Leribe,2018-04-23,Yes,G-PITSENG,eTax registration
+COM-00011,TN1001201-1,Leribe Pharma Distributors (Pty) Ltd,Wholesale pharmaceuticals,Leribe,2020-08-12,Yes,G-UNKNOWN,eTax registration
+COM-00012,TN1001314-6,Tsenola Distributors (Pty) Ltd,Wholesale FMCG,Mafeteng,2010-12-01,Yes,G-TSENOLA,eTax registration
+COM-00013,TN1001427-2,Semonkong Fresh Produce (Pty) Ltd,Wholesale fresh produce,Maseru,2024-04-01,Yes,,eTax registration
+COM-00014,TN1001530-8,Mafeteng Agri-Supplies (Pty) Ltd,Wholesale agricultural inputs,Mafeteng,2009-03-30,Yes,,eTax registration

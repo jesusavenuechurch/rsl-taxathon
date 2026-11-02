@@ -1,0 +1,6 @@
+question,expected_answer,grounded_in
+Which companies had a significant increase in related-party payments this year?,"Thaba Trading (+200%), Qiloane Hardware (+300%), Tsenola Distributors (+40%, previously explained under DEC-0004). Indicators for review, not evidence of wrongdoing.",CIT 2024/25 vs 2025/26; threshold 30%
+Why was Highveld Retail Lesotho flagged?,"Four consecutive loss years, related loans grew from M8m to M29m, M3m interest to the group with no withholding tax. Links: CIT returns, WHT schedules.","Findings P01, P02, P11, P04"
+"Which companies have recurring VAT credits, and which look lower risk?","Maluti Foods (lower risk), Semonkong Fresh (lower risk), Senqu Imports (needs review: imported-services input VAT).",Finding P07
+Has Qiloane Hardware been reviewed before?,"Yes: DEC-0007 (2024/25) explained a profit fall by warehouse investment, with conditions. The 2025/26 fee increase falls outside those conditions.",Officer decisions
+Show me companies paying entities in low-tax jurisdictions.,Pitseng Beverages: royalties to Pitseng Brands Ltd (Islandia).,Finding P10

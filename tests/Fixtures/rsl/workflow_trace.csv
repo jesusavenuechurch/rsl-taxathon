@@ -1,0 +1,53 @@
+tin,company,step,info_stage,actor,event,data_used,system_wording
+TN1000101-3,Mohale Wholesale (Pty) Ltd,1,1,System,2025/26 income tax return received (eTax),CIT 2022/23-2025/26,-
+TN1000101-3,Mohale Wholesale (Pty) Ltd,2,1,System,All 14 patterns checked; none fired,"CIT, VAT, WHT, PAYE","""Revenue, expenses and profit are broadly consistent with previous years. No significant unusual changes were identified in the available records."""
+TN1000101-3,Mohale Wholesale (Pty) Ltd,3,1,System,"Filing document saved; no notification, no officer work",-,-
+TN1000327-1,Maluti Foods Distributors (Pty) Ltd,1,1,System,VAT credit return for 2026-10 received; refund letter RF lodged,"VAT returns, refund claims",-
+TN1000327-1,Maluti Foods Distributors (Pty) Ltd,2,2,System,P07 fires (credits in 6 of last 6 months); green-lane checks run against Lekuka and customs,"Lekuka Aug-Oct 2026, customs","""The available records are consistent with the reported trading activity... No significant discrepancies were identified in the checks performed."""
+TN1000327-1,Maluti Foods Distributors (Pty) Ltd,3,2,System,Memory: DEC-0009 shown; condition (export share 50-60%) still met,Officer decisions,"""Previously reviewed 2024/25: credits explained by zero-rated exports."""
+TN1000327-1,Maluti Foods Distributors (Pty) Ltd,4,2,System,WhatsApp to refund auditor: 'A refund review is ready (lower risk).' No taxpayer details,-,-
+TN1000327-1,Maluti Foods Distributors (Pty) Ltd,5,5,Refund auditor,Completes normal verification; records outcome Explained - legitimate,-,-
+TN1000430-6,Thaba Trading (Pty) Ltd,1,1,System,2025/26 return received; P12 and P03 fire,"CIT 2024/25, 2025/26","""Revenue rose 20% while net profit fell from M2,000,000 to M600,000... may need examination."""
+TN1000430-6,Thaba Trading (Pty) Ltd,2,1,System,"Case document created with lawful explanations: new systems, restructuring, expanded services",-,-
+TN1000430-6,Thaba Trading (Pty) Ltd,3,1,Risk analyst,Sees case ranked High (estimated exposure about M0.54m); refers to Special Sectors,Worklist,-
+TN1000430-6,Thaba Trading (Pty) Ltd,4,4,Special Sectors auditor,Sends IR-001 built from the missing-evidence list,Taxpayer responses,-
+TN1000430-6,Thaba Trading (Pty) Ltd,5,4,Taxpayer,Responds: agreement signed Feb 2026; charge = 3% of group turnover,IR-001,"""The declared charge does not appear to match the evidence provided."""
+TN1000430-6,Thaba Trading (Pty) Ltd,6,5,Special Sectors auditor,"Outcome: Concern supported - referred. Note: under AfriSam v LRA, RSL can allocate actual deductions but not impute a price",-,-
+TN1000543-2,Senqu Imports (Pty) Ltd,1,1,System,Monthly credit returns; refund letters lodged quarterly,"VAT returns, refund claims",-
+TN1000543-2,Senqu Imports (Pty) Ltd,2,2,System,P06 fires: WHT shows M4.9m services paid to parent; no reverse-charge VAT declared,"WHT schedule, VAT returns","""These records appear inconsistent with each other."""
+TN1000543-2,Senqu Imports (Pty) Ltd,3,2,System,P07 green-lane check fails on imported-services input VAT,"Lekuka, customs, VAT","""Checks found: input VAT claimed on imported services without matching reverse-charge output."""
+TN1000543-2,Senqu Imports (Pty) Ltd,4,2,Refund auditor,Refund marked Needs review (not refused); case shared with Special Sectors,-,-
+TN1000543-2,Senqu Imports (Pty) Ltd,5,4,Special Sectors auditor,IR-002: parent invoices received; confirms reverse charge never declared,IR-002,-
+TN1000543-2,Senqu Imports (Pty) Ltd,6,5,Special Sectors auditor,Outcome: Concern supported - referred; VAT exposure about M0.74m for 2025/26,-,-
+TN1000656-9,Katse Retail Group (Pty) Ltd,1,1,System,"P08 fires: identical M180,000 fee to parent every month",WHT schedule,"""A fixed, long-running charge can indicate seconded personnel; whether this is consultancy or employment may need examination."""
+TN1000656-9,Katse Retail Group (Pty) Ltd,2,1,System,"Case shows Practice Note 2020 tests: 182 days, non-resident employer, borne by local entity",Legal-source column,-
+TN1000656-9,Katse Retail Group (Pty) Ltd,3,4,Special Sectors auditor,"IR-003: secondment letters, recharge statements, housing and vehicle records",IR-003,-
+TN1000656-9,Katse Retail Group (Pty) Ltd,4,4,System,New fact from documents: housing and vehicles provided -> P09 fringe benefits raised,IR-003,"""The declared charge does not appear to match the evidence provided."""
+TN1000656-9,Katse Retail Group (Pty) Ltd,5,5,Special Sectors auditor,"Human decision: employment, not consultancy -> PAYE and fringe benefits (estimated about M0.65m a year, below the M1m second sign-off threshold in A11)",-,-
+TN1000769-4,Qiloane Hardware & Building Supplies (Pty) Ltd,1,1,System,2025/26 return: P12 and P03 fire,CIT,"""Revenue rose 3% while net profit fell from M500,000 to a loss of M400,000..."""
+TN1000769-4,Qiloane Hardware & Building Supplies (Pty) Ltd,2,1,System,Memory: DEC-0007 (warehouse) shown. Its conditions said related fees unchanged at about M0.4m; they are now M1.6m,Officer decisions,"""Previously explained by warehouse investment, but the pattern has moved beyond what that explanation covers."""
+TN1000769-4,Qiloane Hardware & Building Supplies (Pty) Ltd,3,4,Special Sectors auditor,IR-007: new 10% procurement fee agreement,IR-007,-
+TN1000769-4,Qiloane Hardware & Building Supplies (Pty) Ltd,4,5,Special Sectors auditor,Split outcome: depreciation and interest stay Explained; new fee Concern supported - referred,-,-
+TN1000872-0,Lebelo Cash & Carry (Pty) Ltd,1,1,System,P14 fires: March 2026 local input VAT about 9x normal; capture channel = manual from paper,VAT return 2026-03,"""Check the source figure before drawing conclusions."""
+TN1000872-0,Lebelo Cash & Carry (Pty) Ltd,2,5,Any officer,Compares to the paper return: figure keyed with an extra digit. Outcome: System error,-,-
+TN1000872-0,Lebelo Cash & Carry (Pty) Ltd,3,5,System,Sent to data review; NOT written to company memory; detection rule unaffected,-,-
+TN1000985-5,Highveld Retail Lesotho (Pty) Ltd,1,1,System,"2025/26 return: P01, P02, P11 fire",CIT 2022/23-2025/26,"""Losses in 4 consecutive years... Related-party loans grew from M8,000,000 to M29,000,000..."""
+TN1000985-5,Highveld Retail Lesotho (Pty) Ltd,2,2,System,"P04 fires: M3m interest paid, no WHT on interest",WHT schedule,"""These records appear inconsistent with each other."""
+TN1000985-5,Highveld Retail Lesotho (Pty) Ltd,3,1,Risk analyst,Asks chat: 'How is this company still operating?'; answer cites loans and fees,Chat,-
+TN1000985-5,Highveld Retail Lesotho (Pty) Ltd,4,4,Special Sectors auditor,"IR-004: loan agreements, board minutes",IR-004,-
+TN1000985-5,Highveld Retail Lesotho (Pty) Ltd,5,5,Special Sectors auditor,Concern supported - referred (WHT on interest is enforceable now; pricing stays an officer question),-,-
+TN1001098-7,Pitseng Beverages (Pty) Ltd,1,2,System,"P05: 10% rate applied to Pitseng Brands Ltd, which the group register places in a non-treaty country","WHT, group register","""These records appear inconsistent with each other."""
+TN1001098-7,Pitseng Beverages (Pty) Ltd,2,3,System,P10: royalties to a related entity in a low-tax jurisdiction,Group register,"""What the payments are for may need examination."""
+TN1001098-7,Pitseng Beverages (Pty) Ltd,3,4,Special Sectors auditor,IR-005: certificate of residence confirms Islandia,IR-005,-
+TN1001098-7,Pitseng Beverages (Pty) Ltd,4,5,Special Sectors auditor,Concern supported: WHT shortfall at 25% minus 10%,-,-
+TN1001201-1,Leribe Pharma Distributors (Pty) Ltd,1,1,System,"P13: related charges M2m, no financial statements, payee not in group register","CIT, group register, WHT","""The available records do not establish the nature or basis of these charges."""
+TN1001201-1,Leribe Pharma Distributors (Pty) Ltd,2,4,Risk analyst,IR-006 requests financial statements and agreement,IR-006,-
+TN1001201-1,Leribe Pharma Distributors (Pty) Ltd,3,5,Risk analyst,Gap closed; outcome Explained - legitimate; group register updated,-,-
+TN1001314-6,Tsenola Distributors (Pty) Ltd,1,1,System,P03 checked: fees +40% vs revenue +35% (gap 5 points < 25): does not fire,CIT,-
+TN1001314-6,Tsenola Distributors (Pty) Ltd,2,1,System,"DEC-0004 condition checked: fees 5.2% of revenue, within 6% cap",Officer decisions,-
+TN1001427-2,Semonkong Fresh Produce (Pty) Ltd,1,1,System,"P01 checked: 2 loss years, no group charges: does not fire (start-up)",CIT,-
+TN1001427-2,Semonkong Fresh Produce (Pty) Ltd,2,2,System,P07 lower risk: credits from zero-rated fresh produce match Lekuka,"VAT, Lekuka",-
+TN1001530-8,Mafeteng Agri-Supplies (Pty) Ltd,1,1,System,"P11 checked: M1.4m interest is to a bank, not a related party: does not fire",CIT,-
+TN1000214-8,Butha-Buthe General Dealers (Pty) Ltd,1,1,System,2025/26 income tax return received (eTax),CIT 2022/23-2025/26,-
+TN1000214-8,Butha-Buthe General Dealers (Pty) Ltd,2,1,System,All 14 patterns checked; none fired,"CIT, VAT, WHT, PAYE","""Revenue, expenses and profit are broadly consistent with previous years. No significant unusual changes were identified in the available records."""
+TN1000214-8,Butha-Buthe General Dealers (Pty) Ltd,3,1,System,"Filing document saved; no notification, no officer work",-,-

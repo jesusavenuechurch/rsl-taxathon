@@ -1,0 +1,11 @@
+record_id,group_id,entity_name,country,relationship,low_tax_jurisdiction,dta_with_lesotho,source
+GRP-00001,G-MALUTI,Maluti Foods Holdings (Pty) Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00002,G-THABA,Thaba Group Services (Pty) Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00003,G-SENQU,Senqu Holdings (Pty) Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00004,G-KATSE,Katse Retail Holdings (Pty) Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00005,G-QILOANE,Qiloane Building Group (Pty) Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00006,G-HIGHVELD,Highveld Retail Holdings Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00007,G-HIGHVELD,Highveld Treasury Services Ltd,South Africa,Sister (group finance),No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00008,G-PITSENG,Pitseng Beverages Group (Pty) Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)
+GRP-00009,G-PITSENG,Pitseng Brands Ltd,Islandia (fictional),Sister (brand owner),Yes,No,Company registry / taxpayer disclosure (assumption A4)
+GRP-00010,G-TSENOLA,Tsenola Holdings (Pty) Ltd,South Africa,Parent,No,Yes,Company registry / taxpayer disclosure (assumption A4)

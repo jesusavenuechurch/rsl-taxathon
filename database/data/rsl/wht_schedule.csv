@@ -1,0 +1,194 @@
+record_id,withholding_agent_tin,period,payment_date,payee_legal_name,nature_of_service,form,gross_amount,tax_withheld,submitted_via,source_system
+WHT-00001,TN1000101-3,2025-06,2025-06-12,Ha Abia Builders (Pty) Ltd,Construction (resident contractor),WD11(1993),84000,4200,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00002,TN1000101-3,2025-11,2025-11-12,Ha Abia Builders (Pty) Ltd,Construction (resident contractor),WD11(1993),84000,4200,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00003,TN1000101-3,2026-06,2026-06-12,Ha Abia Builders (Pty) Ltd,Construction (resident contractor),WD11(1993),84000,4200,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00004,TN1000327-1,2025-04,2025-04-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),53600,5360,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00005,TN1000327-1,2025-05,2025-05-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),54460,5450,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00006,TN1000327-1,2025-06,2025-06-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),58350,5840,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00007,TN1000327-1,2025-07,2025-07-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),58610,5860,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00008,TN1000327-1,2025-08,2025-08-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),61010,6100,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00009,TN1000327-1,2025-09,2025-09-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),54410,5440,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00010,TN1000327-1,2025-10,2025-10-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),54680,5470,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00011,TN1000327-1,2025-11,2025-11-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),54830,5480,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00012,TN1000327-1,2025-12,2025-12-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),53920,5390,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00013,TN1000327-1,2026-01,2026-01-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),52470,5250,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00014,TN1000327-1,2026-02,2026-02-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),55980,5600,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00015,TN1000327-1,2026-03,2026-03-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),58140,5810,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00016,TN1000327-1,2026-04,2026-04-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),58330,5830,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00017,TN1000327-1,2026-05,2026-05-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),57040,5700,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00018,TN1000327-1,2026-06,2026-06-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),52940,5290,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00019,TN1000327-1,2026-07,2026-07-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),59570,5960,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00020,TN1000327-1,2026-08,2026-08-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),59760,5980,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00021,TN1000327-1,2026-09,2026-09-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),60760,6080,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00022,TN1000327-1,2026-10,2026-10-25,Maluti Foods Holdings (Pty) Ltd,Management fee,WD4(1993),57400,5740,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00023,TN1000430-6,2025-04,2025-04-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),280040,28000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00024,TN1000430-6,2025-05,2025-05-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),323940,32390,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00025,TN1000430-6,2025-06,2025-06-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),303490,30350,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00026,TN1000430-6,2025-07,2025-07-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),307760,30780,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00027,TN1000430-6,2025-08,2025-08-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),288550,28850,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00028,TN1000430-6,2025-09,2025-09-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),290060,29010,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00029,TN1000430-6,2025-10,2025-10-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),311860,31190,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00030,TN1000430-6,2025-11,2025-11-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),313070,31310,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00031,TN1000430-6,2025-12,2025-12-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),282950,28290,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00032,TN1000430-6,2026-01,2026-01-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),276100,27610,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00033,TN1000430-6,2026-02,2026-02-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),305280,30530,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00034,TN1000430-6,2026-03,2026-03-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),310880,31090,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00035,TN1000430-6,2026-04,2026-04-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),319660,31970,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00036,TN1000430-6,2026-05,2026-05-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),297880,29790,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00037,TN1000430-6,2026-06,2026-06-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),299750,29980,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00038,TN1000430-6,2026-07,2026-07-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),300300,30030,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00039,TN1000430-6,2026-08,2026-08-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),295350,29530,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00040,TN1000430-6,2026-09,2026-09-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),283410,28340,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00041,TN1000430-6,2026-10,2026-10-25,Thaba Group Services (Pty) Ltd,Management fee,WD4(1993),291930,29190,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00042,TN1000543-2,2025-04,2025-04-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),374080,37410,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00043,TN1000543-2,2025-05,2025-05-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),402970,40300,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00044,TN1000543-2,2025-06,2025-06-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),414360,41440,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00045,TN1000543-2,2025-07,2025-07-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),409240,40920,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00046,TN1000543-2,2025-08,2025-08-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),416470,41650,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00047,TN1000543-2,2025-09,2025-09-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),417910,41790,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00048,TN1000543-2,2025-10,2025-10-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),412320,41230,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00049,TN1000543-2,2025-11,2025-11-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),428360,42840,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00050,TN1000543-2,2025-12,2025-12-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),394690,39470,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00051,TN1000543-2,2026-01,2026-01-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),428100,42810,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00052,TN1000543-2,2026-02,2026-02-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),428380,42840,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00053,TN1000543-2,2026-03,2026-03-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),398700,39870,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00054,TN1000543-2,2026-04,2026-04-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),369390,36940,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00055,TN1000543-2,2026-05,2026-05-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),400790,40080,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00056,TN1000543-2,2026-06,2026-06-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),372130,37210,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00057,TN1000543-2,2026-07,2026-07-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),430790,43080,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00058,TN1000543-2,2026-08,2026-08-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),399310,39930,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00059,TN1000543-2,2026-09,2026-09-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),423570,42360,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00060,TN1000543-2,2026-10,2026-10-25,Senqu Holdings (Pty) Ltd,Management fee,WD4(1993),423120,42310,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00061,TN1000656-9,2025-04,2025-04-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00062,TN1000656-9,2025-05,2025-05-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00063,TN1000656-9,2025-06,2025-06-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00064,TN1000656-9,2025-07,2025-07-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00065,TN1000656-9,2025-08,2025-08-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00066,TN1000656-9,2025-09,2025-09-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00067,TN1000656-9,2025-10,2025-10-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00068,TN1000656-9,2025-11,2025-11-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00069,TN1000656-9,2025-12,2025-12-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00070,TN1000656-9,2026-01,2026-01-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00071,TN1000656-9,2026-02,2026-02-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00072,TN1000656-9,2026-03,2026-03-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00073,TN1000656-9,2026-04,2026-04-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00074,TN1000656-9,2026-05,2026-05-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00075,TN1000656-9,2026-06,2026-06-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00076,TN1000656-9,2026-07,2026-07-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00077,TN1000656-9,2026-08,2026-08-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00078,TN1000656-9,2026-09,2026-09-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00079,TN1000656-9,2026-10,2026-10-25,Katse Retail Holdings (Pty) Ltd,Management fee,WD4(1993),180000,18000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00080,TN1000769-4,2025-04,2025-04-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),125930,12590,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00081,TN1000769-4,2025-05,2025-05-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),141020,14100,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00082,TN1000769-4,2025-06,2025-06-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),125220,12520,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00083,TN1000769-4,2025-07,2025-07-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),137960,13800,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00084,TN1000769-4,2025-08,2025-08-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),129340,12930,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00085,TN1000769-4,2025-09,2025-09-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),125090,12510,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00086,TN1000769-4,2025-10,2025-10-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),127330,12730,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00087,TN1000769-4,2025-11,2025-11-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),133790,13380,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00088,TN1000769-4,2025-12,2025-12-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),141220,14120,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00089,TN1000769-4,2026-01,2026-01-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),124290,12430,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00090,TN1000769-4,2026-02,2026-02-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),143790,14380,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00091,TN1000769-4,2026-03,2026-03-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),126270,12630,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00092,TN1000769-4,2026-04,2026-04-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),127330,12730,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00093,TN1000769-4,2026-05,2026-05-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),123430,12340,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00094,TN1000769-4,2026-06,2026-06-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),143080,14310,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00095,TN1000769-4,2026-07,2026-07-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),126260,12630,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00096,TN1000769-4,2026-08,2026-08-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),132720,13270,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00097,TN1000769-4,2026-09,2026-09-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),127540,12750,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00098,TN1000769-4,2026-10,2026-10-25,Qiloane Building Group (Pty) Ltd,Management fee,WD4(1993),126920,12690,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00099,TN1000985-5,2025-04,2025-04-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),357640,35760,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00100,TN1000985-5,2025-05,2025-05-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),353460,35350,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00101,TN1000985-5,2025-06,2025-06-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),375000,37500,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00102,TN1000985-5,2025-07,2025-07-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),343810,34380,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00103,TN1000985-5,2025-08,2025-08-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),369830,36980,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00104,TN1000985-5,2025-09,2025-09-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),323630,32360,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00105,TN1000985-5,2025-10,2025-10-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),346390,34640,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00106,TN1000985-5,2025-11,2025-11-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),328890,32890,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00107,TN1000985-5,2025-12,2025-12-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),339990,34000,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00108,TN1000985-5,2026-01,2026-01-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),345180,34520,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00109,TN1000985-5,2026-02,2026-02-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),326850,32680,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00110,TN1000985-5,2026-03,2026-03-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),352840,35280,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00111,TN1000985-5,2026-04,2026-04-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),325510,32550,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00112,TN1000985-5,2026-05,2026-05-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),332160,33220,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00113,TN1000985-5,2026-06,2026-06-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),375270,37530,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00114,TN1000985-5,2026-07,2026-07-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),346340,34630,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00115,TN1000985-5,2026-08,2026-08-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),326640,32660,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00116,TN1000985-5,2026-09,2026-09-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),353110,35310,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00117,TN1000985-5,2026-10,2026-10-25,Highveld Retail Holdings Ltd,Management fee,WD4(1993),339300,33930,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00118,TN1001098-7,2025-04,2025-04-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),73040,7300,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00119,TN1001098-7,2025-04,2025-04-25,Pitseng Brands Ltd,Royalty,WD5(1993),102350,10240,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00120,TN1001098-7,2025-05,2025-05-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),79430,7940,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00121,TN1001098-7,2025-05,2025-05-25,Pitseng Brands Ltd,Royalty,WD5(1993),107880,10790,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00122,TN1001098-7,2025-06,2025-06-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),78130,7810,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00123,TN1001098-7,2025-06,2025-06-25,Pitseng Brands Ltd,Royalty,WD5(1993),98180,9820,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00124,TN1001098-7,2025-07,2025-07-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),69530,6950,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00125,TN1001098-7,2025-07,2025-07-25,Pitseng Brands Ltd,Royalty,WD5(1993),92370,9240,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00126,TN1001098-7,2025-08,2025-08-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),78240,7820,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00127,TN1001098-7,2025-08,2025-08-25,Pitseng Brands Ltd,Royalty,WD5(1993),98910,9890,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00128,TN1001098-7,2025-09,2025-09-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),71470,7150,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00129,TN1001098-7,2025-09,2025-09-25,Pitseng Brands Ltd,Royalty,WD5(1993),92920,9290,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00130,TN1001098-7,2025-10,2025-10-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),76430,7640,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00131,TN1001098-7,2025-10,2025-10-25,Pitseng Brands Ltd,Royalty,WD5(1993),99300,9930,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00132,TN1001098-7,2025-11,2025-11-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),70520,7050,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00133,TN1001098-7,2025-11,2025-11-25,Pitseng Brands Ltd,Royalty,WD5(1993),105990,10600,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00134,TN1001098-7,2025-12,2025-12-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),78510,7850,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00135,TN1001098-7,2025-12,2025-12-25,Pitseng Brands Ltd,Royalty,WD5(1993),107980,10800,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00136,TN1001098-7,2026-01,2026-01-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),69290,6930,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00137,TN1001098-7,2026-01,2026-01-25,Pitseng Brands Ltd,Royalty,WD5(1993),104330,10430,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00138,TN1001098-7,2026-02,2026-02-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),74290,7430,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00139,TN1001098-7,2026-02,2026-02-25,Pitseng Brands Ltd,Royalty,WD5(1993),106890,10690,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00140,TN1001098-7,2026-03,2026-03-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),70980,7100,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00141,TN1001098-7,2026-03,2026-03-25,Pitseng Brands Ltd,Royalty,WD5(1993),98360,9840,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00142,TN1001098-7,2026-04,2026-04-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),74290,7430,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00143,TN1001098-7,2026-04,2026-04-25,Pitseng Brands Ltd,Royalty,WD5(1993),102180,10220,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00144,TN1001098-7,2026-05,2026-05-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),71300,7130,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00145,TN1001098-7,2026-05,2026-05-25,Pitseng Brands Ltd,Royalty,WD5(1993),107410,10740,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00146,TN1001098-7,2026-06,2026-06-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),78620,7860,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00147,TN1001098-7,2026-06,2026-06-25,Pitseng Brands Ltd,Royalty,WD5(1993),96720,9670,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00148,TN1001098-7,2026-07,2026-07-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),69900,6990,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00149,TN1001098-7,2026-07,2026-07-25,Pitseng Brands Ltd,Royalty,WD5(1993),107910,10790,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00150,TN1001098-7,2026-08,2026-08-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),73080,7310,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00151,TN1001098-7,2026-08,2026-08-25,Pitseng Brands Ltd,Royalty,WD5(1993),93490,9350,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00152,TN1001098-7,2026-09,2026-09-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),70440,7040,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00153,TN1001098-7,2026-09,2026-09-25,Pitseng Brands Ltd,Royalty,WD5(1993),96020,9600,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00154,TN1001098-7,2026-10,2026-10-25,Pitseng Beverages Group (Pty) Ltd,Management fee,WD4(1993),80780,8080,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00155,TN1001098-7,2026-10,2026-10-25,Pitseng Brands Ltd,Royalty,WD5(1993),100550,10050,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00156,TN1001201-1,2025-04,2025-04-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),178630,17860,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00157,TN1001201-1,2025-05,2025-05-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),175260,17530,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00158,TN1001201-1,2025-06,2025-06-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),172060,17210,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00159,TN1001201-1,2025-07,2025-07-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),170780,17080,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00160,TN1001201-1,2025-08,2025-08-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),175750,17580,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00161,TN1001201-1,2025-09,2025-09-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),162250,16220,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00162,TN1001201-1,2025-10,2025-10-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),166460,16650,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00163,TN1001201-1,2025-11,2025-11-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),176640,17660,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00164,TN1001201-1,2025-12,2025-12-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),174600,17460,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00165,TN1001201-1,2026-01,2026-01-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),164890,16490,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00166,TN1001201-1,2026-02,2026-02-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),170920,17090,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00167,TN1001201-1,2026-03,2026-03-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),156580,15660,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00168,TN1001201-1,2026-04,2026-04-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),159020,15900,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00169,TN1001201-1,2026-05,2026-05-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),162700,16270,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00170,TN1001201-1,2026-06,2026-06-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),158120,15810,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00171,TN1001201-1,2026-07,2026-07-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),155720,15570,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00172,TN1001201-1,2026-08,2026-08-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),168610,16860,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00173,TN1001201-1,2026-09,2026-09-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),158520,15850,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00174,TN1001201-1,2026-10,2026-10-25,Leribe Pharma Holdings (Pty) Ltd,Management fee,WD4(1993),160640,16060,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00175,TN1001314-6,2025-04,2025-04-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),116870,11690,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00176,TN1001314-6,2025-05,2025-05-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),120510,12050,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00177,TN1001314-6,2025-06,2025-06-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),113260,11330,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00178,TN1001314-6,2025-07,2025-07-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),124330,12430,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00179,TN1001314-6,2025-08,2025-08-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),121350,12130,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00180,TN1001314-6,2025-09,2025-09-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),110680,11070,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00181,TN1001314-6,2025-10,2025-10-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),121120,12110,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00182,TN1001314-6,2025-11,2025-11-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),119020,11900,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00183,TN1001314-6,2025-12,2025-12-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),118410,11840,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00184,TN1001314-6,2026-01,2026-01-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),110240,11020,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00185,TN1001314-6,2026-02,2026-02-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),113150,11320,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00186,TN1001314-6,2026-03,2026-03-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),124070,12410,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00187,TN1001314-6,2026-04,2026-04-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),111780,11180,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00188,TN1001314-6,2026-05,2026-05-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),125020,12500,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00189,TN1001314-6,2026-06,2026-06-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),113110,11310,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00190,TN1001314-6,2026-07,2026-07-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),116530,11650,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00191,TN1001314-6,2026-08,2026-08-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),108860,10890,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00192,TN1001314-6,2026-09,2026-09-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),118600,11860,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
+WHT-00193,TN1001314-6,2026-10,2026-10-25,Tsenola Holdings (Pty) Ltd,Management fee,WD4(1993),116420,11640,Excel schedule emailed to WHTSubmission@rsl.org.ls,WHT schedule
