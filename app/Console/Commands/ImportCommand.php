@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Domain\Analysis\AnalysisEngine;
+use App\Domain\Analysis\AnalysisScheduler;
 use App\Domain\Records\AlreadyImported;
 use App\Domain\Records\Channels;
 use App\Domain\Records\CsvImporter;
@@ -16,11 +18,12 @@ class ImportCommand extends Command
         {path? : the file; defaults to the channel\'s file in --dir}
         {--all : import every channel from --dir, in order}
         {--dir=database/data/rsl : folder holding the channel files}
-        {--force : import even if this exact file was imported before}';
+        {--force : import even if this exact file was imported before}
+        {--no-analyse : receive the records without analysing them}';
 
     protected $description = 'Receive RSL records from channel files (CSV)';
 
-    public function handle(CsvImporter $importer): int
+    public function handle(CsvImporter $importer, AnalysisScheduler $scheduler, AnalysisEngine $engine): int
     {
         $dir = rtrim($this->option('dir'), '/');
 
@@ -37,15 +40,23 @@ class ImportCommand extends Command
         }
 
         $failed = false;
-        foreach ($jobs as [$channel, $path]) {
-            try {
-                $this->report($importer->import($channel, $path, (bool) $this->option('force')));
-            } catch (AlreadyImported $e) {
-                $this->line("<comment>{$channel->label}</comment>: skipped. {$e->getMessage()} Use --force to re-check it.");
-            } catch (ImportFailed $e) {
-                $this->error("{$channel->label}: rejected, nothing saved. {$e->getMessage()}");
-                $failed = true;
+        // Analyse once after all files, on complete data, not once per file.
+        $tins = $scheduler->deferring(function () use ($jobs, $importer, &$failed) {
+            foreach ($jobs as [$channel, $path]) {
+                try {
+                    $this->report($importer->import($channel, $path, (bool) $this->option('force')));
+                } catch (AlreadyImported $e) {
+                    $this->line("<comment>{$channel->label}</comment>: skipped. {$e->getMessage()} Use --force to re-check it.");
+                } catch (ImportFailed $e) {
+                    $this->error("{$channel->label}: rejected, nothing saved. {$e->getMessage()}");
+                    $failed = true;
+                }
             }
+        });
+
+        if ($tins && ! $this->option('no-analyse')) {
+            $this->newLine();
+            AnalyseCommand::printRun($this, $engine->run($tins, 'import'));
         }
 
         return $failed ? self::FAILURE : self::SUCCESS;

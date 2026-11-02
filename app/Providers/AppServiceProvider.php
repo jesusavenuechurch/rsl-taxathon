@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Domain\Analysis\AnalysisScheduler;
 use App\Domain\Audit\AuditLog;
 use App\Domain\Audit\AuthenticationAuditor;
+use App\Events\SourceRecordsImported;
 use App\Support\Clock;
 use App\Support\Roles;
 use App\Support\Settings;
@@ -20,11 +22,15 @@ class AppServiceProvider extends ServiceProvider
         $this->app->scoped(Settings::class);
         $this->app->scoped(Clock::class);
         $this->app->scoped(AuditLog::class);
+
+        // Singleton: a batch import defers analysis across many files.
+        $this->app->singleton(AnalysisScheduler::class);
     }
 
     public function boot(): void
     {
         Event::subscribe(AuthenticationAuditor::class);
+        Event::listen(SourceRecordsImported::class, [AnalysisScheduler::class, 'onImported']);
 
         Gate::before(fn ($user) => $user->hasRole(Roles::SUPER_ADMIN) ? true : null);
     }

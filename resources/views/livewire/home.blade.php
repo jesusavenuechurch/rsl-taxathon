@@ -6,9 +6,14 @@
         </p>
     </section>
 
-    <section class="rounded-xl border border-dashed border-slate-300 bg-white p-6 text-slate-600">
-        Nothing to review yet. Worklists appear here once RSL records are analysed.
-    </section>
+    @can('view_company_records')
+        <a href="{{ route('findings.index') }}" class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-slate-400">
+            <span class="font-bold">Findings</span>
+            <span class="block text-slate-600">
+                {{ $openFindings }} open finding(s) across {{ $companiesWithFindings }} compan{{ $companiesWithFindings === 1 ? 'y' : 'ies' }}. Worklists and cases come next.
+            </span>
+        </a>
+    @endcan
 
     @can('view_company_records')
         <livewire:records.record-lookup />

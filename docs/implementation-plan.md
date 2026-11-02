@@ -210,11 +210,11 @@ Phase 1: Source records
 - [x] Record viewer: any `record_id` opens its row (`/records/{id}`, lookup box on Home; opening is audited)
 
 Phase 2: Rules and findings
-- [ ] `pattern_rules` + versions seeded from `database/data/rsl/pattern_rules.csv` with parameters extracted
-- [ ] `TaxpayerSnapshot`, `MetricRegistry`, `Money` formatter, `WordingPolicy`
-- [ ] 14 rule classes (P09 document-triggered)
-- [ ] Filing reviews, rule checks, findings, evidence, checklist
-- [ ] **Acceptance:** findings per company = `expected_system_findings.csv` (pattern, wording, exposure, record IDs); nothing for ordinary companies and decoys except Semonkong P07 lower risk
+- [x] `pattern_rules` + versions seeded from `database/data/rsl/pattern_rules.csv` with parameters extracted (`RuleCatalogue` holds thresholds and wording templates for version 1)
+- [x] `TaxpayerSnapshot`, Python-compatible formatter (`PyFormat`, half-to-even rounding), `TemplateRenderer`, `WordingPolicy` (MetricRegistry moves to Phase 3, where decision conditions need it)
+- [x] 14 rule classes (P09 returns not-applicable until document release exists in Phase 5)
+- [x] Filing reviews, rule checks, findings, evidence, checklist; analysis after import (`AnalysisScheduler` batches `rsl:import --all`; single files queue `AnalyseTaxpayers`); `rsl:analyse`; read-only /findings, /findings/{ref}, /reviews/{ref}
+- [x] **Acceptance:** findings per company = `expected_system_findings.csv` (pattern, wording, exposure, record IDs); nothing for ordinary companies and decoys except Semonkong P07 lower risk (`tests/Feature/Analysis/ExpectedFindingsTest.php`, exact match on all 17)
 
 Phase 3: Memory
 - [ ] Import decisions + structured conditions

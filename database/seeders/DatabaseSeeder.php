@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
             TeamsSeeder::class,
             RolesAndPermissionsSeeder::class,
             DemoUsersSeeder::class,
+            RuleCatalogueSeeder::class,
         ]);
     }
 }
