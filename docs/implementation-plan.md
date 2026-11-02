@@ -54,7 +54,7 @@ catches real evasion. We say that in the demo.
 
 ## 2. Stack and conventions
 
-- Laravel 12, **TALL** (Livewire 3 + Alpine + Tailwind 4), no Filament. (Recommended because it matches how VENTIQ is built; Inertia is the alternative if the team prefers Vue/React.)
+- Laravel 12, **TALL** (Livewire 3 + Alpine + Tailwind 4), no Filament. Decided. Alpine comes bundled with Livewire; full-page components use `resources/views/components/layouts/app.blade.php`.
 - SQLite locally, MySQL/Postgres in production. Money as **integer Maloti** (`bigInteger`); the data has no cents.
 - Spatie Permission for roles, Sanctum only if we expose an API, Pest for everything below.
 - Queue: `database` driver. Analysis, document delivery and notifications run as jobs.
@@ -199,7 +199,7 @@ audit_events: every arrow above emits one
 ## 6. Build checklist
 
 Phase 0: Foundation
-- [ ] Decide TALL vs Inertia (recommend TALL); install Livewire
+- [x] TALL stack: Livewire 3 installed, base layout in place
 - [ ] `Clock` service + demo advance control
 - [ ] Roles/teams seeder with one demo user per role
 - [ ] `audit_events` hash chain, `audit:verify`, immutability triggers

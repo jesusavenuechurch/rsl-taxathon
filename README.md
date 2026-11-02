@@ -1,6 +1,6 @@
 # RSL Taxathon: evidence-led case workflow
 
-Laravel 12 · Sanctum · Spatie Permission · Resend · Pest · Tailwind 4 + Vite + Alpine.
+Laravel 12 · Livewire 3 (TALL) · Sanctum · Spatie Permission · Resend · Pest · Tailwind 4 + Vite.
 
 ```bash
 composer setup        # install, .env, key, migrate, npm build

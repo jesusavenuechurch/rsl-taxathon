@@ -1,5 +1,3 @@
 import './bootstrap';
-import Alpine from 'alpinejs';
 
-window.Alpine = Alpine;
-Alpine.start();
+// Alpine comes bundled with Livewire 3 (window.Alpine); don't import it twice.
