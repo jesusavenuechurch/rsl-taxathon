@@ -110,6 +110,12 @@ class CsvImporter
                 continue;
             }
 
+            // MySQL rejects over-long values (SQLite silently keeps them), so
+            // check here and name the line instead of failing mid-insert.
+            if (($limit = $field->limit()) !== null && mb_strlen($value) > $limit) {
+                throw new ImportFailed("{$where}: '{$value}' is longer than {$limit} characters.");
+            }
+
             $attributes[$field->attribute] = match ($field->type) {
                 Field::MONEY, Field::INTEGER => preg_match('/^-?\d+$/', $value) ? (int) $value
                     : throw new ImportFailed("{$where}: '{$value}' is not a whole number."),

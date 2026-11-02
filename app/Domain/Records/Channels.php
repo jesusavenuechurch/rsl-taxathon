@@ -48,19 +48,19 @@ final class Channels
 
         return [
             new Channel('companies', 'COM', 'Company registration', 'eTax registration', 'companies.csv', Taxpayer::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('tin', Field::STRING, 'TIN'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('tin', Field::STRING, 'TIN', maxLength: 32),
                 self::f('name', Field::STRING),
                 self::f('sector', Field::STRING),
                 self::f('district', Field::STRING),
                 self::f('registered', Field::DATE, 'Registered', attribute: 'registered_on'),
                 self::f('vat_registered', Field::YES_NO, 'VAT registered'),
-                self::f('group_id', Field::STRING, 'Group', attribute: 'group_code', nullable: true),
+                self::f('group_id', Field::STRING, 'Group', attribute: 'group_code', nullable: true, maxLength: 32),
                 self::f('source_system', Field::STRING),
             ]),
             new Channel('group_register', 'GRP', 'Group register', 'Company registry / taxpayer disclosure', 'group_register.csv', GroupEntity::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('group_id', Field::STRING, 'Group', attribute: 'group_code'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('group_id', Field::STRING, 'Group', attribute: 'group_code', maxLength: 32),
                 self::f('entity_name', Field::STRING),
                 self::f('country', Field::STRING),
                 self::f('relationship', Field::STRING),
@@ -69,8 +69,8 @@ final class Channels
                 self::f('source', Field::STRING, 'Source', attribute: 'source_system'),
             ], tinAttribute: null),
             new Channel('cit', 'CIT', 'Income tax return', 'eTax', 'cit_returns.csv', CitReturn::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('tin', Field::STRING, 'TIN'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('tin', Field::STRING, 'TIN', maxLength: 32),
                 self::f('tax_year', Field::TAX_YEAR),
                 self::f('filed_date', Field::DATE, 'Filed'),
                 ...$money('revenue', 'cost_of_sales', 'gross_profit', 'staff_costs'),
@@ -83,21 +83,21 @@ final class Channels
                 self::f('source_system', Field::STRING),
             ], receivedDateAttribute: 'filed_date'),
             new Channel('vat', 'VAT', 'VAT return', 'eTax', 'vat_returns.csv', VatReturn::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('tin', Field::STRING, 'TIN'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('tin', Field::STRING, 'TIN', maxLength: 32),
                 self::f('period', Field::PERIOD),
                 self::f('due_date', Field::DATE, 'Due'),
                 self::f('filed_date', Field::DATE, 'Filed'),
                 ...$money('standard_rated_sales', 'zero_rated_sales', 'exempt_sales', 'output_vat', 'imported_services_value',
                     'output_vat_imported_services', 'local_purchases_standard', 'input_vat_local', 'import_vat_per_return',
                     'input_vat_imported_services', 'net_vat'),
-                self::f('position', Field::STRING),
+                self::f('position', Field::STRING, maxLength: 32),
                 self::f('capture_channel', Field::STRING),
                 self::f('source_system', Field::STRING),
             ], receivedDateAttribute: 'filed_date'),
             new Channel('wht', 'WHT', 'Withholding tax schedule', 'WHT Excel schedule (email)', 'wht_schedule.csv', WhtPayment::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('withholding_agent_tin', Field::STRING, 'Withholding agent TIN'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('withholding_agent_tin', Field::STRING, 'Withholding agent TIN', maxLength: 32),
                 self::f('period', Field::PERIOD),
                 self::f('payment_date', Field::DATE, 'Paid'),
                 self::f('payee_legal_name', Field::STRING, 'Payee'),
@@ -108,8 +108,8 @@ final class Channels
                 self::f('source_system', Field::STRING),
             ], tinAttribute: 'withholding_agent_tin', receivedDateAttribute: 'payment_date'),
             new Channel('lekuka', 'LEK', 'E-invoicing monthly summary', 'Lekuka (IDMS)', 'lekuka_monthly.csv', LekukaReturn::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('tin', Field::STRING, 'TIN'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('tin', Field::STRING, 'TIN', maxLength: 32),
                 self::f('period', Field::PERIOD),
                 self::f('invoices_issued', Field::INTEGER),
                 ...$money('sales_standard_excl_vat', 'sales_zero_rated', 'vat_on_sales', 'purchases_from_vat_vendors_excl_vat', 'vat_on_purchases'),
@@ -117,8 +117,8 @@ final class Channels
                 self::f('source_system', Field::STRING),
             ]),
             new Channel('customs', 'CUS', 'Customs imports', 'eCustoms (ASYCUDA)', 'customs_imports.csv', CustomsImport::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('tin', Field::STRING, 'TIN'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('tin', Field::STRING, 'TIN', maxLength: 32),
                 self::f('period', Field::PERIOD),
                 self::f('declarations', Field::INTEGER),
                 self::f('customs_value', Field::MONEY),
@@ -127,16 +127,16 @@ final class Channels
                 self::f('source_system', Field::STRING),
             ]),
             new Channel('paye', 'PAYE', 'PAYE return', 'eTax', 'paye_returns.csv', PayeReturn::class, [
-                self::f('record_id', Field::STRING, 'Record ID'),
-                self::f('tin', Field::STRING, 'TIN'),
+                self::f('record_id', Field::STRING, 'Record ID', maxLength: 20),
+                self::f('tin', Field::STRING, 'TIN', maxLength: 32),
                 self::f('period', Field::PERIOD),
                 self::f('employees', Field::INTEGER),
                 ...$money('gross_remuneration', 'paye_withheld', 'fringe_benefits_value', 'fbt_paid'),
                 self::f('source_system', Field::STRING),
             ]),
             new Channel('refund_claims', 'RF', 'VAT refund letter', 'Refunds (written letter)', 'refund_claims.csv', RefundClaim::class, [
-                self::f('claim_id', Field::STRING, 'Claim ID', attribute: 'record_id'),
-                self::f('tin', Field::STRING, 'TIN'),
+                self::f('claim_id', Field::STRING, 'Claim ID', attribute: 'record_id', maxLength: 20),
+                self::f('tin', Field::STRING, 'TIN', maxLength: 32),
                 self::f('vat_periods', Field::STRING, 'VAT periods'),
                 self::f('amount_claimed', Field::MONEY),
                 self::f('letter_date', Field::DATE),
@@ -148,12 +148,12 @@ final class Channels
         ];
     }
 
-    private static function f(string $column, string $type, ?string $label = null, ?string $attribute = null, bool $nullable = false): Field
+    private static function f(string $column, string $type, ?string $label = null, ?string $attribute = null, bool $nullable = false, ?int $maxLength = null): Field
     {
         $label ??= Str::of($column)->replace('_', ' ')->ucfirst()
             ->replace(['Vat ', ' vat', 'Fbt ', 'Paye ', ' paye', 'Excl vat', 'Dta '], ['VAT ', ' VAT', 'FBT ', 'PAYE ', ' PAYE', 'excl. VAT', 'DTA '])
             ->toString();
 
-        return new Field($column, $attribute ?? $column, $type, $label, $nullable);
+        return new Field($column, $attribute ?? $column, $type, $label, $nullable, $maxLength);
     }
 }

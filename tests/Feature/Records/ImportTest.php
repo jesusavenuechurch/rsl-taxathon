@@ -140,7 +140,24 @@ it('rejects a whole file when one row is invalid', function (string $file, strin
     'bad period' => ['vat_returns.csv', ',2026-03,', ',2026-13,', 'not a period'],
     'bad yes/no' => ['companies.csv', ',Yes,', ',Maybe,', 'expected Yes or No'],
     'missing column' => ['paye_returns.csv', 'fbt_paid', 'fbt', 'Missing column(s): fbt_paid'],
+    'value too long' => ['vat_returns.csv', 'Credit (refund due)', 'Credit (refund due) as per letter of 28 Nov', 'longer than 32 characters'],
 ]);
+
+it('declares column sizes the mock data fits in', function () {
+    foreach (Channels::all() as $channel) {
+        $handle = fopen(RSL_DATA.'/'.$channel->file, 'r');
+        $header = array_map(fn ($h) => preg_replace('/^\xEF\xBB\xBF/', '', $h), fgetcsv($handle, escape: ''));
+        while (($row = fgetcsv($handle, escape: '')) !== false) {
+            foreach ($channel->fields as $field) {
+                $value = array_combine($header, $row)[$field->column];
+                if ($field->limit() !== null) {
+                    expect(mb_strlen($value))->toBeLessThanOrEqual($field->limit(), "{$channel->file} {$field->column}");
+                }
+            }
+        }
+        fclose($handle);
+    }
+});
 
 it('warns about rows dated after today and unregistered TINs, but still receives them', function () {
     $vat = importChannel('vat'); // before companies: no TIN is registered yet

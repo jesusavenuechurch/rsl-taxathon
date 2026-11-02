@@ -27,5 +27,15 @@ final class Field
         public readonly string $type,
         public readonly string $label,
         public readonly bool $nullable = false,
+        public readonly ?int $maxLength = null,
     ) {}
+
+    /** Longest value the column accepts, in characters (null = no limit). */
+    public function limit(): ?int
+    {
+        return $this->maxLength ?? match ($this->type) {
+            self::STRING => 255,
+            default => null,
+        };
+    }
 }
