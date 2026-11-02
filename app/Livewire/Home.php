@@ -2,6 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Domain\Records\Channel;
+use App\Domain\Records\Channels;
+use App\Models\SourceImport;
 use App\Support\Roles;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -18,6 +21,11 @@ class Home extends Component
         return view('livewire.home', [
             'user' => $user,
             'roles' => $user->getRoleNames()->map(Roles::label(...))->implode(', '),
+            'channels' => collect(Channels::all())->map(fn (Channel $channel) => [
+                'channel' => $channel,
+                'count' => $channel->model::query()->current()->count(),
+                'last' => SourceImport::where('channel', $channel->key)->latest('id')->first(),
+            ])->values(),
         ]);
     }
 }

@@ -4,7 +4,8 @@ Laravel 12 · Livewire 3 (TALL) · Sanctum · Spatie Permission · Resend · Pes
 
 ```bash
 composer setup        # install, .env, key, migrate, npm build
-php artisan db:seed   # super_admin role + user (SUPER_ADMIN_* in .env)
+php artisan db:seed   # roles, teams, super admin, demo officers
+php artisan rsl:import --all      # receive the mock RSL records from database/data/rsl
 composer dev          # server, queue, logs, vite
 php artisan rsl:clock advance 7   # move the demo calendar (or use Home as super admin)
 php artisan audit:verify          # check the audit log has not been tampered with

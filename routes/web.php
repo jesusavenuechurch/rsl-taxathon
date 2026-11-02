@@ -2,6 +2,7 @@
 
 use App\Livewire\Auth\Login;
 use App\Livewire\Home;
+use App\Livewire\Records\RecordShow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,8 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', Home::class)->name('home');
+    Route::get('/records/{recordId}', RecordShow::class)->name('records.show')
+        ->where('recordId', '[A-Za-z]+-[0-9]+');
 
     Route::post('/logout', function (Request $request) {
         Auth::guard('web')->logout();

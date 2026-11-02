@@ -205,9 +205,9 @@ Phase 0: Foundation
 - [x] `audit_events` hash chain, `audit:verify`, immutability triggers (sign-ins, sign-outs and clock moves are already logged)
 
 Phase 1: Source records
-- [ ] Migrations + models for all channel tables, versioning columns, `RecordRegistry`
-- [ ] CSV importers + `rsl:import-all`; `source_imports`
-- [ ] Record viewer: any `record_id` opens its row
+- [x] Migrations + models for all channel tables, versioning columns, `RecordRegistry` (channel layouts live in `App\Domain\Records\Channels`)
+- [x] CSV importer + `rsl:import --all`; `source_imports` (all-or-nothing per file; corrections become new versions; warnings for unregistered TINs and rows dated after today)
+- [x] Record viewer: any `record_id` opens its row (`/records/{id}`, lookup box on Home; opening is audited)
 
 Phase 2: Rules and findings
 - [ ] `pattern_rules` + versions seeded from `database/data/rsl/pattern_rules.csv` with parameters extracted
@@ -251,7 +251,7 @@ Phase 8: Rule owner, end-to-end, demo
 
 ## 7. Things to watch / questions for the team
 
-1. **Future-dated refund letters.** RF-0007, RF-0014, RF-0021 have `letter_date` 2026-11-28, after demo "today" (2026-11-02). Trace step "refund letter lodged" for the 2026-10 return suggests they should arrive in the demo. Proposal: importer holds rows dated after `Clock::today()` and releases them when the clock passes that date.
+1. **Rows dated after "today".** All 14 VAT returns for 2026-10 are filed 2026-11-20 and three refund letters (RF-0007/0014/0021) are dated 2026-11-28, after demo "today" (2026-11-02). The answer key treats them as received (Maluti's F-001 cites its 2026-10 return), so the importer receives them as given and reports a warning. Open question for the team: keep 2 Nov, or move demo "today" to on/after 28 Nov so the dates are consistent.
 2. **P05 vs P10 evidence level.** Both cite WHT + group register, but P05 is level 2 and P10 level 3. So level is declared by the rule, not derived from the source mix. We follow the catalogue.
 3. **Exposure ranges.** Expected findings give one number; we store `exposure_estimate` and leave low/high optional, always labelled "estimated, not assessed".
 4. **Level-4 wording is system text, conclusion is officer text.** "Does not appear to match the evidence provided" appears after a document is assessed; it is still not a conclusion.
