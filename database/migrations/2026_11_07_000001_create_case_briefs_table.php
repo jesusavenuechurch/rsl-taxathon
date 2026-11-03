@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('source', 16);               // ai | template
             $table->string('provider')->nullable();     // ollama/gpt-oss:20b, openrouter/..., or null for template
             $table->string('prompt_hash', 64)->nullable();
+            $table->longText('prompt')->nullable();      // the exact prompt sent, so "what did the AI see" is answerable later
             $table->json('fact_sheet_ids');
             $table->json('draft');                       // {statements: [{text, citations}], next_step: {text, citations}}
             $table->text('rejection_reason')->nullable(); // why the AI draft was rejected, when source = template

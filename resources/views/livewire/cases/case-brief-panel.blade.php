@@ -41,7 +41,7 @@
             @elseif ($canAct && ! $editing)
                 <div class="mt-3 flex flex-wrap items-start gap-2">
                     <button wire:click="approve" class="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-slate-700">Approve</button>
-                    <button wire:click="startEdit({{ $brief->id }})" class="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-semibold hover:bg-slate-50">Edit</button>
+                    <button wire:click="startEdit" class="rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-semibold hover:bg-slate-50">Edit</button>
                     <form wire:submit="reject" class="flex flex-1 flex-wrap items-end gap-2">
                         <input wire:model="rejectReason" type="text" placeholder="Reject: say why" class="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-1.5 text-sm">
                         <button class="rounded-lg border border-red-300 px-3 py-1.5 text-sm font-semibold text-red-800 hover:bg-red-50">Reject</button>

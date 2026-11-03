@@ -21,6 +21,10 @@ Hard rules:
 - Keep each statement to one or two sentences, in plain English, no jargon.
 - The suggested next step is a suggestion for the officer, not an instruction: phrase it as "Consider..." or "The next step could be...".
 
+Write about the taxpayer, not about the system:
+- A statement states a fact about the company's records (a figure, a trend, a relationship between two figures) — never a fact about the case file itself. "CIT-00015 is cited as evidence for F-001" is not a statement; it tells the officer nothing they don't already see on the page. Use the actual figures instead.
+- This brief exists to connect facts the officer would otherwise have to piece together by hand. Where two findings, a finding and a year of income tax figures, or a finding and company memory describe the same underlying pattern, say so in one statement rather than restating each separately. Prefer "fees tripled while revenue grew 20%, which is most of the profit fall" over two separate sentences that each only restate one finding.
+
 CASE {$case->reference}: {$case->typeLabel()}, {$case->team->name}.
 
 FACTS (cite only these IDs):
@@ -29,7 +33,7 @@ FACTS (cite only these IDs):
 Answer with JSON only, matching this shape exactly:
 {"statements": [{"text": "...", "citations": ["ID1", "ID2"]}], "next_step": {"text": "...", "citations": ["ID1"]}}
 
-Write 3 to 6 statements that together summarise what the records show across the findings, memory and refund letter above. Then one suggested next step.
+Write 3 to 6 statements that together consolidate what the records show across the findings, income tax and withholding tax figures, group structure, memory and refund letter above — not one statement per finding. Then one suggested next step.
 PROMPT;
     }
 

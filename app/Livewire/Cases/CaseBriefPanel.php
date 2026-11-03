@@ -32,8 +32,13 @@ class CaseBriefPanel extends Component
         $this->canAct = $canAct;
     }
 
-    public function startEdit(CaseBrief $brief): void
+    /** No ID parameter: always the case's own latest brief, never one a client could name. */
+    public function startEdit(): void
     {
+        $brief = $this->case->latestBrief();
+        if (! $brief) {
+            return;
+        }
         $this->editing = true;
         $this->editText = $this->renderedText($brief);
     }

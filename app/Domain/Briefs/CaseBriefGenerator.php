@@ -41,6 +41,7 @@ class CaseBriefGenerator
             'source' => $source,
             'provider' => $providerName,
             'prompt_hash' => hash('sha256', $prompt),
+            'prompt' => $prompt,
             'fact_sheet_ids' => $sheet->ids(),
             'draft' => $draft,
             'rejection_reason' => $rejectionReason,

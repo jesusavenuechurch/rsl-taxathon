@@ -5,6 +5,7 @@ namespace App\Models\Cases;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use LogicException;
 
 /**
  * The AI's consolidated brief for a case: every statement cites a record ID
@@ -26,6 +27,24 @@ class CaseBrief extends Model
     public const SOURCE_TEMPLATE = 'template';
 
     protected $guarded = [];
+
+    /** Only the review fields may change after creation; the draft itself is part of the record. */
+    protected static function booted(): void
+    {
+        static::updating(function (CaseBrief $brief) {
+            $allowed = ['status', 'final_text', 'review_note', 'reviewer_id', 'reviewed_at', 'updated_at'];
+            $dirty = array_keys($brief->getDirty());
+
+            // The reference is backfilled once, right after creation (it needs the auto-increment id).
+            if (in_array('reference', $dirty, true) && $brief->getOriginal('reference') === null) {
+                $allowed[] = 'reference';
+            }
+
+            if (array_diff($dirty, $allowed)) {
+                throw new LogicException("Case brief {$brief->reference} is part of the record and cannot be edited.");
+            }
+        });
+    }
 
     protected function casts(): array
     {
