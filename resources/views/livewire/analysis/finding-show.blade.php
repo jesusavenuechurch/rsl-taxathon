@@ -15,6 +15,8 @@
         <p class="mt-3 text-sm text-slate-600">This is a reason to review, not a conclusion. Only an officer concludes.</p>
     </section>
 
+    <x-memory-panel :checks="$memory" :highlight="$f->pattern_code" />
+
     <div class="grid gap-6 md:grid-cols-2">
         <section class="rounded-xl border border-slate-200 bg-white p-4">
             <h2 class="font-bold">Possible lawful explanations</h2>
@@ -41,7 +43,9 @@
         @else
             <p class="mt-1 text-slate-700">Not estimated for this pattern.</p>
         @endif
-        <p class="mt-2 text-sm text-slate-600">Legal source: {{ $f->ruleVersion->rule->legal_source }}</p>
+        @if (! in_array(trim($f->ruleVersion->rule->legal_source), ['', '-'], true))
+            <p class="mt-2 text-sm text-slate-600">Legal source: {{ $f->ruleVersion->rule->legal_source }}</p>
+        @endif
     </section>
 
     <section class="overflow-hidden rounded-xl border border-slate-200 bg-white">

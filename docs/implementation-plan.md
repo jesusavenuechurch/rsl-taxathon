@@ -198,6 +198,8 @@ audit_events: every arrow above emits one
 
 ## 6. Build checklist
 
+Order changed on 3 Nov 2026: after Phase 3, cases/triage and data intake come next, then the AI case brief and WhatsApp, then requests, outcomes and chat. The checkpoint view for presenting is [`docs/journey/README.md`](journey/README.md).
+
 Phase 0: Foundation
 - [x] TALL stack: Livewire 3 installed, base layout in place
 - [x] `Clock` service + demo advance control (`App\Support\Clock`, `rsl:clock`, admin widget on Home)
@@ -217,9 +219,9 @@ Phase 2: Rules and findings
 - [x] **Acceptance:** findings per company = `expected_system_findings.csv` (pattern, wording, exposure, record IDs); nothing for ordinary companies and decoys except Semonkong P07 lower risk (`tests/Feature/Analysis/ExpectedFindingsTest.php`, exact match on all 17)
 
 Phase 3: Memory
-- [ ] Import decisions + structured conditions
-- [ ] Memory checks and statements
-- [ ] **Acceptance:** DEC-0007 shown for Qiloane, new fees stated as outside its conditions; DEC-0004 holds for Tsenola; DEC-0009 holds for Maluti
+- [x] Import decisions + structured conditions (`officer_decisions.csv` + the team's reading in `decision_conditions.json`; `App\Domain\Memory\Metrics`)
+- [x] Memory checks and statements (after the rules, never suppressing; memory panel on finding and review pages)
+- [x] **Acceptance:** DEC-0007 shown for Qiloane, new fees stated as outside its conditions; DEC-0004 holds for Tsenola; DEC-0009 holds for Maluti
 
 Phase 4: Cases and worklist
 - [ ] `CaseRouter`, priority from settings, assignments/referral

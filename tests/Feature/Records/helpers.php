@@ -2,9 +2,11 @@
 
 use App\Domain\Analysis\AnalysisEngine;
 use App\Domain\Analysis\AnalysisScheduler;
+use App\Domain\Memory\DecisionImporter;
 use App\Domain\Records\Channels;
 use App\Domain\Records\CsvImporter;
 use App\Models\Analysis\AnalysisRun;
+use App\Models\SourceImport;
 use Database\Seeders\RuleCatalogueSeeder;
 
 const RSL_DATA = __DIR__.'/../../../database/data/rsl';
@@ -16,7 +18,7 @@ function importChannel(string $key, ?string $path = null, bool $force = false)
     return app(CsvImporter::class)->import($channel, $path ?? RSL_DATA.'/'.$channel->file, $force);
 }
 
-/** Receive every file without analysing (like rsl:import --all --no-analyse). */
+/** Receive every file and the earlier decisions, without analysing (like rsl:import --all --no-analyse). */
 function importAll(): void
 {
     app(AnalysisScheduler::class)->deferring(function () {
@@ -24,6 +26,12 @@ function importAll(): void
             importChannel($key);
         }
     });
+    importDecisions();
+}
+
+function importDecisions(): SourceImport
+{
+    return app(DecisionImporter::class)->import(RSL_DATA.'/officer_decisions.csv', RSL_DATA.'/decision_conditions.json');
 }
 
 /** Copy a channel file to a temp path, changing it on the way. */

@@ -4,6 +4,7 @@ namespace App\Livewire\Analysis;
 
 use App\Models\Analysis\FilingReview;
 use App\Models\Analysis\Finding;
+use App\Models\Memory\MemoryCheck;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -26,6 +27,7 @@ class FilingReviewShow extends Component
 
         return view('livewire.analysis.filing-review-show', [
             'r' => $this->review,
+            'memory' => MemoryCheck::with('decision')->where('filing_review_id', $this->review->id)->get(),
             'findings' => Finding::where('last_review_id', $this->review->id)->orWhere('first_review_id', $this->review->id)->get()->keyBy('pattern_code'),
         ])->title($this->review->reference);
     }

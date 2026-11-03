@@ -10,6 +10,8 @@
         <p class="mt-1">{{ $r->summary }}</p>
     </section>
 
+    <x-memory-panel :checks="$memory" />
+
     <section class="overflow-hidden rounded-xl border border-slate-200 bg-white">
         <h2 class="border-b border-slate-200 px-4 py-3 font-bold">All {{ $r->checks->count() }} checks</h2>
         <ul class="divide-y divide-slate-100">

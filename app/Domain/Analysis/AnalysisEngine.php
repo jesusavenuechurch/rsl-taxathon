@@ -8,6 +8,7 @@ use App\Domain\Analysis\Wording\TemplateRenderer;
 use App\Domain\Analysis\Wording\WordingPolicy;
 use App\Domain\Audit\AuditActor;
 use App\Domain\Audit\AuditLog;
+use App\Domain\Memory\MemoryChecker;
 use App\Domain\Records\Channels;
 use App\Models\Analysis\AnalysisRun;
 use App\Models\Analysis\FilingReview;
@@ -35,7 +36,7 @@ class AnalysisEngine
 {
     public const NOTHING_FOUND = 'Revenue, expenses and profit are broadly consistent with previous years. No significant unusual changes were identified in the available records.';
 
-    public function __construct(private Clock $clock, private Settings $settings, private AuditLog $audit) {}
+    public function __construct(private Clock $clock, private Settings $settings, private AuditLog $audit, private MemoryChecker $memory) {}
 
     /** @param list<string>|null $tins null = every registered taxpayer */
     public function run(?array $tins = null, string $trigger = 'manual', ?SourceImport $import = null): AnalysisRun
@@ -104,6 +105,9 @@ class AnalysisEngine
 
         $this->withdrawStale($s->tin, $evaluated, collect($current)->pluck('id')->all(), $now);
 
+        // Memory is consulted only after the rules have raised what they raise (rule 8).
+        $memory = $this->memory->check($s, $review, $current);
+
         $review->update(['summary' => $this->summary($current), 'findings_count' => count($current)]);
 
         $this->audit->record('analysed', subjectType: 'filing_review', subjectRef: $review->reference, taxpayerTin: $s->tin,
@@ -111,6 +115,7 @@ class AnalysisEngine
                 'run' => $run->id,
                 'anchor' => $anchorId,
                 'patterns' => collect($current)->map(fn (Finding $f) => "{$f->pattern_code}:{$f->reference}")->all(),
+                'memory' => collect($memory)->map(fn ($m) => "{$m->decision->reference}:{$m->result}")->all(),
             ]);
 
         return $review;

@@ -25,6 +25,7 @@ in `.env`, or the one the seeder prints. Super admin: `SUPER_ADMIN_EMAIL` / `SUP
 
 ## Where things are
 
+- `docs/journey/README.md`: **the build journey, checkpoint by checkpoint, with screenshots (for presenting and the proposal)**
 - `docs/implementation-plan.md`: plain-language overview, database design, build checklist
 - `docs/rsl-reference/`: the handoff and the Python reference scripts
 - `database/data/rsl/`: mock RSL inputs (the only data the app imports)

@@ -1,0 +1,17 @@
+{
+    "_about": "The team's checkable reading of the plain-English conditions in officer_decisions.csv. This is our interpretation, not RSL data: the officer's own wording stays the record and is always shown. Conditions without a metric are left for the officer to judge. Metrics are defined in app/Domain/Memory/Metrics.php and measured on the year under review.",
+    "DEC-0007": [
+        {"text": "Depreciation stays near the 2024/25 level (M1.25m, of which about M0.9m is the new warehouse)", "metric": "depreciation", "operator": "approx", "value": 1250000, "tolerance": 0.15},
+        {"text": "Bank interest near M0.6m on the construction loan", "metric": "bank_interest", "operator": "approx", "value": 600000, "tolerance": 0.15},
+        {"text": "Related-party fees unchanged (about M0.4m)", "metric": "related_party_fees", "operator": "approx", "value": 400000, "tolerance": 0.25},
+        {"text": "Margin expected to recover within two years"}
+    ],
+    "DEC-0004": [
+        {"text": "Fee stays at or below 6% of revenue", "metric": "fees_to_revenue", "operator": "lte", "value": 0.06},
+        {"text": "The services agreement remains in force"}
+    ],
+    "DEC-0009": [
+        {"text": "Export (zero-rated) share stays roughly 50-60% of sales", "metric": "zero_rated_share", "operator": "between", "value": 0.50, "value_max": 0.60},
+        {"text": "Inputs consistent with purchases"}
+    ]
+}
