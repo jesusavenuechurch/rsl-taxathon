@@ -11,7 +11,7 @@ Read first:
 
 Done: 0 foundation, 1 records, 2 rules and findings (17 findings match the answer key word for word), 3 company memory, 4 cases/worklists/triage/data intake, 5 AI case brief (grounded, guarded, officer approves/edits/rejects; verified against real Ollama gpt-oss:20b on the owner's machine).
 
-Next, in this order: **6 WhatsApp notifications** → 7 information requests and document release → 8 officer outcomes and second sign-off → 9 "ask the records" chat (acceptance test 5) → 10 rule editing, 53-step workflow trace, demo script. AI and WhatsApp are the selling points.
+Next: build **the officer's desk, `docs/design/officer-desk.md`** (the design is agreed; follow its section 10 order). It folds in WhatsApp notifications, thin information requests/documents (7) and outcomes/sign-off (8). Judges explore the hosted link alone, so it must explain itself (front page, Act as, guided tour, plain language). Chat (9) and rule editing (10) only if time remains. Submission: Friday 6 Nov 2026, 17:00 (challenge selection email, proposal of at most 7 pages, prototype link). AI and WhatsApp are the selling points.
 
 Checkpoint 5 follow-ups raised in review, not yet done: numeric cross-check (verify every amount/percentage a statement states against the facts it cites — the guard today only checks *which* records are cited, not *what is claimed*); redraft a brief when later findings/memory change, not only on case open or referral (mark the old one superseded, add a Redraft action). `composer dev` runs serve + a queue worker together; use it (not `php artisan serve` alone) so briefs draft in the background.
 
