@@ -18,4 +18,9 @@ return [
     'seed_demo_users' => (bool) env('RSL_SEED_DEMO_USERS', env('APP_ENV') !== 'production'),
     'demo_user_password' => env('DEMO_USER_PASSWORD'),
 
+    /*
+    | Where Data intake finds the mock RSL files it "receives" in the demo.
+    */
+    'mock_data_path' => env('RSL_MOCK_DATA_PATH', database_path('data/rsl')),
+
 ];

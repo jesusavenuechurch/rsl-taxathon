@@ -12,7 +12,14 @@
     @auth
         <header class="border-b border-slate-200 bg-white">
             <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-                <a href="{{ route('home') }}" class="font-bold tracking-tight">RSL Case Review</a>
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
+                    <a href="{{ route('home') }}" class="font-bold tracking-tight">RSL Case Review</a>
+                    <nav class="flex flex-wrap gap-x-4 text-sm" aria-label="Main">
+                        @can('view_worklist') <a href="{{ route('worklist') }}" @class(['font-semibold text-slate-900' => request()->routeIs('worklist', 'cases.*'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('worklist', 'cases.*')])>Worklist</a> @endcan
+                        @can('view_company_records') <a href="{{ route('findings.index') }}" @class(['font-semibold text-slate-900' => request()->routeIs('findings.*', 'reviews.*'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('findings.*', 'reviews.*')])>Findings</a> @endcan
+                        @can('receive_data') <a href="{{ route('intake') }}" @class(['font-semibold text-slate-900' => request()->routeIs('intake'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('intake')])>Data intake</a> @endcan
+                    </nav>
+                </div>
                 <div class="flex flex-wrap items-center gap-4 text-sm">
                     <span @class([
                         'rounded-full px-3 py-1 font-semibold',

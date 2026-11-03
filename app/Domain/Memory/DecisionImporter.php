@@ -7,6 +7,7 @@ use App\Domain\Records\AlreadyImported;
 use App\Domain\Records\ImportFailed;
 use App\Models\Memory\Decision;
 use App\Models\SourceImport;
+use App\Models\Team;
 use App\Support\Clock;
 use Illuminate\Support\Facades\DB;
 
@@ -77,6 +78,7 @@ class DecisionImporter
                     'conditions' => $row['conditions'],
                     'reassessment_point' => $row['reassess_at'],
                     'officer' => $row['officer'],
+                    'team_code' => self::teamFrom($row['officer']),
                     'second_signoff' => $row['second_signoff'] ?: null,
                     'decided_on' => $row['decided_on'],
                     'source' => 'imported',
@@ -113,6 +115,16 @@ class DecisionImporter
         ]);
 
         return $import;
+    }
+
+    /** "Officer P. Mokoena (Special Sectors)" -> special_sectors */
+    public static function teamFrom(string $officer): ?string
+    {
+        if (! preg_match('/\(([^)]+)\)/', $officer, $m)) {
+            return null;
+        }
+
+        return Team::ensureDefaults()->first(fn ($t) => stripos($m[1], $t->name) !== false)?->code;
     }
 
     private function outcome(string $text, int $line): string

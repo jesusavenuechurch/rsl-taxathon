@@ -224,9 +224,9 @@ Phase 3: Memory
 - [x] **Acceptance:** DEC-0007 shown for Qiloane, new fees stated as outside its conditions; DEC-0004 holds for Tsenola; DEC-0009 holds for Maluti
 
 Phase 4: Cases and worklist
-- [ ] `CaseRouter`, priority from settings, assignments/referral
-- [ ] Worklist, company profile, case page
-- [ ] Refund lanes (lower risk / needs review, never "valid" or "refused")
+- [x] `CaseRouter`, priority from settings, assignments/referral (`CaseWorkflow`: take, refer with reason, note; `CaseOpened`/`CaseReferred` events)
+- [x] Worklist, case page with timeline (company profile folded into the case page for now); Data intake page and `rsl:demo`
+- [x] Refund lanes (lower risk / needs review, never "valid" or "refused")
 
 Phase 5: Requests and documents
 - [ ] Composer, requests, items, deliveries, scheduled release

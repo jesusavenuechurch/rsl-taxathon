@@ -17,8 +17,8 @@ The full technical plan lives in [`docs/implementation-plan.md`](../implementati
 | 1 | RSL's data in one place | Every channel received and traceable to the row | ✅ Done |
 | 2 | Patterns and findings | 14 patterns, 17 findings matching the answer key word for word | ✅ Done |
 | 3 | Company memory | Earlier decisions shown as context, their conditions checked | ✅ Done |
-| 4 | Cases, worklists and triage | Officers approve or close; data intake without the command line | Next |
-| 5 | AI case brief | The AI consolidates every angle into one cited brief; the officer approves, edits or rejects | |
+| 4 | Cases, worklists and triage | Records arrive from a page; cases open, rank and route themselves; officers take and refer | ✅ Done |
+| 5 | AI case brief | The AI consolidates every angle into one cited brief; the officer approves, edits or rejects | Next |
 | 6 | WhatsApp notifications | "A new case is ready", with no taxpayer details | |
 | 7 | Information requests | Documents arrive only after they are asked for, after the stated number of days | |
 | 8 | Officer outcomes | Four outcomes, five-part conclusions, second sign-off at M1m | |
@@ -126,11 +126,46 @@ It joins each company's records, explains patterns with the exact evidence, reme
 
 ---
 
+## Checkpoint 4: Cases, worklists and triage
+
+**Why it matters.** Findings only help if they reach the right officer, in the right order, without anyone assembling them. *(Judging: value, usability, pilot potential.)*
+
+**What was built.**
+- **Data intake page.** Records enter from a page, not the command line: simulate a company's records arriving from every channel, upload a channel file, or receive everything. From there, nothing is manual: analysis runs, findings are raised, memory is checked and a case opens.
+- **Cases open, rank and route themselves.** A company with open findings gets one case; an ordinary company gets only its filing review and creates no work.
+  - **Priority** follows the estimated exposure (High from M500,000, Medium from M100,000; both are settings). Estimates for one company often describe the same money (Highveld's M3m interest appears in two findings), so the case shows the largest single estimate, never a misleading sum.
+  - **Routing** follows the work: VAT refund claims go to Refund audit (in a *lower risk* or *needs review* lane, never "valid" or "refused"); a company with an earlier decision returns to the team that made it (Qiloane to Special Sectors, who decided DEC-0007); personnel arrangements go to Special Sectors; everything else goes to the risk analysts for triage. Every case says why it was routed where it was.
+- **Worklists** per team, ranked by priority, then exposure.
+- **Triage.** The officer takes the case or refers it to another team with a reason. Only the team holding a case (or a team lead) can act on it. Closing a case is an officer outcome with reasons, never a plain dismiss (checkpoint 8).
+- **A timeline** on every case: opened, taken, referred, findings added or withdrawn, notes. Every step is also in the audit log, and every case opening or referral raises the event WhatsApp notifications will hook into (checkpoint 6).
+
+**Show it.**
+1. Sign in as the administrator, open **Data intake**, choose *Thaba Trading* and click **Receive records**: 83 rows arrive from six channels, analysis raises two findings, and CASE-0001 lands on the Risk analysis worklist. Then click **Receive every company**.
+2. Sign in as L. Thamae (risk analyst): the worklist shows five cases, highest priority first.
+3. Open Thaba: the findings with their evidence, the routing reason, and the next step. Click **Take this case**, then refer it to Special Sectors: "Fees tripled while revenue grew 20%: needs a specialist review of the group charges."
+4. Sign in as P. Mokoena (Special Sectors): Thaba is now on their worklist, next to Katse and Qiloane.
+
+![Data intake: a company's records arrive](img/07-data-intake-company-arrives.png)
+
+![The analyst's worklist](img/08-worklist-ranked.png)
+
+![A case](img/09-case-page.png)
+
+![The timeline after referral](img/10-case-referred-timeline.png)
+
+![Special Sectors' worklist](img/11-special-sectors-worklist.png)
+
+**What it proves.** The system reproduces the answer key's priorities and first-stop teams for all ten companies with findings, and creates no work for the four without. The officer's day starts with a ranked list, not ten spreadsheets.
+
+**Honest limits.** "Simulate a company's records arriving" filters the mock files; in a pilot, the same intake runs on RSL's exports. Thresholds for priority are starting values for RSL to set.
+
+---
+
 ## Coming next
 
-**Checkpoint 4: Cases, worklists and triage.** Findings become cases ranked by estimated exposure; the risk analyst approves (refers to Special Sectors, or requests documents) or closes with reasons; an administrator can "receive" a filing from a page instead of the command line, and everything after it runs on its own.
+**Checkpoint 5: AI case brief.** The AI reads every finding, rule check, memory check and record for a company and writes one consolidated brief ("losses in four years, funded by group loans that grew from M8m to M29m, carrying M3m of interest with no withholding tax"), with every statement citing its records, plus a suggested next step. The officer approves, edits or rejects; the AI never concludes. It can run on a model hosted inside RSL (Ollama), so taxpayer data need not leave the authority.
 
-**Checkpoint 5: AI case brief.** The AI reads every finding, rule check, memory check and record for a company and writes one consolidated brief ("losses in four years, funded by group loans that grew from M8m to M29m, carrying M3m of interest with no withholding tax"), with every statement citing its records, plus a suggested next step. The officer approves, edits or rejects; the AI never concludes.
+**Checkpoint 6: WhatsApp notifications.** "A new case is ready for review (High priority)" reaches the officer's phone the moment a case opens or is referred to their team, with no taxpayer details: the message points into the system.
 
 ---
 

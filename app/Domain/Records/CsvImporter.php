@@ -20,7 +20,7 @@ class CsvImporter
 {
     public function __construct(private Clock $clock, private AuditLog $audit) {}
 
-    public function import(Channel $channel, string $path, bool $force = false): SourceImport
+    public function import(Channel $channel, string $path, bool $force = false, ?string $filename = null): SourceImport
     {
         if (! is_readable($path)) {
             throw new ImportFailed("Cannot read {$path}.");
@@ -33,7 +33,7 @@ class CsvImporter
 
         $rows = $this->parse($channel, $path);
 
-        [$import, $tins] = DB::transaction(fn () => $this->store($channel, basename($path), $sha, $rows));
+        [$import, $tins] = DB::transaction(fn () => $this->store($channel, $filename ?? basename($path), $sha, $rows));
 
         $this->audit->record('received', subjectType: 'source_import', subjectRef: (string) $import->id, payload: [
             'channel' => $channel->key,

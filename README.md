@@ -5,7 +5,8 @@ Laravel 12 · Livewire 3 (TALL) · Sanctum · Spatie Permission · Resend · Pes
 ```bash
 composer setup        # install, .env, key, migrate, npm build
 php artisan db:seed   # roles, teams, super admin, demo officers
-php artisan rsl:import --all      # receive the mock RSL records from database/data/rsl, then analyse them
+php artisan rsl:demo --fresh      # demo machines only: wipe, then RSL knows the registry; companies arrive via Data intake
+php artisan rsl:import --all      # or receive every mock RSL record at once, then analyse
 php artisan rsl:analyse           # re-run the 14 patterns (e.g. after a rule change)
 composer dev          # server, queue, logs, vite
 php artisan rsl:clock advance 7   # move the demo calendar (or use Home as super admin)

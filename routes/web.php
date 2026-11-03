@@ -1,9 +1,12 @@
 <?php
 
+use App\Livewire\Admin\DataIntake;
 use App\Livewire\Analysis\FilingReviewShow;
 use App\Livewire\Analysis\FindingIndex;
 use App\Livewire\Analysis\FindingShow;
 use App\Livewire\Auth\Login;
+use App\Livewire\Cases\CaseShow;
+use App\Livewire\Cases\Worklist;
 use App\Livewire\Home;
 use App\Livewire\Records\RecordShow;
 use Illuminate\Http\Request;
@@ -18,6 +21,9 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', Home::class)->name('home');
+    Route::get('/worklist', Worklist::class)->name('worklist');
+    Route::get('/cases/{reference}', CaseShow::class)->name('cases.show');
+    Route::get('/intake', DataIntake::class)->name('intake');
     Route::get('/findings', FindingIndex::class)->name('findings.index');
     Route::get('/findings/{reference}', FindingShow::class)->name('findings.show');
     Route::get('/reviews/{reference}', FilingReviewShow::class)->name('reviews.show');

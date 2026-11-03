@@ -6,14 +6,22 @@
         </p>
     </section>
 
-    @can('view_company_records')
-        <a href="{{ route('findings.index') }}" class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-slate-400">
-            <span class="font-bold">Findings</span>
-            <span class="block text-slate-600">
-                {{ $openFindings }} open finding(s) across {{ $companiesWithFindings }} compan{{ $companiesWithFindings === 1 ? 'y' : 'ies' }}. Worklists and cases come next.
-            </span>
-        </a>
-    @endcan
+    <div class="grid gap-4 sm:grid-cols-2">
+        @can('view_worklist')
+            <a href="{{ route('worklist') }}" class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-slate-400">
+                <span class="font-bold">Worklist</span>
+                <span class="block text-slate-600">
+                    @if ($user->team) {{ $teamCases }} open case(s) for {{ $user->team->name }}, {{ $myCases }} assigned to you. @else {{ $allCases }} open case(s) across all teams. @endif
+                </span>
+            </a>
+        @endcan
+        @can('view_company_records')
+            <a href="{{ route('findings.index') }}" class="block rounded-xl border border-slate-200 bg-white p-6 hover:border-slate-400">
+                <span class="font-bold">Findings</span>
+                <span class="block text-slate-600">{{ $openFindings }} open finding(s) across {{ $companiesWithFindings }} compan{{ $companiesWithFindings === 1 ? 'y' : 'ies' }}.</span>
+            </a>
+        @endcan
+    </div>
 
     @can('view_company_records')
         <livewire:records.record-lookup />
