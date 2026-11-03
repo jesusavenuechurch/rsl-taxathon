@@ -18,7 +18,7 @@ The full technical plan lives in [`docs/implementation-plan.md`](../implementati
 | 2 | Patterns and findings | 14 patterns, 17 findings matching the answer key word for word | ✅ Done |
 | 3 | Company memory | Earlier decisions shown as context, their conditions checked | ✅ Done |
 | 4 | Cases, worklists and triage | Records arrive from a page; cases open, rank and route themselves; officers take and refer | ✅ Done |
-| 5 | AI case brief | The AI consolidates every angle into one cited brief; the officer approves, edits or rejects | Next |
+| 5 | AI case brief | The AI consolidates every angle into one cited brief; the officer approves, edits or rejects | ✅ Done |
 | 6 | WhatsApp notifications | "A new case is ready", with no taxpayer details | |
 | 7 | Information requests | Documents arrive only after they are asked for, after the stated number of days | |
 | 8 | Officer outcomes | Four outcomes, five-part conclusions, second sign-off at M1m | |
@@ -161,9 +161,29 @@ It joins each company's records, explains patterns with the exact evidence, reme
 
 ---
 
-## Coming next
+## Checkpoint 5: AI case brief
 
-**Checkpoint 5: AI case brief.** The AI reads every finding, rule check, memory check and record for a company and writes one consolidated brief ("losses in four years, funded by group loans that grew from M8m to M29m, carrying M3m of interest with no withholding tax"), with every statement citing its records, plus a suggested next step. The officer approves, edits or rejects; the AI never concludes. It can run on a model hosted inside RSL (Ollama), so taxpayer data need not leave the authority.
+**Why it matters.** A case can carry several findings, a memory check and a refund letter; an officer still has to read all of it before deciding anything. The AI reads it first and writes one short brief, so the officer starts from a summary instead of a pile of records — but the AI drafts, it never concludes, and every sentence has to prove where it came from. *(Judging: value, usability, innovation, trust and compliance.)*
+
+**What was built.**
+- **A fact sheet, not a free-ranging prompt.** For each case, the system assembles exactly the records it already looked up — every finding (with its lawful explanations and what the officer must establish), the evidence behind each one, company memory, and the refund letter — each tagged with its public ID. The model sees only this list; nothing else about the company reaches it.
+- **The model drafts in JSON**: a handful of statements and one suggested next step, each with the record IDs it is based on. Runs on **Ollama, hosted inside RSL** (`gpt-oss:20b` in this build), so taxpayer data never has to leave the authority; OpenRouter is wired in as a cloud fallback behind the same provider interface (ported from VENTIQ), chosen by one setting.
+- **A guard checks every statement before an officer ever sees it**: any citation that is not one of the fact sheet's IDs, any statement with no citation at all, or any wording `WordingPolicy` would also reject from a finding (the same forbidden words, the same evidence ladder) — the whole draft is rejected, not just the bad sentence. If the model is unreachable or its draft fails, the system falls back to a **deterministic template brief** built from the same facts, with no model call, so the demo (and the officer) never sees a blank or unchecked brief.
+- **The officer has the last word.** The case page shows "Drafting…" while the brief is queued, then the cited statements and the suggested next step. The officer **approves** it, **edits** it into their own words, or **rejects** it with a reason — exactly once; the attempt, the model, the prompt and the decision are all audited.
+
+**Show it.** Open Thaba Trading's case (the one referred to Special Sectors in checkpoint 4). The AI brief sits above company memory: a few sentences on the fees pattern, each with its record IDs in brackets, and a suggested next step phrased as a suggestion, never an instruction. Click **Approve**.
+
+![The AI case brief, cited](img/12-ai-case-brief.png)
+
+![Approved by the officer](img/13-ai-case-brief-approved.png)
+
+**What it proves.** Run against the real model on the owner's machine, all ten companies with open findings drafted a valid, grounded brief on the first try — no invented citations, no forbidden words, no fallback needed. For Highveld (four findings: persistent losses, M22.3m to related parties, loans that grew from M8m to M29m, M3m of interest with no withholding tax), the brief correctly consolidated all four into five short statements and a next step, citing only real finding and record IDs. The guard was also tested directly: an invented citation, an uncited statement and a forbidden word were each rejected and replaced with the template brief, confirmed with a fake provider in the automated suite.
+
+**Honest limits.** The brief is a summary of records the system already found, not new analysis; a pattern the rule catalogue missed stays missed. Judging real-model prose quality is done by hand, not by an automated test — the automated suite checks grounding and wording, never "is this a good sentence". In this build, the brief is generated synchronously with the case-opening request when the queue runs inline (as in this demo); a pilot would run it on a queue worker so officers never wait on it.
+
+---
+
+## Coming next
 
 **Checkpoint 6: WhatsApp notifications.** "A new case is ready for review (High priority)" reaches the officer's phone the moment a case opens or is referred to their team, with no taxpayer details: the message points into the system.
 

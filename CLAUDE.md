@@ -9,9 +9,9 @@ Read first:
 
 ## Status
 
-Done: 0 foundation, 1 records, 2 rules and findings (17 findings match the answer key word for word), 3 company memory, 4 cases/worklists/triage/data intake.
+Done: 0 foundation, 1 records, 2 rules and findings (17 findings match the answer key word for word), 3 company memory, 4 cases/worklists/triage/data intake, 5 AI case brief (grounded, guarded, officer approves/edits/rejects; verified against real Ollama gpt-oss:20b on the owner's machine).
 
-Next, in this order: **5 AI case brief** → **6 WhatsApp notifications** → 7 information requests and document release → 8 officer outcomes and second sign-off → 9 "ask the records" chat (acceptance test 5) → 10 rule editing, 53-step workflow trace, demo script. AI and WhatsApp are the selling points.
+Next, in this order: **6 WhatsApp notifications** → 7 information requests and document release → 8 officer outcomes and second sign-off → 9 "ask the records" chat (acceptance test 5) → 10 rule editing, 53-step workflow trace, demo script. AI and WhatsApp are the selling points.
 
 ## Commands
 
@@ -44,8 +44,9 @@ node scripts/journey-screenshots.cjs http://127.0.0.1:8123 <password>   # after 
 - `app/Domain/Records`: channels, CSV importer, registry, demo intake.
 - `app/Domain/Analysis`: engine, snapshot, 14 rules in `Rules/`, `RuleCatalogue` (v1 thresholds and wording), wording.
 - `app/Domain/Memory`: decision importer, metrics, memory checker.
-- `app/Domain/Cases`: router, workflow (take, refer, note). Events `CaseOpened`, `CaseReferred` are the hook for WhatsApp.
-- `app/Livewire`: pages (worklist, case, findings, review, record, data intake, demo clock).
+- `app/Domain/Cases`: router, workflow (take, refer, note). Events `CaseOpened`, `CaseReferred` are the hook for WhatsApp (and trigger the AI brief).
+- `app/Domain/Briefs`: fact sheet builder, prompt, citation/wording guard, template fallback, generator, officer review. `app/Services/AI` + `app/Contracts/AI\AIProvider`: the Ollama/OpenRouter provider layer (ported from VENTIQ), chosen by `AI_PROVIDER`.
+- `app/Livewire`: pages (worklist, case, findings, review, record, data intake, demo clock); `Cases\CaseBriefPanel` is the AI brief panel on the case page.
 - `database/data/rsl`: mock inputs, `pattern_rules.csv`, `decision_conditions.json` (our reading of decision conditions).
 - `tests/Feature/Records/helpers.php`: `importAll()`, `analyseEverything()`, `fixture()`, `editedCopy()`.
 

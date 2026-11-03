@@ -69,6 +69,17 @@ class ReviewCase extends Model
         return $this->hasMany(CaseEvent::class, 'case_id')->orderBy('id');
     }
 
+    /** Append-only, like source records: a regeneration is a new row. */
+    public function briefs(): HasMany
+    {
+        return $this->hasMany(CaseBrief::class, 'case_id')->orderByDesc('id');
+    }
+
+    public function latestBrief(): ?CaseBrief
+    {
+        return $this->briefs->first();
+    }
+
     public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class);

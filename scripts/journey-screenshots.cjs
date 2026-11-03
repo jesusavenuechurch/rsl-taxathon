@@ -30,10 +30,13 @@ const path = require('path');
   await admin.goto(base + '/intake');
   await admin.selectOption('select[wire\\:model="tin"]', { label: 'Thaba Trading (Pty) Ltd' });
   await admin.click('button:has-text("Receive records")');
-  await admin.waitForSelector('text=records received');
+  // Opening Thaba's case queues one AI brief, generated synchronously here.
+  await admin.waitForSelector('text=records received', { timeout: 300000 });
   await admin.shot('07-data-intake-company-arrives.png', true);
   await admin.click('button:has-text("Receive every company")');
-  await admin.waitForSelector('text=All mock records received');
+  // Each company opened queues an AI brief, generated synchronously against
+  // the real model in this demo setup: allow minutes, not the 30s default.
+  await admin.waitForSelector('text=All mock records received', { timeout: 600000 });
 
   // Checkpoints 1-3 pages, now that everything has arrived.
   const officer = await session('p.mokoena@rsl.test');
@@ -64,6 +67,13 @@ const path = require('path');
   await analyst.click('a:has-text("Thaba Trading")');
   await analyst.waitForLoadState('networkidle');
   await analyst.shot('09-case-page.png', true);
+
+  // Checkpoint 5: the AI case brief, cited and reviewed.
+  await analyst.locator('section', { hasText: 'AI case brief' }).screenshot({ path: path.join(out, '12-ai-case-brief.png') });
+  await analyst.click('section:has-text("AI case brief") button:has-text("Approve")');
+  await analyst.waitForSelector('text=Approved by');
+  await analyst.locator('section', { hasText: 'AI case brief' }).screenshot({ path: path.join(out, '13-ai-case-brief-approved.png') });
+
   await analyst.click('button:has-text("Take this case")');
   await analyst.waitForSelector('text=took the case');
   await analyst.selectOption('select[wire\\:model="referTo"]', 'special_sectors');

@@ -84,6 +84,8 @@
         @endforeach
     </section>
 
+    <livewire:cases.case-brief-panel :case="$c" :can-act="$canAct" :key="'brief-'.$c->id" />
+
     <x-memory-panel :checks="$memory" />
 
     <section class="rounded-xl border border-slate-200 bg-white p-4">
