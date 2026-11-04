@@ -2,11 +2,13 @@
 
 namespace App\Models\Analysis;
 
+use App\Models\Cases\ReviewCase;
 use App\Models\SourceRecords\Taxpayer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * A pattern worth an officer's attention, never a conclusion. Shows the
@@ -20,6 +22,8 @@ class Finding extends Model
     public const SUPERSEDED = 'superseded';   // the same pattern was re-raised with different facts
 
     public const WITHDRAWN = 'withdrawn';     // a later analysis no longer finds it
+
+    public const CONCLUDED = 'concluded';     // an officer recorded one of the four outcomes
 
     protected $guarded = [];
 
@@ -63,6 +67,16 @@ class Finding extends Model
     public function taxpayer(): BelongsTo
     {
         return $this->belongsTo(Taxpayer::class, 'tin', 'tin')->whereNull('superseded_at');
+    }
+
+    public function case(): BelongsTo
+    {
+        return $this->belongsTo(ReviewCase::class, 'case_id');
+    }
+
+    public function outcome(): HasOne
+    {
+        return $this->hasOne(OfficerOutcome::class)->latestOfMany();
     }
 
     /** @return list<string> */

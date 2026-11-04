@@ -62,7 +62,7 @@ class CaseShow extends Component
 
     public function render(CaseWorkflow $workflow)
     {
-        $this->case->load(['taxpayer', 'team', 'assignee', 'refundClaim', 'findings.evidence', 'events.fromTeam', 'events.toTeam']);
+        $this->case->load(['taxpayer', 'team', 'assignee', 'refundClaim', 'findings.evidence', 'findings.checklist', 'events.fromTeam', 'events.toTeam']);
         $latestReview = $this->case->findings->max('last_review_id');
 
         return view('livewire.cases.case-show', [

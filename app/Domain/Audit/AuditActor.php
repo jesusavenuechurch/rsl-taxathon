@@ -30,12 +30,22 @@ final class AuditActor
         return new self('taxpayer', null, "Taxpayer {$tin}");
     }
 
-    /** The signed-in officer, or the system when nobody is (queued jobs, console). */
+    /**
+     * The signed-in officer, or the system when nobody is (queued jobs,
+     * console). While an administrator is acting as another officer (demo
+     * mode), the label names both: "Super Admin acting as L. Thamae (risk_analyst)".
+     */
     public static function current(): self
     {
         $user = auth()->user();
 
         if ($user instanceof User) {
+            if (session()->has('acting_for') && (int) session('acting_for') === $user->id && ($real = User::find(session('acting_by')))) {
+                $roles = $user->getRoleNames()->implode(', ');
+
+                return new self('user', $user->id, "{$real->name} acting as {$user->name}".($roles ? " ({$roles})" : ''));
+            }
+
             return self::user($user);
         }
 

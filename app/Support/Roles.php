@@ -55,7 +55,7 @@ final class Roles
             self::SPECIAL_SECTORS_AUDITOR => self::CASEWORK,
             self::TEAM_LEAD => [...self::CASEWORK, 'second_signoff', 'view_audit_log'],
             self::RULE_OWNER => ['view_worklist', 'view_company_records', 'configure_rules', 'use_chat'],
-            self::DATA_TEAM => ['view_company_records', 'review_data_errors', 'receive_data'],
+            self::DATA_TEAM => ['view_worklist', 'view_company_records', 'review_data_errors', 'receive_data'],
             self::AUDIT_VIEWER => ['view_company_records', 'view_audit_log'],
             self::SUPER_ADMIN => self::PERMISSIONS,
         ];

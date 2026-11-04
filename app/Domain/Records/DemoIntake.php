@@ -4,6 +4,7 @@ namespace App\Domain\Records;
 
 use App\Domain\Analysis\AnalysisScheduler;
 use App\Domain\Memory\DecisionImporter;
+use App\Domain\Requests\TaxpayerResponsePool;
 use App\Jobs\AnalyseTaxpayers;
 use App\Models\Analysis\Finding;
 use App\Models\Cases\ReviewCase;
@@ -21,6 +22,7 @@ class DemoIntake
         private CsvImporter $importer,
         private DecisionImporter $decisions,
         private AnalysisScheduler $scheduler,
+        private TaxpayerResponsePool $responses,
     ) {}
 
     public static function dataPath(string $file = ''): string
@@ -43,6 +45,7 @@ class DemoIntake
             }
         });
         $this->quietly(fn () => $this->decisions->import(self::dataPath('officer_decisions.csv'), self::dataPath('decision_conditions.json')));
+        $this->responses->import(self::dataPath('taxpayer_responses.csv'));
     }
 
     /**

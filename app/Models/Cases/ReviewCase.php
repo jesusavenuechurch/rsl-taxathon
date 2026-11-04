@@ -37,6 +37,34 @@ class ReviewCase extends Model
         self::DATA_CHECK => 'Data check',
     ];
 
+    // The journey a case walks (officer-desk.md section 2). "Received" is not
+    // a stage: every case that exists has been received.
+    public const STAGE_TRIAGE = 'triage';
+
+    public const STAGE_SPECIALIST = 'specialist';
+
+    public const STAGE_WAITING_TAXPAYER = 'waiting_taxpayer';
+
+    public const STAGE_DECISION = 'decision';
+
+    public const STAGE_SIGNOFF = 'signoff';
+
+    public const STAGE_CLOSED = 'closed';
+
+    public const STAGE_ORDER = [
+        self::STAGE_TRIAGE, self::STAGE_SPECIALIST, self::STAGE_WAITING_TAXPAYER,
+        self::STAGE_DECISION, self::STAGE_SIGNOFF, self::STAGE_CLOSED,
+    ];
+
+    public const STAGE_LABELS = [
+        self::STAGE_TRIAGE => 'Triage',
+        self::STAGE_SPECIALIST => 'Specialist',
+        self::STAGE_WAITING_TAXPAYER => 'Waiting',
+        self::STAGE_DECISION => 'Decision',
+        self::STAGE_SIGNOFF => 'Sign-off',
+        self::STAGE_CLOSED => 'Closed',
+    ];
+
     protected $table = 'cases';
 
     protected $guarded = [];
@@ -78,6 +106,16 @@ class ReviewCase extends Model
     public function latestBrief(): ?CaseBrief
     {
         return $this->briefs->first();
+    }
+
+    public function informationRequests(): HasMany
+    {
+        return $this->hasMany(InformationRequest::class, 'case_id')->orderByDesc('id');
+    }
+
+    public function releasedDocuments(): HasMany
+    {
+        return $this->hasMany(ReleasedDocument::class, 'case_id')->orderByDesc('received_at');
     }
 
     public function team(): BelongsTo

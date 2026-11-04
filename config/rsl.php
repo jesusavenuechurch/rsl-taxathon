@@ -23,4 +23,11 @@ return [
     */
     'mock_data_path' => env('RSL_MOCK_DATA_PATH', database_path('data/rsl')),
 
+    /*
+    | Demo mode: a judge-facing front page (no password, one click per
+    | officer) and "Act as" for the administrator. Never meaningful in
+    | production — a password-less sign-in only ever applies here.
+    */
+    'demo' => (bool) env('RSL_DEMO', false),
+
 ];

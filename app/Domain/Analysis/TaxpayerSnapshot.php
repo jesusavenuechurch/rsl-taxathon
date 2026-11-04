@@ -2,6 +2,8 @@
 
 namespace App\Domain\Analysis;
 
+use App\Models\Cases\ReleasedDocument;
+use App\Models\Cases\ReviewCase;
 use App\Models\SourceRecords\CitReturn;
 use App\Models\SourceRecords\CustomsImport;
 use App\Models\SourceRecords\GroupEntity;
@@ -45,6 +47,7 @@ final class TaxpayerSnapshot
         public readonly Collection $paye,
         public readonly Collection $refunds,
         public readonly Collection $groupEntities,
+        public readonly Collection $releasedDocuments = new Collection,
     ) {
         foreach ([$cit, $vat, $wht, $lekuka, $customs, $paye, $refunds, $groupEntities] as $rows) {
             foreach ($rows as $row) {
@@ -69,7 +72,14 @@ final class TaxpayerSnapshot
             $rows(PayeReturn::class),
             $rows(RefundClaim::class),
             $groupEntities ?? GroupEntity::current()->orderBy('record_id')->get()->keyBy('normalized_name'),
+            ReleasedDocument::whereIn('case_id', ReviewCase::where('tin', $tin)->pluck('id'))->get(),
         );
+    }
+
+    /** Released documents of a given type, e.g. "Housing and vehicle records" (P09). */
+    public function documentsOfType(string $type): Collection
+    {
+        return $this->releasedDocuments->where('document_type', $type);
     }
 
     public function citFor(?string $taxYear): ?CitReturn

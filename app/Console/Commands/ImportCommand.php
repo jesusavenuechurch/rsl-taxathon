@@ -9,6 +9,7 @@ use App\Domain\Records\AlreadyImported;
 use App\Domain\Records\Channels;
 use App\Domain\Records\CsvImporter;
 use App\Domain\Records\ImportFailed;
+use App\Domain\Requests\TaxpayerResponsePool;
 use App\Models\Memory\Decision;
 use App\Models\SourceImport;
 use Illuminate\Console\Command;
@@ -25,7 +26,7 @@ class ImportCommand extends Command
 
     protected $description = 'Receive RSL records from channel files (CSV)';
 
-    public function handle(CsvImporter $importer, AnalysisScheduler $scheduler, AnalysisEngine $engine, DecisionImporter $decisions): int
+    public function handle(CsvImporter $importer, AnalysisScheduler $scheduler, AnalysisEngine $engine, DecisionImporter $decisions, TaxpayerResponsePool $responses): int
     {
         $dir = rtrim($this->option('dir'), '/');
         $loadMemory = $this->option('all') || $this->argument('channel') === DecisionImporter::CHANNEL;
@@ -77,6 +78,11 @@ class ImportCommand extends Command
                 $this->error("Company memory: rejected, nothing saved. {$e->getMessage()}");
                 $failed = true;
             }
+        }
+
+        if ($loadMemory) {
+            $loaded = $responses->import("{$dir}/taxpayer_responses.csv");
+            $this->info("Taxpayer document pool (taxpayer_responses.csv): {$loaded} document(s) on file, invisible until requested.");
         }
 
         if ($tins && ! $this->option('no-analyse')) {

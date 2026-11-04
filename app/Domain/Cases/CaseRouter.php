@@ -51,6 +51,7 @@ class CaseRouter
                 ...$this->classify($open),
                 'refund_claim_record_id' => $this->refundClaim($tin, $open),
                 'status' => ReviewCase::OPEN,
+                'stage' => $this->stageFor($team),
                 'team_id' => $team->id,
                 'routing_reason' => $reason,
                 'opened_from_review_id' => $review->id,
@@ -149,6 +150,11 @@ class CaseRouter
         }
 
         return RefundClaim::current()->where('tin', $tin)->where('status', '!=', 'Paid')->orderByDesc('letter_date')->orderByDesc('record_id')->value('record_id');
+    }
+
+    private function stageFor(Team $team): string
+    {
+        return $team->code === Team::SPECIAL_SECTORS ? ReviewCase::STAGE_SPECIALIST : ReviewCase::STAGE_TRIAGE;
     }
 
     private function setting(string $key): mixed

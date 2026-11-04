@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    // Meta WhatsApp Cloud API (checkpoint 6: "A new case is ready", no taxpayer details).
+    'whatsapp' => [
+        'phone_number_id' => env('WHATSAPP_PHONE_NUMBER_ID'),
+        'access_token' => env('WHATSAPP_ACCESS_TOKEN'),
+        'api_version' => env('WHATSAPP_API_VERSION', 'v21.0'),
+        'verify_token' => env('WHATSAPP_VERIFY_TOKEN'),
+    ],
+
 ];

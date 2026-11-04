@@ -75,13 +75,26 @@ it('runs the same steps from the case page', function () {
         ->set('referTo', '')->call('refer')->assertHasErrors('referTo');
 });
 
-it('shows the worklist ranked for the officer\'s team', function () {
+it('shows the analyst\'s desk with new cases to triage, ranked', function () {
     $this->actingAs($this->analyst)->get('/worklist')->assertOk()
-        ->assertSee('Risk analysis (5)')
+        ->assertSee('New to triage')
         ->assertSeeInOrder(['Highveld Retail Lesotho', 'Thaba Trading', 'Pitseng Beverages', 'Lebelo Cash', 'Leribe Pharma'])
         ->assertDontSee('Katse Retail');
+});
 
-    $this->get('/worklist?tab=all')->assertSee('Katse Retail')->assertSee('Maluti Foods');
+it('moves a taken case from "New to triage" to "Working on" on the analyst\'s desk', function () {
+    app(CaseWorkflow::class)->take($this->analyst, $this->thaba);
+
+    $this->actingAs($this->analyst)->get('/worklist')->assertOk()
+        ->assertSeeInOrder(['Working on', 'Thaba Trading']);
+});
+
+it('shows Katse on the Special Sectors desk, not the analyst\'s', function () {
+    $katse = ReviewCase::where('tin', 'TN1000656-9')->sole();
+    expect($katse->team->code)->toBe('special_sectors');
+
+    $this->actingAs($this->specialist)->get('/worklist')->assertOk()
+        ->assertSee('Handed to us')->assertSee('Katse Retail');
 });
 
 it('shows a case with its findings, memory and refund letter', function () {
@@ -98,4 +111,29 @@ it('shows a case with its findings, memory and refund letter', function () {
         ->assertDontSee('valid');
 
     expect(AuditEvent::where('action', 'opened')->where('subject_type', 'case')->count())->toBe(2);
+});
+
+it('opens a case at the triage stage, or specialist when routed straight there', function () {
+    expect($this->thaba->stage)->toBe('triage');
+
+    $qiloane = ReviewCase::where('tin', 'TN1000769-4')->sole();
+    expect($qiloane->stage)->toBe('specialist');
+});
+
+it('moves the stage with the case when it is referred, and back again', function () {
+    $workflow = app(CaseWorkflow::class);
+
+    $workflow->refer($this->analyst, $this->thaba, Team::where('code', 'special_sectors')->first(), 'Specialist review');
+    expect($this->thaba->fresh()->stage)->toBe('specialist');
+
+    $workflow->refer($this->specialist, $this->thaba->fresh(), Team::where('code', 'risk_analysis')->first(), 'Back to triage');
+    expect($this->thaba->fresh()->stage)->toBe('triage');
+});
+
+it('shows the journey strip on the case page, with Specialist faint until the case actually reaches it', function () {
+    $this->actingAs($this->analyst)->get("/cases/{$this->thaba->reference}")
+        ->assertOk()->assertSeeInOrder(['Received', 'Triage', 'Specialist', 'Waiting', 'Decision', 'Sign-off', 'Closed']);
+
+    app(CaseWorkflow::class)->refer($this->analyst, $this->thaba, Team::where('code', 'special_sectors')->first(), 'Specialist review');
+    $this->actingAs($this->specialist)->get("/cases/{$this->thaba->reference}")->assertOk()->assertSee('Specialist');
 });

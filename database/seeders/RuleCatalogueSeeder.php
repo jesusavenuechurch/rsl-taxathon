@@ -21,9 +21,15 @@ class RuleCatalogueSeeder extends Seeder
     /** Statutory rates the rules use (handoff: VAT 15%, CIT 25%, WHT 25%, mock treaty 10%). */
     public const RATES = ['tax.vat_rate' => 0.15, 'tax.cit_rate' => 0.25, 'tax.wht_standard_rate' => 0.25, 'tax.wht_treaty_rate_za' => 0.10];
 
+    /**
+     * RSL's real second sign-off threshold is M1,000,000; no company in the
+     * mock data reaches it, so the demo lowers it. The case page says so.
+     */
+    public const SETTINGS = ['outcomes.second_signoff_threshold' => 500_000];
+
     public function run(): void
     {
-        foreach (self::RATES as $key => $value) {
+        foreach ([...self::RATES, ...self::SETTINGS] as $key => $value) {
             Setting::firstOrCreate(['key' => $key], ['value' => $value]);
         }
 

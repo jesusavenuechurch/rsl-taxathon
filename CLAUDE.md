@@ -9,9 +9,9 @@ Read first:
 
 ## Status
 
-Done: 0 foundation, 1 records, 2 rules and findings (17 findings match the answer key word for word), 3 company memory, 4 cases/worklists/triage/data intake, 5 AI case brief (grounded, guarded, officer approves/edits/rejects; verified against real Ollama gpt-oss:20b on the owner's machine).
+Done: 0 foundation, 1 records, 2 rules and findings (17 findings match the answer key word for word), 3 company memory, 4 cases/worklists/triage/data intake, 5 AI case brief (grounded, guarded, officer approves/edits/rejects; verified against real Ollama gpt-oss:20b on the owner's machine), 6 **the officer's desk** (`docs/design/officer-desk.md`, all 7 build steps): stages, role desks, case workspace, thin information requests/documents, outcomes/sign-off, WhatsApp sending + Notifications sent, Results tab, guided tour (9 steps), reset, front page/Act as. The journey doc's checkpoint 6 section and screenshots are current (`docs/journey/README.md`); a full cold stranger run-through (front page → tour → finish, no prior knowledge) passes clean.
 
-Next: build **the officer's desk, `docs/design/officer-desk.md`** (the design is agreed; follow its section 10 order). It folds in WhatsApp notifications, thin information requests/documents (7) and outcomes/sign-off (8). Judges explore the hosted link alone, so it must explain itself (front page, Act as, guided tour, plain language). Chat (9) and rule editing (10) only if time remains. Submission: Friday 6 Nov 2026, 17:00 (challenge selection email, proposal of at most 7 pages, prototype link). AI and WhatsApp are the selling points.
+Next: hosted deployment (the owner is handling this) and a final look before the Friday 6 Nov 2026 17:00 submission (challenge selection email, proposal of at most 7 pages, prototype link). Deferred, only if time remains: editing the AI brief/checklist notes/referral reason in place and "Add a finding" (officer-desk.md section 5), the "ask the records" chat (9), rule editing (10).
 
 Checkpoint 5 follow-ups raised in review, not yet done: numeric cross-check (verify every amount/percentage a statement states against the facts it cites — the guard today only checks *which* records are cited, not *what is claimed*); redraft a brief when later findings/memory change, not only on case open or referral (mark the old one superseded, add a Redraft action). `composer dev` runs serve + a queue worker together; use it (not `php artisan serve` alone) so briefs draft in the background.
 
@@ -59,6 +59,7 @@ node scripts/journey-screenshots.cjs http://127.0.0.1:8123 <password>   # after 
 - **GitHub Actions commits `public/build`** after pushes touching assets: always `git pull --rebase` before pushing; on a manifest conflict, rebuild and add `public/build`.
 - Livewire 3 ships Alpine: never import Alpine separately.
 - Batch imports must analyse once at the end: wrap in `AnalysisScheduler::deferring()` (the import command and test helper do).
+- **`php artisan serve` does not rebuild CSS.** New Tailwind classes in a new blade file (e.g. `bottom-4 right-4` on the guided tour panel) are invisible until `npm run build` runs — the page looks fine structurally but a `fixed`-positioned element with no compiled `top`/`right`/`bottom` rules renders at its static in-flow position instead (which can be off-screen on a long page). Run `npm run build` after adding classes a build hasn't seen yet, before trusting a visual check.
 
 ## Checkpoint 5 plan: AI case brief
 

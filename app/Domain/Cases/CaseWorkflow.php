@@ -50,13 +50,27 @@ class CaseWorkflow
         }
 
         $from = $case->team;
-        DB::transaction(function () use ($user, $case, $to, $from, $reason) {
-            $case->update(['team_id' => $to->id, 'assigned_user_id' => null, 'status' => ReviewCase::OPEN]);
+        $stage = $to->code === Team::SPECIAL_SECTORS ? ReviewCase::STAGE_SPECIALIST : ReviewCase::STAGE_TRIAGE;
+        DB::transaction(function () use ($user, $case, $to, $from, $reason, $stage) {
+            $case->update(['team_id' => $to->id, 'assigned_user_id' => null, 'status' => ReviewCase::OPEN, 'stage' => $stage]);
             $this->event($case, $user, 'referred', note: trim($reason), from: $from, to: $to);
             $this->audit->record('case_referred', subjectType: 'case', subjectRef: $case->reference, taxpayerTin: $case->tin,
                 payload: ['from' => $from->code, 'to' => $to->code, 'reason' => trim($reason)]);
             DB::afterCommit(fn () => CaseReferred::dispatch($case->fresh(), $from, $to));
         });
+    }
+
+    /** The officer chooses to decide now, whether or not every requested document has arrived (section 2: "or none outstanding and the officer chooses Decide"). */
+    public function decideNow(User $user, ReviewCase $case): void
+    {
+        $this->authorize($user, $case);
+        if (! in_array($case->stage, [ReviewCase::STAGE_TRIAGE, ReviewCase::STAGE_SPECIALIST, ReviewCase::STAGE_WAITING_TAXPAYER], true)) {
+            throw new InvalidArgumentException('This case is already at or past the decision stage.');
+        }
+
+        $case->update(['stage' => ReviewCase::STAGE_DECISION]);
+        $this->event($case, $user, 'decide_now', note: "{$user->name} moved the case to decision.");
+        $this->audit->record('case_moved_to_decision', subjectType: 'case', subjectRef: $case->reference, taxpayerTin: $case->tin);
     }
 
     public function note(User $user, ReviewCase $case, string $text): void

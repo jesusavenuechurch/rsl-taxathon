@@ -125,7 +125,7 @@ final class RuleCatalogue
                 'trigger' => PatternRuleModel::TRIGGER_DOCUMENT,
                 'parameters' => [],
                 'variants' => $one('Unreported fringe benefits',
-                    'Taxpayer documents show {benefits} provided to {who}, while PAYE returns declare fringe benefits of {declared|money}. The declared benefits do not appear to match the evidence provided.'),
+                    'Taxpayer documents show {benefits} provided to {who}, while PAYE returns declare fringe benefits of {declared|money}. The declared charge does not appear to match the evidence provided.'),
                 'exposure_basis' => null,
             ],
             'P10' => [

@@ -27,6 +27,8 @@ class User extends Authenticatable
         'password',
         'team_id',
         'job_title',
+        'whatsapp_number',
+        'whatsapp_opt_in',
     ];
 
     /**
@@ -49,6 +51,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'whatsapp_opt_in' => 'boolean',
         ];
     }
 

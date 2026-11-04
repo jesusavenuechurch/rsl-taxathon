@@ -4,7 +4,7 @@
         <h1 class="mt-1 text-2xl font-bold tracking-tight">{{ $f->pattern_code }} {{ $f->title }}</h1>
         <div class="mt-2 flex flex-wrap items-center gap-2 text-sm">
             <x-finding-kind :finding="$f" />
-            <span class="text-slate-600">Evidence level {{ $f->evidence_level }} · raised {{ $f->raised_at->format('j M Y') }} · rule {{ $f->pattern_code }} v{{ $f->ruleVersion->version }}</span>
+            <span class="text-slate-600" title="Evidence level {{ $f->evidence_level }}">{{ \App\Support\Format::evidenceLevel($f->evidence_level) }} · raised {{ $f->raised_at->format('j M Y') }} · rule {{ $f->pattern_code }} v{{ $f->ruleVersion->version }}</span>
             @if ($f->status !== 'open') <span class="rounded-full bg-slate-200 px-2 py-0.5 text-xs font-semibold">{{ ucfirst($f->status) }}</span> @endif
         </div>
     </div>

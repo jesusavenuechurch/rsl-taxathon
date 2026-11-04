@@ -11,6 +11,13 @@
             @endif
         </div>
         <p class="mt-1 text-sm text-slate-600">When opened: {{ $c->routing_reason }}</p>
+        @php($handoff = $c->events->where('type', 'referred')->last())
+        @if ($handoff)
+            <p class="mt-2 rounded-lg border border-amber-200 bg-amber-50 p-2 text-sm text-amber-900">
+                <span class="font-semibold">Handed over by {{ $handoff->actor_label }}:</span> {{ $handoff->note }}
+            </p>
+        @endif
+        <div class="mt-3"><x-journey-strip :case="$c" /></div>
     </div>
 
     @if ($canAct)
@@ -65,7 +72,7 @@
                 <div class="flex flex-wrap items-center gap-2">
                     <a href="{{ route('findings.show', $f->reference) }}" class="font-semibold underline decoration-slate-300 hover:decoration-slate-900">{{ $f->pattern_code }} {{ $f->title }}</a>
                     <x-finding-kind :finding="$f" />
-                    <span class="text-xs text-slate-500">Evidence level {{ $f->evidence_level }}</span>
+                    <span class="text-xs text-slate-500" title="Evidence level {{ $f->evidence_level }}">{{ \App\Support\Format::evidenceLevel($f->evidence_level) }}</span>
                     @if ($f->status !== 'open') <span class="rounded-full bg-slate-200 px-2 py-0.5 text-xs font-semibold">{{ ucfirst($f->status) }}</span> @endif
                     @if ($f->exposure_estimate > 0)
                         <span class="ml-auto text-sm tabular-nums">est. {{ \App\Support\Format::money($f->exposure_estimate) }}</span>
@@ -80,11 +87,15 @@
                         <a href="{{ route('findings.show', $f->reference) }}" class="text-xs text-slate-600 underline">+{{ $f->evidence->count() - 8 }} more</a>
                     @endif
                 </p>
+                <livewire:cases.finding-checklist :finding="$f" :can-act="$canAct" :key="'checklist-'.$f->id" />
+                <livewire:cases.outcome-form :finding="$f" :can-act="$canAct" :key="'outcome-'.$f->id" />
             </article>
         @endforeach
     </section>
 
     <livewire:cases.case-brief-panel :case="$c" :can-act="$canAct" :key="'brief-'.$c->id" />
+
+    <livewire:cases.information-request-panel :case="$c" :can-act="$canAct" :key="'requests-'.$c->id" />
 
     <x-memory-panel :checks="$memory" />
 
@@ -102,6 +113,9 @@
                             @case('assigned') took the case @break
                             @case('referred') referred it from {{ $e->fromTeam?->name }} to {{ $e->toTeam?->name }} @break
                             @case('note') added a note @break
+                            @case('information_requested') sent an information request @break
+                            @case('document_received') received a document @break
+                            @case('decide_now') moved the case to decision @break
                             @default {{ str_replace('_', ' ', $e->type) }}
                         @endswitch
                         <span class="text-slate-500">· {{ $e->occurred_at->format('j M Y H:i') }}</span>

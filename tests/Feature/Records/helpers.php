@@ -5,6 +5,7 @@ use App\Domain\Analysis\AnalysisScheduler;
 use App\Domain\Memory\DecisionImporter;
 use App\Domain\Records\Channels;
 use App\Domain\Records\CsvImporter;
+use App\Domain\Requests\TaxpayerResponsePool;
 use App\Models\Analysis\AnalysisRun;
 use App\Models\SourceImport;
 use Database\Seeders\RuleCatalogueSeeder;
@@ -27,6 +28,7 @@ function importAll(): void
         }
     });
     importDecisions();
+    app(TaxpayerResponsePool::class)->import(RSL_DATA.'/taxpayer_responses.csv');
 }
 
 function importDecisions(): SourceImport

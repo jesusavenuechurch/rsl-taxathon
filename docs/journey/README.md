@@ -19,11 +19,8 @@ The full technical plan lives in [`docs/implementation-plan.md`](../implementati
 | 3 | Company memory | Earlier decisions shown as context, their conditions checked | ✅ Done |
 | 4 | Cases, worklists and triage | Records arrive from a page; cases open, rank and route themselves; officers take and refer | ✅ Done |
 | 5 | AI case brief | The AI consolidates every angle into one cited brief; the officer approves, edits or rejects | ✅ Done |
-| 6 | WhatsApp notifications | "A new case is ready", with no taxpayer details | |
-| 7 | Information requests | Documents arrive only after they are asked for, after the stated number of days | |
-| 8 | Officer outcomes | Four outcomes, five-part conclusions, second sign-off at M1m | |
-| 9 | Ask the records | Questions answered only from the records, with citations | |
-| 10 | Rules, full walkthrough, demo | Rule owners edit thresholds; all 53 workflow steps pass | |
+| 6 | The officer's desk | Stages, role desks, hand-offs, information requests, outcomes and sign-off, WhatsApp notifications, Results, a guided tour a judge can take alone | ✅ Done |
+| | Ask the records, rule editing | Only if time remains after the submission | Not started |
 
 ---
 
@@ -136,7 +133,7 @@ It joins each company's records, explains patterns with the exact evidence, reme
   - **Priority** follows the estimated exposure (High from M500,000, Medium from M100,000; both are settings). Estimates for one company often describe the same money (Highveld's M3m interest appears in two findings), so the case shows the largest single estimate, never a misleading sum.
   - **Routing** follows the work: VAT refund claims go to Refund audit (in a *lower risk* or *needs review* lane, never "valid" or "refused"); a company with an earlier decision returns to the team that made it (Qiloane to Special Sectors, who decided DEC-0007); personnel arrangements go to Special Sectors; everything else goes to the risk analysts for triage. Every case says why it was routed where it was.
 - **Worklists** per team, ranked by priority, then exposure.
-- **Triage.** The officer takes the case or refers it to another team with a reason. Only the team holding a case (or a team lead) can act on it. Closing a case is an officer outcome with reasons, never a plain dismiss (checkpoint 8).
+- **Triage.** The officer takes the case or refers it to another team with a reason. Only the team holding a case (or a team lead) can act on it. Closing a case is an officer outcome with reasons, never a plain dismiss (checkpoint 6).
 - **A timeline** on every case: opened, taken, referred, findings added or withdrawn, notes. Every step is also in the audit log, and every case opening or referral raises the event WhatsApp notifications will hook into (checkpoint 6).
 
 **Show it.**
@@ -145,15 +142,13 @@ It joins each company's records, explains patterns with the exact evidence, reme
 3. Open Thaba: the findings with their evidence, the routing reason, and the next step. Click **Take this case**, then refer it to Special Sectors: "Fees tripled while revenue grew 20%: needs a specialist review of the group charges."
 4. Sign in as P. Mokoena (Special Sectors): Thaba is now on their worklist, next to Katse and Qiloane.
 
-![Data intake: a company's records arrive](img/07-data-intake-company-arrives.png)
+![Data intake: a company's records arrive](img/07-data-intake.png)
 
-![The analyst's worklist](img/08-worklist-ranked.png)
+![The analyst's desk](img/08-desk-lanes.png)
 
 ![A case](img/09-case-page.png)
 
-![The timeline after referral](img/10-case-referred-timeline.png)
-
-![Special Sectors' worklist](img/11-special-sectors-worklist.png)
+![The timeline after referral](img/12-case-referred-timeline.png)
 
 **What it proves.** The system reproduces the answer key's priorities and first-stop teams for all ten companies with findings, and creates no work for the four without. The officer's day starts with a ranked list, not ten spreadsheets.
 
@@ -174,9 +169,9 @@ It joins each company's records, explains patterns with the exact evidence, reme
 
 **Show it.** Open Thaba Trading's case (the one referred to Special Sectors in checkpoint 4). The AI brief sits above company memory: it connects the 40% revenue rise against the 200% fee rise to the profit fall in one statement, works out the withholding tax effective rate, totals the 19 VAT periods instead of listing them, and names the group structure behind the fees — each claim with its record IDs in brackets, and a suggested next step phrased as a suggestion, never an instruction. Click **Approve**.
 
-![The AI case brief, cited](img/12-ai-case-brief.png)
+![The AI case brief, cited](img/10-ai-case-brief.png)
 
-![Approved by the officer](img/13-ai-case-brief-approved.png)
+![Approved by the officer](img/11-ai-case-brief-approved.png)
 
 **What it proves.** Run against the real model on the owner's machine with a full queue of ten open cases, nine drafted a valid, grounded brief on the first try; the tenth had the model cite a finding ID that did not belong to that case, and the guard caught it and fell back to the template automatically, exactly as designed — a genuine example of the safety net working, not a staged one. For Highveld (four findings: persistent losses, M22.3m to related parties, loans that grew from M8m to M29m, M3m of interest with no withholding tax), the brief correctly connected all four into a single account of the group financing pattern, citing only real finding and record IDs. The guard was also tested directly: an invented citation, an uncited statement and a forbidden word were each rejected and replaced with the template brief, confirmed with a fake provider in the automated suite.
 
@@ -184,9 +179,52 @@ It joins each company's records, explains patterns with the exact evidence, reme
 
 ---
 
+## Checkpoint 6: The officer's desk
+
+**Why it matters.** A case that opens, gets found and gets a brief still has to reach the right person, carry a document request, wait on a taxpayer, get a decision and (above a threshold) a second signature — and a judge has to be able to follow all of that **alone**, on the hosted link, without a presenter. This checkpoint folds what were separately planned as WhatsApp notifications, information requests and officer outcomes into one build: the stage a case is actually in becomes the backbone the desk, the hand-off note, the notification and the Results count all read from. *(Judging: value, usability, trust and compliance, pilot potential — and this is where AI and WhatsApp, the two selling points, meet the rest of the workflow.)*
+
+**What was built.**
+- **A front page, demo mode only.** Three sentences on what this is and that the system never concludes, a card per officer with no password ("Where should I look?", "Can I process this refund confidently?", "What is happening in this company?", "Can I sign this off?", "Is this figure wrong?"), **Take the guided tour**, and **Reset the demo**. An administrator still signs in with a password, and can **Act as** any officer from the header menu — a slim amber banner always says who they are acting as, and every audit event records both the administrator and the officer.
+- **Case stages are the backbone**: `triage → specialist → waiting_taxpayer → decision → signoff → closed`, plus the existing open/closed status. Every stage change writes a case event and an audit event. A **journey strip** on every case shows the full path, the current stage, and stages a case skipped (Special Sectors, for a case that never needed it) shown faint rather than hidden.
+- **A desk per role**, replacing one flat worklist: lanes left to right in the order work actually flows (Risk analysis: New to triage → Working on → Waiting on taxpayer → Ready to decide; Special Sectors: Handed to us → Investigating → Waiting on taxpayer → Documents arrived; Refund audit: Lower risk → Needs review → Verification due soon; Team lead: Waiting for my sign-off → Returned, plus a read-only team overview; Data team: Figures to check). Empty lanes say "Nothing waiting here" rather than showing nothing. Each card states **what is needed from you** — take the case, or the hand-off note from whoever referred it — in plain language, never a status code.
+- **One case workspace**, not a maze of tabs: header with stage, holder and the hand-off note styled as a note on the desk; the journey strip; the AI brief (checkpoint 5); findings with tickable lawful explanations and what must be established; **requests and documents**; the outcome form; company memory and the timeline, in that order, with one main button for the next step.
+- **Information requests and documents (thin checkpoint 7).** The request composer prefills from the open findings' own list of documents to ask for, deduplicated and editable; sending moves the case to `waiting_taxpayer` and schedules delivery against a simulated pool of the taxpayer's own documents — asking for something nobody has just gets no delivery, honestly. Advancing the demo clock releases whatever is due: Katse Retail Group's documents raise a **new finding, P09, at the evidence ladder's top level** ("Taxpayer documents received"), because what was declared does not match what arrived.
+- **Officer outcomes and second sign-off (thin checkpoint 8).** Four outcomes — concern supported, explained, more information needed, system error — each with the same five parts as company memory (observed pattern, conclusion, evidence, conditions, reassessment point). An outcome above the sign-off threshold (lowered to **M500,000** for this demonstration; RSL's default M1,000,000 is a setting) goes to a team lead's queue; approving writes it into company memory for the next officer who meets this company; returning it sends it back with a note. A **system error** outcome never touches company memory — it opens a data review item for the data team instead.
+- **WhatsApp notifications, with no taxpayer detail, ever.** Every hand-off (a case opens for a team, is referred, documents arrive, an outcome needs sign-off) tries to send a templated WhatsApp message naming only the case reference and priority — never a company, a TIN or an amount. The **Notifications sent** page (gated to team leads and audit roles, the same people who can see the audit log) lists every attempt and its real status; only a verified test number is actually delivered, everything else is honestly marked "not delivered (demo number)" rather than faked.
+- **A Results tab**: findings concluded, exposure referred for investigation, refunds verified within the 3-month standard, average days open to close, and — the concept's feedback loop — how often each pattern ended "concern supported" against "explained". A summary of work done, not a scoreboard of taxpayers flagged.
+- **A guided tour and a nightly reset**, so a judge needs nobody in the room. The tour is a floating panel ("Step N of 9") that switches officer via Act as when a step needs it, and walks RSL's three required case types: an ordinary company with nothing raised, an exception handed from Risk analysis to Special Sectors with the AI brief read along the way, a request sent and its documents arriving to raise a new finding, a decision recorded, memory tested against new figures (Qiloane, DEC-0007), a figure reported as wrong, a sign-off, and Results. **Reset the demo** (and a nightly scheduled reset) wipes the database and reloads the registry, memory and every company's records, with the clock back at 2 November 2026 — a judge who breaks something can always start over.
+
+**Show it.** From the front page, **Take the guided tour**. Step 2: L. Thamae's desk, Thaba Trading under "New to triage", its AI brief, handed to Special Sectors with a reason. Step 3: P. Mokoena's desk, Thaba under "Handed to us" with the hand-off note, an information request sent to Thaba and to Katse Retail Group in the same lane. Step 4: as the administrator, advance the clock 14 days — Katse's documents arrive, and a new finding (P09) appears because the declared charge does not match what was provided. Step 5: record an outcome on it. Step 9: M. Sello's desk — Notifications sent (every WhatsApp attempt, no taxpayer detail) and Results.
+
+![The front page: no password, no presenter needed](img/00-front-page.png)
+
+![The analyst's desk: lanes, not a flat list](img/08-desk-lanes.png)
+
+![Acting as another officer, from the administrator's menu](img/14-acting-as-banner.png)
+
+![Handed to us, with the note it was referred with](img/16-hand-off-note.png)
+
+![A request sent, prefilled from the findings](img/18-request-sent.png)
+
+![Katse: documents arrived, a new finding at the top of the evidence ladder](img/20-katse-documents-and-finding.png)
+
+![A five-part outcome, drafted before it is submitted](img/21-outcome-form.png)
+
+![Every WhatsApp attempt, and whether it actually went](img/23-notifications-sent.png)
+
+![Results: a summary of work done](img/24-results.png)
+
+![The guided tour panel](img/25-guided-tour.png)
+
+**What it proves.** The whole shape RSL asked for — evidence to a case, a case to the right desk, a request to a document, a document to a new finding, a decision to memory, a hand-off to a WhatsApp message — works end to end on the real mock data, and a stranger can walk it without anyone explaining it first.
+
+**Honest limits.** Editing the AI brief, a checklist note or a referral reason in place, and letting an officer add a finding the rules missed, are designed (officer-desk.md section 5) but not yet built — today those are edited by rejecting and redrafting, or a note on the timeline. "Act as" and the front page are a demo convenience behind `RSL_DEMO`, never a production login path. The sign-off threshold is lowered for the demo because no mock company reaches RSL's real M1,000,000; the page says so plainly. WhatsApp sending is real (Meta's Cloud API, behind a provider interface), but only a verified test number actually receives a message in this environment — everything else is honestly marked undelivered rather than simulated as sent.
+
+---
+
 ## Coming next
 
-**Checkpoint 6: WhatsApp notifications.** "A new case is ready for review (High priority)" reaches the officer's phone the moment a case opens or is referred to their team, with no taxpayer details: the message points into the system.
+**Ask the records**, a chat answered only from the records with citations, and **rule editing** with a full 53-step workflow trace, are designed but not built — only if time remains after the submission.
 
 ---
 

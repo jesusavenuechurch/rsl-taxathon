@@ -6,8 +6,11 @@ use App\Contracts\AI\AIProvider;
 use App\Domain\Analysis\AnalysisScheduler;
 use App\Domain\Audit\AuditLog;
 use App\Domain\Audit\AuthenticationAuditor;
+use App\Domain\Notifications\NotificationSender;
+use App\Domain\Requests\DeliverDueDocuments;
 use App\Events\CaseOpened;
 use App\Events\CaseReferred;
+use App\Events\ClockMoved;
 use App\Events\SourceRecordsImported;
 use App\Jobs\GenerateCaseBrief;
 use App\Services\AI\Providers\OllamaProvider;
@@ -44,6 +47,9 @@ class AppServiceProvider extends ServiceProvider
         Event::listen(SourceRecordsImported::class, [AnalysisScheduler::class, 'onImported']);
         Event::listen(CaseOpened::class, fn (CaseOpened $e) => GenerateCaseBrief::dispatch($e->case));
         Event::listen(CaseReferred::class, fn (CaseReferred $e) => GenerateCaseBrief::dispatch($e->case));
+        Event::listen(CaseOpened::class, fn (CaseOpened $e) => app(NotificationSender::class)->caseOpened($e->case));
+        Event::listen(CaseReferred::class, fn (CaseReferred $e) => app(NotificationSender::class)->caseReferred($e->case, $e->to));
+        Event::listen(ClockMoved::class, [DeliverDueDocuments::class, 'handle']);
 
         Gate::before(fn ($user) => $user->hasRole(Roles::SUPER_ADMIN) ? true : null);
     }

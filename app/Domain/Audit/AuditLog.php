@@ -31,6 +31,9 @@ class AuditLog
         ?AuditActor $actor = null,
     ): AuditEvent {
         $actor ??= AuditActor::current();
+        if (session()->has('acting_for')) {
+            $payload['acting_for'] = (int) session('acting_for');
+        }
         $payload = AuditHasher::canonicalPayload($payload);
 
         $fields = [

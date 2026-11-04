@@ -17,6 +17,18 @@ final class Format
         return ($amount < 0 ? '-' : '').'M'.number_format(abs($amount));
     }
 
+    /** officer-desk.md section 4: "Evidence level 2" means nothing to an officer who hasn't memorised the ladder. */
+    public static function evidenceLevel(int $level): string
+    {
+        return match ($level) {
+            1 => 'Based on the return only',
+            2 => 'Two RSL records disagree',
+            3 => 'Group records involved',
+            4 => 'Taxpayer documents received',
+            default => "Evidence level {$level}",
+        };
+    }
+
     public static function field(Field $field, mixed $value): string
     {
         if ($value === null) {
