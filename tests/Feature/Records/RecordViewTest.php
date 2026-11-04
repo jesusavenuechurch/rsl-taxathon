@@ -58,8 +58,8 @@ it('opens a record from the lookup box', function () {
         ->set('recordId', 'XYZ-1')->call('open')->assertHasErrors('recordId');
 });
 
-it('summarises what has been received on Home', function () {
-    $this->actingAs($this->officer)->get('/home')
+it('summarises what has been received on Home (the administrator\'s overview)', function () {
+    $this->actingAs(User::role('super_admin')->first())->get('/home')
         ->assertOk()
         ->assertSee('RSL records received')
         ->assertSeeInOrder(['VAT return', 'eTax', '266'])

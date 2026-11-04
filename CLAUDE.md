@@ -9,7 +9,7 @@ Read first:
 
 ## Status
 
-Done: 0 foundation, 1 records, 2 rules and findings (17 findings match the answer key word for word), 3 company memory, 4 cases/worklists/triage/data intake, 5 AI case brief (grounded, guarded, officer approves/edits/rejects; verified against real Ollama gpt-oss:20b on the owner's machine), 6 **the officer's desk** (`docs/design/officer-desk.md`, all 7 build steps): stages, role desks, case workspace, thin information requests/documents, outcomes/sign-off, WhatsApp sending + Notifications sent, Results tab, guided tour (9 steps), reset, front page/Act as. The journey doc's checkpoint 6 section and screenshots are current (`docs/journey/README.md`); a full cold stranger run-through (front page → tour → finish, no prior knowledge) passes clean.
+Done: 0 foundation, 1 records, 2 rules and findings (17 findings match the answer key word for word), 3 company memory, 4 cases/worklists/triage/data intake, 5 AI case brief (grounded, guarded, officer approves/edits/rejects; verified against real Ollama gpt-oss:20b on the owner's machine), 6 **the officer's desk** (`docs/design/officer-desk.md`, all 7 build steps): stages, role desks, case workspace, thin information requests/documents, outcomes/sign-off, WhatsApp sending + Notifications sent, Results tab, guided tour (10 steps: clock moved from the tour panel, never as admin; Leribe → sign-off), reset (allowed on a server when `RSL_DEMO=true`, never sends WhatsApp), front page/Act as; officers land on their desk. The journey doc's checkpoint 6 section and screenshots are current (`docs/journey/README.md`); a full cold stranger run-through (front page → tour → finish, no prior knowledge) passes clean.
 
 Next: hosted deployment (the owner is handling this) and a final look before the Friday 6 Nov 2026 17:00 submission (challenge selection email, proposal of at most 7 pages, prototype link). Deferred, only if time remains: editing the AI brief/checklist notes/referral reason in place and "Add a finding" (officer-desk.md section 5), the "ask the records" chat (9), rule editing (10).
 
@@ -39,7 +39,7 @@ node scripts/journey-screenshots.cjs http://127.0.0.1:8123 <password>   # after 
 - **Memory informs, never exempts**: memory checks run after rules. System errors never enter `decisions` (DB trigger).
 - **The app never reads `tests/Fixtures/rsl/`** (the answer key). `tests/Unit/AnswerKeyIsolationTest.php` enforces it.
 - **Thresholds are configuration**: rule parameters live in `pattern_rule_versions`; case thresholds in `settings` (`CaseRouter::DEFAULTS`).
-- **Notifications carry no taxpayer details** (no TIN, name or amount): "A refund review is ready (lower risk)."
+- **Notifications carry no taxpayer details** (no TIN, name or amount). The four template bodies live in `NotificationSender::BODIES`, word for word as approved in WhatsApp Manager; the Notifications sent page shows that same text. `WHATSAPP_TEMPLATE_LANGUAGE` must match the templates' language ("English" = `en`). Tests never reach Meta (`phpunit.xml` blanks the WhatsApp credentials).
 
 ## Where things are
 

@@ -4,6 +4,13 @@
         <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">Guided tour · Step {{ $step }} of {{ $total }}</p>
         <h2 class="mt-1 font-bold">{{ $current['title'] }}</h2>
         <p class="mt-1 text-sm text-slate-700">{{ $current['body'] }}</p>
+        @if (! empty($current['clockDays']))
+            @if ($clockDone)
+                <p class="mt-2 text-sm font-semibold text-emerald-800">Done: the calendar moved forward {{ $current['clockDays'] }} days.</p>
+            @else
+                <button wire:click="advanceClock" class="mt-2 w-full rounded-lg bg-amber-700 px-3 py-1.5 text-sm font-semibold text-white hover:bg-amber-800">Move the calendar forward {{ $current['clockDays'] }} days</button>
+            @endif
+        @endif
         <div class="mt-3 flex items-center gap-2">
             @if ($step < $total)
                 <button wire:click="next" class="rounded-lg bg-slate-900 px-3 py-1.5 text-sm font-semibold text-white hover:bg-slate-700">Next</button>

@@ -2,6 +2,7 @@
 
 use App\Domain\Analysis\AnalysisEngine;
 use App\Domain\Cases\OutcomeWorkflow;
+use App\Domain\Cases\SignoffPolicy;
 use App\Livewire\Cases\OutcomeForm;
 use App\Models\Analysis\DataReviewItem;
 use App\Models\Analysis\OfficerOutcome;
@@ -9,6 +10,7 @@ use App\Models\AuditEvent;
 use App\Models\Cases\ReviewCase;
 use App\Models\Memory\Decision;
 use App\Models\User;
+use App\Support\Settings;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Auth\Access\AuthorizationException;
 use Livewire\Livewire;
@@ -137,4 +139,43 @@ it('shows the outcome form on the case page and records an outcome through it', 
         ->assertHasNoErrors();
 
     expect($finding->fresh()->status)->toBe('concluded');
+});
+
+it('keeps the finding open on "more information needed", with nothing written to memory', function () {
+    $finding = $this->thaba->findings()->where('pattern_code', 'P03')->first();
+
+    $row = app(OutcomeWorkflow::class)->record($this->analyst, $finding, fiveParts(['outcome' => OfficerOutcome::MORE_INFORMATION, 'conclusion' => 'Need the services agreement first.']));
+
+    expect($finding->fresh()->status)->toBe('open')
+        ->and($row->outcome)->toBe(OfficerOutcome::MORE_INFORMATION)
+        ->and(Decision::where('tin', 'TN1000430-6')->exists())->toBeFalse()
+        ->and($this->thaba->fresh()->status)->not->toBe('closed');
+
+    // A final outcome can still follow, and is the one that counts.
+    $final = app(OutcomeWorkflow::class)->record($this->analyst, $finding->fresh(), fiveParts());
+    expect($finding->fresh()->status)->toBe('concluded')
+        ->and($finding->fresh()->outcome->is($final))->toBeTrue();
+});
+
+it('shows a pending "more information" outcome above the form, still open', function () {
+    $finding = $this->thaba->findings()->where('pattern_code', 'P03')->first();
+    app(OutcomeWorkflow::class)->record($this->analyst, $finding, fiveParts(['outcome' => OfficerOutcome::MORE_INFORMATION, 'conclusion' => 'Need the services agreement first.']));
+
+    Livewire::actingAs($this->analyst)->test(OutcomeForm::class, ['finding' => $finding->fresh(), 'canAct' => true])
+        ->assertSee('More information needed')
+        ->assertSee('Need the services agreement first.')
+        ->assertSee('Record an outcome');
+});
+
+it('says on screen when the sign-off threshold is lowered for the demonstration', function () {
+    app(Settings::class)->set(SignoffPolicy::KEY, 0);
+    $leribe = ReviewCase::where('tin', 'TN1001201-1')->sole();
+    $finding = $leribe->findings()->first();
+
+    $row = app(OutcomeWorkflow::class)->record($this->analyst, $finding, fiveParts(['outcome' => OfficerOutcome::EXPLAINED]));
+
+    expect($row->requires_second_signoff)->toBeTrue();
+    $this->actingAs($this->lead)->get('/worklist')->assertSee('For this demonstration, every "explained, legitimate" closure needs a second sign-off');
+    Livewire::actingAs($this->lead)->test(OutcomeForm::class, ['finding' => $finding->fresh(), 'canAct' => true])
+        ->assertSee('For this demonstration')->assertSee('Sign off');
 });

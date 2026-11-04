@@ -28,7 +28,10 @@
         <env name="DB_URL" value=""/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
-        <env name="RSL_DEMO" value="false"/>
+        <env name="RSL_DEMO" value="false" force="true"/>
+        <!-- Never reach Meta from a test, whatever the developer's .env holds; tests that send set fake credentials themselves. -->
+        <env name="WHATSAPP_PHONE_NUMBER_ID" value="" force="true"/>
+        <env name="WHATSAPP_ACCESS_TOKEN" value="" force="true"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>

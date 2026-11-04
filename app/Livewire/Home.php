@@ -16,6 +16,15 @@ use Livewire\Component;
 #[Title('Home')]
 class Home extends Component
 {
+    /** An officer's home is their desk (officer-desk.md section 3); the administrator keeps this overview. */
+    public function mount()
+    {
+        $user = auth()->user();
+        if ($user->can('view_worklist') && ! $user->hasRole(Roles::SUPER_ADMIN)) {
+            return $this->redirectRoute('worklist');
+        }
+    }
+
     public function render()
     {
         $user = auth()->user()->load('team');

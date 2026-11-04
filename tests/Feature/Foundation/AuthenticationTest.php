@@ -52,7 +52,7 @@ it('locks out after repeated failures', function () {
 
 it('shows the demo date on every page', function () {
     $this->actingAs(User::where('email', 'p.mokoena@rsl.test')->first())
-        ->get('/home')
+        ->get('/worklist')
         ->assertOk()
         ->assertSee('Today: 2 Nov 2026')
         ->assertSee('Special Sectors')

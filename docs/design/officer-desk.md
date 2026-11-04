@@ -142,7 +142,7 @@ On each hand-off event, send the approved template to the receiving officer(s) (
 
 ## 8. Guided tour, reset, sign-off threshold
 
-**Tour**: a small side panel, "Step 3 of 9: what to click, what to notice", with Next (which switches officer via Act as when the step needs it). Steps follow RSL's three required case types:
+**Tour**: a small side panel, "Step 3 of 10: what to click, what to notice", with Next (which switches officer via Act as when the step needs it). Steps follow RSL's three required case types:
 1. Ordinary: Mohale's filing review, nothing found, no work created.
 2. Exception: L. Thamae's desk → Thaba → read the brief → hand it to Special Sectors with a reason.
 3. P. Mokoena's desk: Thaba under "Handed to us" with the hand-off note → send an information request.
@@ -155,7 +155,7 @@ On each hand-off event, send the approved template to the receiving officer(s) (
 
 **Reset**: "Reset the demo" on the front page (demo mode) and a nightly scheduled reset: fresh database, registry and memory loaded, every company received and analysed, briefs pre-generated, clock at 2 Nov 2026.
 
-**Sign-off threshold**: no company in the mock data reaches M1,000,000, so the demo sets it to **M500,000** and the sign-off screen says plainly: *Threshold lowered to M500,000 for this demonstration (RSL default M1,000,000; a setting).*
+**Sign-off threshold**: no story in the mock data reaches M1,000,000 (and the stories that do reach M500,000 end as "concern supported", which needs no sign-off), so the demo (`rsl:demo`) asks for a second sign-off on **every** "explained, legitimate" closure, and every screen that relies on it says so (`SignoffPolicy::demoNote()`). The tour's sign-off story is Leribe: an information gap closed as explained once its documents arrive. The tour moves the clock from its own panel; it never signs a judge in as the administrator.
 
 ---
 

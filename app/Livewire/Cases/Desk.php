@@ -3,6 +3,7 @@
 namespace App\Livewire\Cases;
 
 use App\Domain\Cases\DeskLanes;
+use App\Domain\Cases\SignoffPolicy;
 use App\Support\Roles;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Attributes\Layout;
@@ -19,13 +20,14 @@ class Desk extends Component
         Gate::authorize('view_worklist');
     }
 
-    public function render(DeskLanes $deskLanes)
+    public function render(DeskLanes $deskLanes, SignoffPolicy $signoff)
     {
         $user = auth()->user();
 
         return view('livewire.cases.desk', [
             'lanes' => $deskLanes->for($user),
             'overview' => $user->hasRole(Roles::TEAM_LEAD) ? $deskLanes->teamOverview() : null,
+            'signoffNote' => $user->hasRole(Roles::TEAM_LEAD) ? $signoff->demoNote() : null,
         ]);
     }
 }

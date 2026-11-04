@@ -31,7 +31,7 @@ it('shows a card per officer on the front page in demo mode', function () {
 it('lets a card sign straight in with no password, audited the same as a normal sign-in', function () {
     config(['rsl.demo' => true]);
 
-    Livewire::test(DemoFront::class)->call('enterAs', 'l.thamae@rsl.test')->assertRedirect(route('home'));
+    Livewire::test(DemoFront::class)->call('enterAs', 'l.thamae@rsl.test')->assertRedirect(route('worklist'));
 
     $this->assertAuthenticatedAs(User::where('email', 'l.thamae@rsl.test')->first());
     expect(AuditEvent::where('action', 'signed_in')->sole()->actor_label)->toContain('L. Thamae');
@@ -60,7 +60,9 @@ it('lets the administrator act as an officer, labelling and recording it on ever
         ->assertRedirect(route('home'));
 
     // The session key is set by this request; the swap itself applies on the next one.
-    $this->get('/home')->assertOk()->assertSee('You are acting as')->assertSee('L. Thamae');
+    // Acting as an officer, Home is their desk.
+    $this->get('/home')->assertRedirect(route('worklist'));
+    $this->get('/worklist')->assertOk()->assertSee('You are acting as')->assertSee('L. Thamae');
     $this->assertAuthenticatedAs($thamae);
 
     $started = AuditEvent::where('action', 'acting_started')->sole();

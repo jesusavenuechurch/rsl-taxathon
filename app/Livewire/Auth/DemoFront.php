@@ -37,7 +37,7 @@ class DemoFront extends Component
         Auth::login($officer);
         session()->regenerate();
 
-        return $this->redirect(route('home'), navigate: false);
+        return $this->redirect(route($officer->can('view_worklist') ? 'worklist' : 'home'), navigate: false);
     }
 
     public function startTour(): mixed

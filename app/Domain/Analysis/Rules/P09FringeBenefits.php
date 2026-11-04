@@ -33,7 +33,10 @@ class P09FringeBenefits implements PatternRule
 
         return RuleOutcome::fired([new FindingDraft(
             scope: $doc->reference,
-            values: ['benefits' => lcfirst(rtrim($doc->what_it_shows, '.')), 'who' => 'the people named in the released documents', 'declared' => $declared],
+            // What the document itself says (e.g. "company-leased houses in Maseru
+            // West and two company vehicles for the managers"), never the mock
+            // data's own notes about it.
+            values: ['document' => "{$doc->reference}, {$doc->title}", 'benefits' => lcfirst(rtrim($doc->content_summary, '.')), 'declared' => $declared],
             evidence: [$latestPaye->record_id],
             exposure: 0,
         )], "{$doc->reference} ({$doc->title}) shows benefits the PAYE returns do not declare.", ['document' => $doc->reference, 'declared_fringe_benefits' => $declared]);

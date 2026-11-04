@@ -3,6 +3,7 @@
 namespace App\Livewire\Cases;
 
 use App\Domain\Cases\OutcomeWorkflow;
+use App\Domain\Cases\SignoffPolicy;
 use App\Models\Analysis\Finding;
 use App\Models\Analysis\OfficerOutcome;
 use Illuminate\Auth\Access\AuthorizationException;
@@ -103,11 +104,15 @@ class OutcomeForm extends Component
         $this->finding->refresh();
     }
 
-    public function render()
+    public function render(SignoffPolicy $signoff)
     {
+        $latest = $this->finding->outcome()->with(['decider', 'secondSigner'])->first();
+
         return view('livewire.cases.outcome-form', [
-            'outcomeRow' => $this->finding->status === 'concluded' ? $this->finding->outcome()->with(['decider', 'secondSigner'])->first() : null,
+            'outcomeRow' => $this->finding->status === 'concluded' ? $latest : null,
+            'interim' => $this->finding->status === 'open' && $latest?->outcome === OfficerOutcome::MORE_INFORMATION ? $latest : null,
             'labels' => OfficerOutcome::LABELS,
+            'demoSignoffNote' => $signoff->demoNote(),
         ]);
     }
 }

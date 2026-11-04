@@ -73,6 +73,8 @@ it('releases documents when due on a clock advance, moves the case to decision, 
     $p09 = Finding::where('tin', 'TN1000656-9')->where('pattern_code', 'P09')->where('status', 'open')->sole();
     expect($p09->evidence_level)->toBe(4)
         ->and($p09->wording)->toContain('The declared charge does not appear to match the evidence provided.')
+        ->and($p09->wording)->toContain('show company-leased houses in Maseru West and two company vehicles for the managers')
+        ->and($p09->wording)->not->toContain('raises P09')
         ->and(AuditEvent::where('action', 'released')->exists())->toBeTrue();
 });
 

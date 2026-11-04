@@ -30,4 +30,10 @@ return [
     */
     'demo' => (bool) env('RSL_DEMO', false),
 
+    /*
+    | Set at runtime while the demo is rebuilt (rsl:demo), so a reset never
+    | sends WhatsApp messages for the cases it reopens.
+    */
+    'notifications_muted' => false,
+
 ];

@@ -41,6 +41,8 @@ return [
         'access_token' => env('WHATSAPP_ACCESS_TOKEN'),
         'api_version' => env('WHATSAPP_API_VERSION', 'v21.0'),
         'verify_token' => env('WHATSAPP_VERIFY_TOKEN'),
+        // Must match the language the templates were created in: "English" is en, "English (US)" is en_US.
+        'template_language' => env('WHATSAPP_TEMPLATE_LANGUAGE', 'en'),
     ],
 
 ];

@@ -1,7 +1,11 @@
 <div class="space-y-6">
     <div>
         <h1 class="text-2xl font-bold tracking-tight">My desk</h1>
+        <p class="mt-1 font-semibold text-slate-800">{{ auth()->user()->name }} · {{ auth()->user()->job_title ?? auth()->user()->getRoleNames()->map(fn ($r) => \App\Support\Roles::label($r))->implode(', ') }}@if (auth()->user()->team) · {{ auth()->user()->team->name }}@endif</p>
         <p class="mt-1 text-slate-600">What needs your attention, left to right in the order work flows. A case is a reason to review, never proof.</p>
+        @if ($signoffNote)
+            <p class="mt-2 text-sm text-slate-600">{{ $signoffNote }}</p>
+        @endif
     </div>
 
     @if ($overview)

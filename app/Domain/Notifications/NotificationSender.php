@@ -26,11 +26,24 @@ class NotificationSender
         'signoff_needed' => 'rsl_signoff_needed',
     ];
 
+    /**
+     * The approved templates' bodies, word for word as created in WhatsApp
+     * Manager (Utility, button "Open case" -> https://<host>/cases/{{1}}).
+     * The Notifications sent page shows exactly this text, so what the page
+     * says was sent is what the phone shows.
+     */
+    public const BODIES = [
+        'rsl_case_ready' => 'Hello, a new {{1}} has been added to your worklist with {{2}} priority. Please open RSL Case Review to see what needs your attention.',
+        'rsl_case_referred' => 'Hello, case {{1}} has been referred to the {{2}} team and is waiting for an officer to pick it up. Please open RSL Case Review to take it on.',
+        'rsl_documents_received' => 'Hello, the documents requested for case {{1}} have arrived and are ready for your review. Please open RSL Case Review to see them.',
+        'rsl_signoff_needed' => 'Hello, a decision on case {{1}} is waiting for your second sign-off before it can be closed. Please open RSL Case Review to approve or return it.',
+    ];
+
     public function __construct(private WhatsAppCloudService $whatsapp, private Clock $clock, private AuditLog $audit) {}
 
     public function caseOpened(ReviewCase $case): void
     {
-        $this->sendTo($case->team->users, $case, 'case_opened', [$this->caseTypePhrase($case), ucfirst($case->priority)]);
+        $this->sendTo($case->team->users, $case, 'case_opened', [$this->caseTypePhrase($case), $case->priority]);
     }
 
     public function caseReferred(ReviewCase $case, Team $to): void
@@ -52,6 +65,11 @@ class NotificationSender
     /** @param  iterable<User>  $recipients */
     private function sendTo(iterable $recipients, ReviewCase $case, string $event, array $params): void
     {
+        // A demo rebuild reopens every case at once: nothing goes to phones for that.
+        if (config('rsl.notifications_muted')) {
+            return;
+        }
+
         foreach ($recipients as $user) {
             $this->send($user, $case, $event, $params);
         }
@@ -60,11 +78,12 @@ class NotificationSender
     private function send(User $user, ReviewCase $case, string $event, array $params): NotificationDelivery
     {
         $template = self::TEMPLATES[$event];
-        $text = $this->render($template, $params);
+        $text = self::render($template, $params);
 
         $row = NotificationDelivery::create([
             'event' => $event, 'template' => $template, 'recipient_id' => $user->id, 'case_reference' => $case->reference,
             'rendered_text' => $text, 'status' => NotificationDelivery::QUEUED,
+            'created_at' => $this->clock->now(),
         ]);
         $row->update(['reference' => sprintf('NOTE-%04d', $row->id)]);
 
@@ -74,7 +93,8 @@ class NotificationSender
             return $row;
         }
 
-        $result = $this->whatsapp->sendTemplate($user->whatsapp_number, $template, $params, buttonUrlSuffix: $case->reference);
+        $result = $this->whatsapp->sendTemplate($user->whatsapp_number, $template, $params, buttonUrlSuffix: $case->reference,
+            languageCode: config('services.whatsapp.template_language', 'en'));
 
         $row->update([
             'status' => $result['success'] ? NotificationDelivery::SENT : NotificationDelivery::FAILED,
@@ -89,15 +109,10 @@ class NotificationSender
         return $row;
     }
 
-    private function render(string $template, array $params): string
+    /** The template's body with its {{n}} parameters filled, exactly as WhatsApp renders it. */
+    public static function render(string $template, array $params): string
     {
-        return match ($template) {
-            'rsl_case_ready' => "A {$params[0]} is ready for review ({$params[1]} priority).",
-            'rsl_case_referred' => "Case {$params[0]} has been referred to {$params[1]}.",
-            'rsl_documents_received' => "Documents have arrived for case {$params[0]}.",
-            'rsl_signoff_needed' => "Case {$params[0]} needs your sign-off.",
-            default => implode(' ', $params),
-        };
+        return preg_replace_callback('/\\{\\{(\\d+)\\}\\}/', fn ($m) => (string) ($params[(int) $m[1] - 1] ?? ''), self::BODIES[$template] ?? implode(' ', $params));
     }
 
     private function caseTypePhrase(ReviewCase $case): string

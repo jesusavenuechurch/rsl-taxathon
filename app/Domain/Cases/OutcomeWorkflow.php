@@ -34,6 +34,7 @@ class OutcomeWorkflow
         private Settings $settings,
         private DecisionRecorder $decisions,
         private NotificationSender $notifications,
+        private SignoffPolicy $signoff,
     ) {}
 
     /** @param  array<string, string>  $data  the five parts, outcome, and (system_error only) record_id/record_version */
@@ -60,9 +61,12 @@ class OutcomeWorkflow
             throw new InvalidArgumentException('Say which record is wrong.');
         }
 
-        $requiresSignoff = $outcome === OfficerOutcome::EXPLAINED && $finding->exposure_estimate >= $this->threshold();
+        $requiresSignoff = $this->signoff->requiresSignoff($outcome, (int) $finding->exposure_estimate);
+        // "More information needed" is not final: the finding stays open and
+        // the case keeps waiting; nothing reaches company memory (rule 6).
+        $interim = $outcome === OfficerOutcome::MORE_INFORMATION;
 
-        return DB::transaction(function () use ($user, $finding, $case, $data, $outcome, $requiresSignoff) {
+        return DB::transaction(function () use ($user, $finding, $case, $data, $outcome, $requiresSignoff, $interim) {
             $row = OfficerOutcome::create([
                 'finding_id' => $finding->id,
                 'case_id' => $case->id,
@@ -81,7 +85,10 @@ class OutcomeWorkflow
             ]);
             $row->update(['reference' => sprintf('OUT-%04d', $row->id)]);
 
-            $finding->update(['status' => Finding::CONCLUDED, 'closed_at' => $this->clock->now()]);
+            // An interim outcome keeps the finding open: the officer's next step is an information request.
+            if (! $interim) {
+                $finding->update(['status' => Finding::CONCLUDED, 'closed_at' => $this->clock->now()]);
+            }
 
             if ($outcome === OfficerOutcome::SYSTEM_ERROR) {
                 $item = DataReviewItem::create([
@@ -92,13 +99,13 @@ class OutcomeWorkflow
                     'reason' => trim($data['conclusion']),
                 ]);
                 $item->update(['reference' => sprintf('DR-%04d', $item->id)]);
-            } elseif (! $requiresSignoff) {
+            } elseif (! $requiresSignoff && ! $interim) {
                 $this->decisions->record($row->fresh(['decider', 'secondSigner']), $finding);
             }
 
             $case->events()->create([
                 'type' => 'outcome_recorded', 'actor_id' => $user->id, 'actor_label' => $user->name,
-                'note' => "{$finding->pattern_code}: {$row->outcomeLabel()}".($requiresSignoff ? ' (awaiting sign-off)' : ''),
+                'note' => "{$finding->pattern_code}: {$row->outcomeLabel()}".($requiresSignoff ? ' (awaiting sign-off)' : '').($interim ? ' (the finding stays open)' : ''),
                 'occurred_at' => $this->clock->now(),
             ]);
             $this->audit->record('outcome_recorded', subjectType: 'officer_outcome', subjectRef: $row->reference, taxpayerTin: $finding->tin,
@@ -168,10 +175,5 @@ class OutcomeWorkflow
         $case->update($pending
             ? ['stage' => ReviewCase::STAGE_SIGNOFF]
             : ['stage' => ReviewCase::STAGE_CLOSED, 'status' => ReviewCase::CLOSED, 'closed_at' => $this->clock->now()]);
-    }
-
-    private function threshold(): int
-    {
-        return (int) $this->settings->get('outcomes.second_signoff_threshold', 1_000_000);
     }
 }

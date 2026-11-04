@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 /**
  * A summary of work done, not a scoreboard of taxpayers flagged
  * (officer-desk.md section 6). Only final outcomes count: a pending or
- * returned sign-off is not yet a conclusion.
+ * returned sign-off, or "more information needed", is not yet a conclusion.
  */
 class ResultsSummary
 {
@@ -18,7 +18,8 @@ class ResultsSummary
     private function finalOutcomes(): Collection
     {
         return OfficerOutcome::with('finding')->get()
-            ->filter(fn (OfficerOutcome $o) => ! $o->requires_second_signoff || $o->signoff_status === OfficerOutcome::APPROVED);
+            ->filter(fn (OfficerOutcome $o) => $o->outcome !== OfficerOutcome::MORE_INFORMATION
+                && (! $o->requires_second_signoff || $o->signoff_status === OfficerOutcome::APPROVED));
     }
 
     /** @return array<string, int> outcome => count */

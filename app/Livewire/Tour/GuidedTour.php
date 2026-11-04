@@ -4,6 +4,7 @@ namespace App\Livewire\Tour;
 
 use App\Domain\Tour\TourSteps;
 use App\Models\User;
+use App\Support\Clock;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -26,6 +27,22 @@ class GuidedTour extends Component
     {
         session()->forget('tour_step');
         $this->step = 0;
+    }
+
+    /**
+     * The tour's own "time passes" step: moves the demo calendar without
+     * handing a judge the administrator's account (demo mode only, and only
+     * on a step that offers it).
+     */
+    public function advanceClock(Clock $clock): mixed
+    {
+        $days = TourSteps::all()[$this->step]['clockDays'] ?? null;
+        abort_unless(config('rsl.demo') && $days, 404);
+
+        $clock->advance($days);
+        session(["tour_clock_{$this->step}" => true]);
+
+        return $this->redirect(request()->header('Referer') ?: route('worklist'), navigate: false);
     }
 
     public function next(): mixed
@@ -58,6 +75,7 @@ class GuidedTour extends Component
     {
         return view('livewire.tour.guided-tour', [
             'current' => TourSteps::all()[$this->step] ?? null,
+            'clockDone' => (bool) session("tour_clock_{$this->step}"),
             'total' => TourSteps::count(),
         ]);
     }

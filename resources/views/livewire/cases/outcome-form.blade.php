@@ -12,11 +12,14 @@
         @if ($outcomeRow->requires_second_signoff)
             <p class="mt-2 @class(['font-semibold', 'text-amber-800' => $outcomeRow->signoff_status === 'pending', 'text-emerald-800' => $outcomeRow->signoff_status === 'approved', 'text-red-800' => $outcomeRow->signoff_status === 'returned'])">
                 @switch($outcomeRow->signoff_status)
-                    @case('pending') Waiting for a team lead's sign-off (est. {{ \App\Support\Format::money($outcomeRow->exposure_at_decision) }}). @break
+                    @case('pending') Waiting for a team lead's sign-off{{ $outcomeRow->exposure_at_decision > 0 ? ' (est. '.\App\Support\Format::money($outcomeRow->exposure_at_decision).')' : '' }}. @break
                     @case('approved') Signed off by {{ $outcomeRow->secondSigner?->name }}, {{ $outcomeRow->signed_off_at->format('j M Y') }}. @break
                     @case('returned') Returned by {{ $outcomeRow->secondSigner?->name }}: {{ $outcomeRow->signoff_note }} @break
                 @endswitch
             </p>
+            @if ($demoSignoffNote && $outcomeRow->signoff_status === 'pending')
+                <p class="mt-1 text-xs text-slate-600">{{ $demoSignoffNote }}</p>
+            @endif
             @if ($outcomeRow->signoff_status === 'pending' && auth()->user()->can('second_signoff') && auth()->id() !== $outcomeRow->decided_by)
                 <div class="mt-2 space-y-2 border-t border-slate-200 pt-2">
                     <input wire:model="signoffNote" type="text" placeholder="Note (required to return, optional to approve)" class="block w-full rounded-lg border border-slate-300 px-3 py-1.5 text-sm">
@@ -30,6 +33,13 @@
         @endif
     </div>
 @elseif ($canAct && $finding->status === 'open')
+    @if ($interim)
+        <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm">
+            <p class="font-semibold">More information needed <span class="font-normal text-slate-600">by {{ $interim->decider->name }}, {{ $interim->decided_at->format('j M Y') }}</span></p>
+            <p class="mt-1">{{ $interim->conclusion }}</p>
+            <p class="mt-1 text-xs text-slate-600">Not a conclusion: the finding stays open. Request the documents below, then record a final outcome.</p>
+        </div>
+    @endif
     @if (! $open)
         <button wire:click="startForm" class="mt-3 rounded-lg border border-slate-300 px-3 py-1.5 text-sm font-semibold hover:bg-slate-50">Record an outcome</button>
     @else
@@ -41,6 +51,7 @@
                     @foreach ($labels as $value => $label) <option value="{{ $value }}">{{ $label }}</option> @endforeach
                 </select>
             </label>
+            @if ($demoSignoffNote) <p class="text-xs text-slate-600">{{ $demoSignoffNote }}</p> @endif
             <label class="block text-sm font-semibold">Observed pattern <textarea wire:model="observed_pattern" rows="2" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></textarea></label>
             <label class="block text-sm font-semibold">Conclusion <textarea wire:model="conclusion" rows="2" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" placeholder="Only you conclude; the system never does."></textarea></label>
             <label class="block text-sm font-semibold">Evidence <textarea wire:model="evidence" rows="2" class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"></textarea></label>
