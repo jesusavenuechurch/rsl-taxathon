@@ -36,4 +36,10 @@ return [
     */
     'notifications_muted' => false,
 
+    /*
+    | "Ask the records": how much related-party payments must have grown
+    | year on year for a company to be listed as a significant increase.
+    */
+    'chat_related_party_increase' => (float) env('RSL_CHAT_RELATED_PARTY_INCREASE', 0.30),
+
 ];

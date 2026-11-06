@@ -95,6 +95,8 @@
 
     <livewire:cases.case-brief-panel :case="$c" :can-act="$canAct" :key="'brief-'.$c->id" />
 
+    @can('use_chat') <livewire:chat.ask-records :case-id="$c->id" :key="'ask-'.$c->id" /> @endcan
+
     <livewire:cases.information-request-panel :case="$c" :can-act="$canAct" :key="'requests-'.$c->id" />
 
     <x-memory-panel :checks="$memory" />

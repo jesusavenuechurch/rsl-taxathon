@@ -21,7 +21,7 @@ class DeskLanes
 {
     private const EAGER = ['taxpayer', 'team', 'assignee', 'findings', 'events.fromTeam', 'briefs', 'refundClaim'];
 
-    /** @return list<array{title: string, cases: Collection}> */
+    /** @return list<array{title: string, cases: Collection, hint?: string}> */
     public function for(User $user): array
     {
         return match (true) {
@@ -56,8 +56,9 @@ class DeskLanes
         $teamId = $user->team_id;
 
         return [
-            ['title' => 'Handed to us', 'cases' => $this->base()->where('team_id', $teamId)
-                ->where('stage', ReviewCase::STAGE_SPECIALIST)->whereNull('assigned_user_id')->ranked()->get()],
+            ['title' => 'Handed to us', 'hint' => 'Nothing yet. Cases arrive here when a Risk analyst refers one to Special Sectors: sign in as L. Thamae, open Thaba Trading and refer it.',
+                'cases' => $this->base()->where('team_id', $teamId)
+                    ->where('stage', ReviewCase::STAGE_SPECIALIST)->whereNull('assigned_user_id')->ranked()->get()],
             ['title' => 'Investigating', 'cases' => $this->base()->where('assigned_user_id', $user->id)
                 ->where('stage', ReviewCase::STAGE_SPECIALIST)->ranked()->get()],
             ['title' => 'Waiting on taxpayer', 'cases' => $this->base()->where('team_id', $teamId)
@@ -90,7 +91,7 @@ class DeskLanes
             ->pluck('case_id')->unique();
 
         return [
-            ['title' => 'Waiting for my sign-off', 'cases' => $this->base()->whereIn('id', $pendingCaseIds)->ranked()->get()],
+            ['title' => 'Waiting for my sign-off', 'hint' => 'Nothing yet. A closure as "Explained, legitimate" lands here once an officer records it: try Leribe Pharma as L. Thamae.', 'cases' => $this->base()->whereIn('id', $pendingCaseIds)->ranked()->get()],
             ['title' => 'Returned', 'cases' => $this->base()->whereIn('id', $returnedCaseIds)->ranked()->get()],
         ];
     }
@@ -111,6 +112,7 @@ class DeskLanes
     {
         return [[
             'title' => 'Figures to check',
+            'hint' => 'Nothing yet. An officer sends a figure here when it looks keyed wrongly: try Lebelo Cash & Carry as L. Thamae, and record "System error" on the VAT finding.',
             'cases' => collect(),
             'reviewItems' => DataReviewItem::where('status', DataReviewItem::OPEN)
                 ->with(['finding.taxpayer', 'outcome.decider'])->orderBy('created_at')->get(),

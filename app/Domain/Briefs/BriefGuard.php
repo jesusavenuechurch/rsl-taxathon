@@ -50,7 +50,7 @@ final class BriefGuard
     }
 
     /** @return array{text: string, citations: list<string>}|string a clean item, or the problem found */
-    private function checkItem(mixed $raw, FactSheet $sheet, string $label): array|string
+    public function checkItem(mixed $raw, FactSheet $sheet, string $label): array|string
     {
         if (! is_array($raw) || ! is_string($raw['text'] ?? null) || trim($raw['text']) === '') {
             return "{$label} has no text.";

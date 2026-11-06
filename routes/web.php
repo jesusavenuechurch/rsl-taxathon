@@ -11,6 +11,7 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Cases\CaseShow;
 use App\Livewire\Cases\Desk;
 use App\Livewire\Cases\Results;
+use App\Livewire\Chat\AskRecords;
 use App\Livewire\Home;
 use App\Livewire\Records\RecordShow;
 use App\Models\User;
@@ -30,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/home', Home::class)->name('home');
     Route::get('/worklist', Desk::class)->name('worklist');
     Route::get('/results', Results::class)->name('results');
+    Route::get('/ask', AskRecords::class)->name('ask');
     Route::get('/cases/{reference}', CaseShow::class)->name('cases.show');
     Route::get('/intake', DataIntake::class)->name('intake');
     Route::get('/notifications', NotificationsSent::class)->name('notifications.sent');
@@ -44,7 +46,7 @@ Route::middleware('auth')->group(function () {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route(config('rsl.demo') ? 'demo.front' : 'login');
     })->name('logout');
 
     // Demo mode only: the administrator sees the app as another officer.

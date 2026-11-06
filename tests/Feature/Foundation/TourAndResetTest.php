@@ -19,7 +19,7 @@ it('starts the guided tour signed in as the first step\'s officer', function () 
     Livewire::test(DemoFront::class)->call('startTour')->assertRedirect();
 
     $this->assertAuthenticatedAs(User::where('email', 'p.mokoena@rsl.test')->first());
-    $this->get('/worklist')->assertOk()->assertSee('Step 1 of 10');
+    $this->get('/worklist')->assertOk()->assertSee('Step 1 of 11');
 });
 
 it('advances the tour and switches officer when a step needs it', function () {

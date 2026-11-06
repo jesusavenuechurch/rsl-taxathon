@@ -25,7 +25,7 @@ it('shows the team lead a read-only overview of every team, and empty sign-off l
 
     $this->actingAs($lead)->get('/worklist')->assertOk()
         ->assertSee('Team overview')
-        ->assertSee('Waiting for my sign-off')->assertSee('Nothing waiting here')
+        ->assertSee('Waiting for my sign-off')->assertSee('Nothing yet')
         ->assertSee('Risk analysis')->assertSee('Special Sectors')->assertSee('Refund audit');
 });
 
@@ -33,5 +33,5 @@ it('shows the data team an empty figures-to-check lane', function () {
     $data = User::where('email', 'k.molapo@rsl.test')->first();
 
     $this->actingAs($data)->get('/worklist')->assertOk()
-        ->assertSee('Figures to check')->assertSee('Nothing waiting here');
+        ->assertSee('Figures to check')->assertSee('Nothing yet');
 });

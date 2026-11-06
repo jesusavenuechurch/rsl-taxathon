@@ -11,7 +11,8 @@ class DemoCommand extends Command
 {
     protected $signature = 'rsl:demo
         {--fresh : wipe the database first (migrate:fresh --seed): demo machines only}
-        {--all : also receive every company\'s records now}';
+        {--all : receive every company\'s records now (the default)}
+        {--empty : start with no filings, so Data intake can bring them in one by one}';
 
     protected $description = 'Prepare a demo: RSL knows the registry and earlier decisions; filings arrive through Data intake';
 
@@ -41,10 +42,10 @@ class DemoCommand extends Command
             // Every screen that relies on it says so (SignoffPolicy::demoNote()).
             $settings->set(SignoffPolicy::KEY, 0);
 
-            if ($this->option('all')) {
+            if (! $this->option('empty')) {
                 $this->info("Every company's records received and ".$intake->receiveEverything().' taxpayers analysed.');
             } else {
-                $this->line('No filings yet. Sign in as an administrator and open Data intake to bring companies in one by one.');
+                $this->line('No filings yet (--empty). Sign in as an administrator and open Data intake to bring companies in one by one.');
             }
         } finally {
             config(['rsl.notifications_muted' => $muted]);

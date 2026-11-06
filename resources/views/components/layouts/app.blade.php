@@ -17,6 +17,7 @@
                     <nav class="flex flex-wrap gap-x-4 text-sm" aria-label="Main">
                         @can('view_worklist') <a href="{{ route('worklist') }}" @class(['font-semibold text-slate-900' => request()->routeIs('worklist', 'cases.*'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('worklist', 'cases.*')])>My desk</a> @endcan
                         @can('view_worklist') <a href="{{ route('results') }}" @class(['font-semibold text-slate-900' => request()->routeIs('results'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('results')])>Results</a> @endcan
+                        @can('use_chat') <a href="{{ route('ask') }}" @class(['font-semibold text-slate-900' => request()->routeIs('ask'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('ask')])>Ask the records</a> @endcan
                         @can('view_company_records') <a href="{{ route('findings.index') }}" @class(['font-semibold text-slate-900' => request()->routeIs('findings.*', 'reviews.*'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('findings.*', 'reviews.*')])>Findings</a> @endcan
                         @can('receive_data') <a href="{{ route('intake') }}" @class(['font-semibold text-slate-900' => request()->routeIs('intake'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('intake')])>Data intake</a> @endcan
                         @can('view_audit_log') <a href="{{ route('notifications.sent') }}" @class(['font-semibold text-slate-900' => request()->routeIs('notifications.sent'), 'text-slate-600 hover:text-slate-900' => ! request()->routeIs('notifications.sent')])>Notifications sent</a> @endcan
@@ -47,7 +48,7 @@
                     <span class="text-slate-600">{{ auth()->user()->name }}</span>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button class="text-slate-600 underline hover:text-slate-900">Sign out</button>
+                        <button class="text-slate-600 underline hover:text-slate-900">{{ config('rsl.demo') ? 'Switch person' : 'Sign out' }}</button>
                     </form>
                 </div>
             </div>

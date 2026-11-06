@@ -176,7 +176,7 @@ class FactSheetBuilder
             .$notFired->map(fn ($c) => "{$c->pattern_code} ({$c->explanation})")->implode('; ').'.';
     }
 
-    private function evidenceItem(string $recordId, int $version): ?FactSheetItem
+    public function evidenceItem(string $recordId, int $version): ?FactSheetItem
     {
         $channel = Channels::forRecordId($recordId);
         if (! $channel) {

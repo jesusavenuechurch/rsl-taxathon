@@ -58,10 +58,16 @@ it('is open to the data team and closed to case officers', function () {
     $this->actingAs(User::where('email', 'l.thamae@rsl.test')->first())->get('/intake')->assertForbidden();
 });
 
-it('prepares a demo from the console', function () {
-    $this->artisan('rsl:demo')->expectsOutputToContain('No filings yet')->assertSuccessful();
+it('prepares a demo with no filings when asked (--empty), for the Data intake story', function () {
+    $this->artisan('rsl:demo', ['--empty' => true])->expectsOutputToContain('No filings yet')->assertSuccessful();
 
     expect(Taxpayer::count())->toBe(14)
         ->and(Decision::count())->toBe(3)
         ->and(CitReturn::count())->toBe(0);
+});
+
+it('prepares a demo with every filing received by default, so any login lands on real work', function () {
+    $this->artisan('rsl:demo')->assertSuccessful();
+
+    expect(Taxpayer::count())->toBe(14)->and(CitReturn::count())->toBeGreaterThan(0);
 });

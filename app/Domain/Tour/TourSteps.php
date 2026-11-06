@@ -86,6 +86,12 @@ class TourSteps
                 'url' => fn () => $case(self::LEBELO) ? route('cases.show', $case(self::LEBELO)->reference) : route('worklist'),
             ],
             10 => [
+                'title' => 'Ask the records',
+                'body' => 'A chat that answers only from the records, every statement cited. Try the suggested questions: which companies grew related-party payments, why Highveld was flagged, what was decided about Qiloane before. If the AI model is unreachable, the answer comes straight from the records.',
+                'actAs' => 'l.thamae@rsl.test',
+                'url' => fn () => route('ask'),
+            ],
+            11 => [
                 'title' => 'Every hand-off, notified',
                 'body' => 'Every WhatsApp message the hand-offs raised, with no taxpayer name, TIN or amount in any of them. Then open Results in the top bar: a summary of the work done, not a scoreboard of taxpayers flagged.',
                 'actAs' => 'm.sello@rsl.test',

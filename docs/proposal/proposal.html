@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Evidence-Led Case Review: RSL Taxathon Proposal</title>
+<style>
+  @page { size: A4; margin: 15mm 15mm 16mm; }
+  :root { --ink:#1b2430; --mute:#5b6675; --line:#d9dee5; --navy:#0f2a47; --teal:#0e7c86; --soft:#eef4f6; --amber:#b86e00; --green:#1f7a45; --violet:#5b4bb0; }
+  * { box-sizing:border-box; }
+  body { font:9.2pt/1.38 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif; color:var(--ink); margin:0; background:#fff; }
+  .page { max-width:182mm; margin:0 auto; padding:8mm 0; }
+  h1 { font-size:22pt; line-height:1.12; margin:0 0 3mm; color:var(--navy); letter-spacing:-.01em; }
+  h2 { font-size:13pt; margin:4mm 0 1.6mm; color:var(--navy); border-bottom:1.5px solid var(--teal); padding-bottom:1mm; break-after:avoid; }
+  h3 { font-size:10.4pt; margin:3.5mm 0 1mm; color:var(--teal); break-after:avoid; }
+  p { margin:0 0 2mm; }
+  ul { margin:0 0 2mm; padding-left:4.5mm; } li { margin:0 0 .8mm; }
+  .sub { color:var(--mute); font-size:10pt; margin:0 0 3mm; }
+  .meta { display:grid; grid-template-columns:auto 1fr; gap:.6mm 4mm; font-size:9pt; margin:2mm 0 3mm; padding:2.5mm 3mm; background:var(--soft); border-left:3px solid var(--teal); }
+  .meta b { color:var(--navy); }
+  table { width:100%; border-collapse:collapse; margin:1.5mm 0 3mm; font-size:8.3pt; }
+  tr { break-inside:avoid; }
+  .annex td { padding:.55mm 2mm; font-size:8pt; line-height:1.22; } .annex .tag{font-size:6.6pt}
+  tr:first-child { break-after:avoid; }
+  tr:nth-child(2) { break-before:avoid; }
+  th { background:var(--navy); color:#fff; text-align:left; padding:1.3mm 2mm; font-weight:600; }
+  td { padding:1.2mm 2mm; border-bottom:1px solid var(--line); vertical-align:top; }
+  td.n, th.n { text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  tr.tot td { font-weight:700; background:var(--soft); border-top:1.5px solid var(--navy); }
+  .fig { margin:2mm 0 3mm; break-inside:avoid; }
+  .fig svg { width:100%; height:auto; display:block; }
+  .cap { font-size:8.2pt; color:var(--mute); margin-top:.8mm; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:4mm; }
+  .box { border:1px solid var(--line); border-radius:2mm; padding:2.5mm 3mm; background:#fff; break-inside:avoid; }
+  .box h3 { margin-top:0; }
+  .tag { display:inline-block; font-size:7.2pt; font-weight:700; padding:.2mm 1.6mm; border-radius:1mm; color:#fff; white-space:nowrap; vertical-align:1px; }
+  .t-built { background:var(--green); } .t-pilot { background:var(--teal); } .t-y1 { background:var(--amber); } .t-later { background:var(--violet); }
+  .note { font-size:8.6pt; color:var(--mute); }
+  .callout { background:var(--soft); border-left:3px solid var(--teal); padding:2mm 3mm; margin:2mm 0 3mm; break-inside:avoid; }
+  .bar { display:flex; height:5mm; border-radius:1mm; overflow:hidden; margin:1.5mm 0 1mm; }
+  .bar span { display:block; height:100%; }
+  .legend { display:flex; flex-wrap:wrap; gap:1mm 4mm; font-size:8pt; color:var(--mute); }
+  .legend i { display:inline-block; width:2.6mm; height:2.6mm; margin-right:1.2mm; vertical-align:-.3mm; border-radius:.5mm; }
+  .pb { break-before:page; }
+  @media screen { body { background:#e9edf1; } .page { background:#fff; padding:12mm 14mm; margin:6mm auto; box-shadow:0 1px 8px rgba(0,0,0,.12); } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>Evidence-Led Case Review</h1>
+<p class="sub">A tax risk intelligence and investigation platform for Revenue Services Lesotho<br>Proposal for the RSL Taxathon, Challenge 2: Detect abusive tax planning and refund risks</p>
+
+<div class="meta">
+  <b>Submitted by</b><span>Amohelang Thoabala, individual Basotho innovator, Maseru, Lesotho</span>
+  <b>Contact</b><span>amohelangt@gmail.com · +266 6255 2155</span>
+  <b>Focus</b><span>Wholesale and retail FMCG: VAT, related-party transactions, group financing and refunds</span>
+  <b>Working prototype</b><span>[prototype link], fictional data only. Sign in from the front page as any RSL officer.</span>
+  <b>RSL business owner</b><span>Deputy Commissioner, Special Sectors (proposed)</span>
+</div>
+
+<h2>1. Executive summary</h2>
+<p>Relevant records about multinational groups are distributed across RSL systems and other sources, including income tax returns, VAT returns, the withholding tax schedule, customs, PAYE, e-invoicing, refund letters and the company registry. An officer who wants to understand one company has to assemble that picture by hand, and a recurring VAT credit or a related-party charge looks very different once the other records are next to it.</p>
+<p><b>Evidence-Led Case Review</b> joins those records per company and turns each pattern into an evidence-linked case: what was observed, which records show it, which lawful explanations may apply, what the officer must establish, and a range for the exposure. It does not decide anything. <b>Officers conclude; the system never does.</b> A pattern is a reason to look, never proof, and a refund position alone never establishes abuse.</p>
+<p>The same system serves the three users named in the challenge: <b>risk analysts</b> (where should I look?), <b>refund auditors</b> (can I process this refund confidently?) and <b>Special Sectors auditors</b> (what is happening in this company?). It keeps legitimate refunds moving through a "lower risk" lane and keeps the evidence, the decision and the reasoning together for the next review.</p>
+<p>This proposal describes the <b>full system we would deliver over a 12-month engagement</b>, and separately shows what a <b>working prototype already demonstrates</b>. Every capability is tagged <span class="tag t-built">BUILT</span> in the prototype, <span class="tag t-pilot">PILOT</span> (to be delivered for the officer pilot), <span class="tag t-y1">YEAR 1</span> or <span class="tag t-later">LATER</span>, so RSL can see exactly what is proven today and what is committed. The prototype shows that we can deliver what we propose; it is not the limit of the proposal.</p>
+
+<div class="fig">
+<svg viewBox="0 0 760 120" role="img" aria-label="Connect, Detect, Investigate, Decide, Learn">
+  <defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0e7c86"/></marker></defs>
+  <g font-family="Helvetica,Arial,sans-serif" text-anchor="middle">
+    <g fill="#0f2a47"><rect x="4" y="14" width="132" height="62" rx="8"/><rect x="156" y="14" width="132" height="62" rx="8"/><rect x="308" y="14" width="132" height="62" rx="8"/><rect x="460" y="14" width="132" height="62" rx="8"/><rect x="612" y="14" width="132" height="62" rx="8"/></g>
+    <g fill="#fff" font-size="15" font-weight="700"><text x="70" y="40">Connect</text><text x="222" y="40">Detect</text><text x="374" y="40">Investigate</text><text x="526" y="40">Decide</text><text x="678" y="40">Learn</text></g>
+    <g fill="#bcd3e6" font-size="10.5"><text x="70" y="58">one record per company</text><text x="70" y="70">from every channel</text><text x="222" y="58">14 explainable rules,</text><text x="222" y="70">thresholds as settings</text><text x="374" y="58">evidence, lawful reasons,</text><text x="374" y="70">requests, AI brief, chat</text><text x="526" y="58">four outcomes, reasons,</text><text x="526" y="70">second sign-off</text><text x="678" y="58">memory informs,</text><text x="678" y="70">never exempts</text></g>
+    <g stroke="#0e7c86" stroke-width="2.2" fill="none" marker-end="url(#a)"><path d="M138 45 H152"/><path d="M290 45 H304"/><path d="M442 45 H456"/><path d="M594 45 H608"/></g>
+    <path d="M678 80 V104 H70 V80" stroke="#0e7c86" stroke-width="1.6" fill="none" stroke-dasharray="4 3" marker-end="url(#a)"/>
+    <text x="374" y="100" font-size="10" fill="#5b6675" style="paint-order:stroke" stroke="#fff" stroke-width="4">earlier decisions and their conditions return as context on the next filing</text>
+  </g>
+</svg>
+<div class="cap">Figure 1. The five stages. Each stage keeps its evidence, so a conclusion can always be traced back to the source rows.</div>
+</div>
+
+<h2>2. The challenge, and what we do about each part</h2>
+<p>RSL describes base erosion through related-party services and financing, in-house loss creation under the perpetual loss carry-over provision, VAT credits linked to unpaid VAT on imported services, expatriate employment income, and the line between independent consultancy and employment. The brief estimates about M1 billion in tax forgone each year; it calls this a preliminary workshop estimate, not a verified amount, and we make no claim about how much of it the system could recover.</p>
+<table>
+<tr><th style="width:34%">Part of the challenge</th><th>How the system responds</th></tr>
+<tr><td>Related-party fees, interest and losses that obscure profit</td><td>Rules P01–P05, P10–P12 compare fees, financing and profit with revenue and with the group register, and show the figures with the cited rows.</td></tr>
+<tr><td>VAT credits from unpaid VAT on imported services</td><td>P06 compares non-resident payments in the WHT schedule with VAT declared; P07 reconciles recurring credits with invoices, imports and trading activity.</td></tr>
+<tr><td>Consultancy versus employment; expatriate income</td><td>P08 flags long-term personnel arrangements and P09 unreported benefits; the officer unpacks the engagement using requested agreements and timesheets.</td></tr>
+<tr><td>Legitimate refunds must not be delayed</td><td>Recurring credits that pass the checks go to a <b>lower risk</b> lane (never labelled "valid") so refund auditors can proceed.</td></tr>
+<tr><td>Lawful arrangements must not be accused</td><td>Every finding lists the lawful explanations first; forbidden words (evasion, abuse, fraud) are blocked in code; wording follows the evidence available.</td></tr>
+<tr><td>Legal limits on what RSL can enforce</td><td>The rules lead with enforceable checks: they cite s.113 and frame questions as allocating actual income and deductions. Pricing questions stay with the officer (AfriSam (Lesotho) (Pty) Ltd v Lesotho Revenue Authority, High Court, Commercial Division, 6 Aug 2026).</td></tr>
+</table>
+
+<h2>3. The system we propose</h2>
+
+<h3>3.1 Detection: 14 explainable rules, owned by RSL</h3>
+<table>
+<tr><th>Code</th><th>Pattern</th><th>Code</th><th>Pattern</th></tr>
+<tr><td>P01</td><td>Persistent losses with group charges</td><td>P08</td><td>Long-term personnel arrangement</td></tr>
+<tr><td>P02</td><td>Who funds the losses</td><td>P09</td><td>Unreported fringe benefits</td></tr>
+<tr><td>P03</td><td>Fees growing faster than revenue</td><td>P10</td><td>Payments to low-tax jurisdictions</td></tr>
+<tr><td>P04</td><td>Related-party payments without matching WHT</td><td>P11</td><td>Large interest on group loans</td></tr>
+<tr><td>P05</td><td>Treaty rate claimed</td><td>P12</td><td>Profit squeeze</td></tr>
+<tr><td>P06</td><td>Imported services without matching VAT</td><td>P13</td><td>Information gap (not a risk finding)</td></tr>
+<tr><td>P07</td><td>Recurring VAT credits (lower-risk lane)</td><td>P14</td><td>Possible data capture error</td></tr>
+</table>
+<p>Each rule states what it examines, which records it needs, its threshold, why it matters, the lawful explanations, and the documents an officer may request. Thresholds are versioned settings, not code: RSL's rule owner changes them with a recorded reason, and a rule version is never edited after use <span class="tag t-pilot">PILOT: rule-owner editing screen</span>. Missing records produce an <b>information gap</b> (P13), never a suspicion. A figure that looks like a keying error goes to <b>data review</b> (P14), never into company memory.</p>
+
+<h3>3.2 Evidence controls, enforced in code <span class="tag t-built">BUILT</span></h3>
+<ul>
+<li><b>Evidence ladder.</b> A return alone: "may need examination". Return plus other RSL records: "appear inconsistent with each other". Plus outside records: "the group structure suggests". Plus taxpayer documents: "does not appear to match the evidence provided". The conclusion belongs only to the officer.</li>
+<li><b>Every finding shows</b> the observation, the lawful explanations, what the officer must establish, an estimated exposure <i>range</i> (never an assessed amount) and links to the exact source rows.</li>
+<li><b>Sequencing.</b> A taxpayer document stays invisible until an officer sends an information request naming it; it arrives after the stated response time.</li>
+<li><b>Conclusions are stored as five parts:</b> observed pattern, conclusion, evidence, conditions, reassessment point.</li>
+</ul>
+
+<h3>3.3 The officer's workspace</h3>
+<p>Each user group has its own desk and worklist (<span class="tag t-built">BUILT</span>): analysts receive new filings, refund auditors see VAT credits and the lower-risk lane, Special Sectors auditors receive referred cases. A case carries its findings, evidence, a checklist, requests, documents, notes and a timeline; cases are ranked by estimated exposure and routed by rule. The officer records one of four outcomes, each with a reason: <b>Concern supported, referred</b> (not a finding of wrongdoing), <b>Explained, legitimate</b>, <b>More information needed</b>, or <b>System error</b>. Closing a finding as legitimate at or above <b>M1,000,000</b> estimated exposure (configurable) needs a second officer's sign-off. Planned additions: <b>officers adding a finding the rules missed</b> and editing brief notes in place <span class="tag t-pilot">PILOT</span>.</p>
+
+<h3>3.4 Company memory: informs, never exempts <span class="tag t-built">BUILT</span></h3>
+<p>Earlier decisions and their conditions are kept with the company. A later finding is still raised, with the earlier decision shown as context, and the system states when a pattern has moved outside the conditions of a decision. In the prototype, a fee increase at Qiloane is shown against decision DEC-0007, with the statement that the new fees fall outside its conditions.</p>
+
+<h3>3.5 AI assistance, grounded and optional <span class="tag t-built">BUILT</span></h3>
+<ul>
+<li><b>Case brief.</b> The application builds a fact sheet of records it has looked up; the model writes a brief from that sheet only, each statement citing record IDs. A guard rejects any statement that cites an unknown ID, cites nothing, or breaks the wording policy, and a plain template brief takes over so the case page never fails. The officer approves, edits or rejects it.</li>
+<li><b>Ask the records.</b> An officer asks a question ("which companies had related-party fees rise more than 30%?"); the system finds the records first, the model may only word an answer from them, and every answer cites its sources. The guard also rejects any figure not in the facts, and a lookup answer is the fallback. It is a way into the same records, never a separate source.</li>
+<li><b>Already working with a local model.</b> The prototype is integrated with a locally hosted model (gpt-oss 20B) running on my own Mac mini M4 through Ollama. The web application reaches it over a private tunnel, and the case briefs and Ask the records described above are generated by it today, on fictional data.</li>
+<li><b>Data stays inside RSL.</b> The same local-processing design is intended for RSL's own infrastructure, so no taxpayer record leaves RSL. An approved cloud model is an option only if RSL's policy allows it; the provider is a setting.</li>
+<li>Stronger numeric cross-checking of brief statements, and automatic redrafting when findings change <span class="tag t-pilot">PILOT</span>. Semantic search across taxpayer documents <span class="tag t-y1">YEAR 1</span>.</li>
+</ul>
+
+<h3>3.6 Audit and notifications <span class="tag t-built">BUILT</span></h3>
+<p>Every receipt, analysis, case opening, request and conclusion is written to a <b>tamper-evident audit log</b>: entries are hash-chained, the database refuses edits and deletions, and a command verifies the chain. No blockchain is needed. Hand-offs send a <b>WhatsApp</b> message that carries no taxpayer details, only a case reference and priority, pointing the officer into the system.</p>
+
+<h3>3.7 Beyond the pilot</h3>
+<p><span class="tag t-y1">YEAR 1</span> A secure taxpayer response portal; scheduled feeds from eTax, eCustoms and Lekuka in place of file uploads, once RSL agrees; management reports on findings, outcomes and refund turnaround. <span class="tag t-later">LATER</span> A data warehouse for history across tax types and years, and forecasting or exposure modelling once enough reliable outcomes exist. Potential exposure, assessed liability and collected revenue stay separate measures; none of this is claimed for the prototype.</p>
+
+<h2>4. Three cases through the system</h2>
+<p>The brief asks for an ordinary case, an exception and a case needing human review. The prototype walks each one end to end.</p>
+<div class="fig">
+<svg viewBox="0 0 760 330" role="img" aria-label="Three case journeys">
+  <g font-family="Helvetica,Arial,sans-serif" font-size="10.5">
+    <defs><marker id="b" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#5b6675"/></marker></defs>
+    <!-- lane labels -->
+    <g font-weight="700" fill="#0f2a47">
+      <rect x="0" y="8" width="118" height="92" fill="#eef4f6"/><text x="8" y="30">1. Ordinary case</text><text x="8" y="46" font-weight="400" fill="#5b6675" font-size="9.5">Mohale Wholesale</text><text x="8" y="60" font-weight="400" fill="#5b6675" font-size="9.5">no pattern fires</text>
+      <rect x="0" y="116" width="118" height="100" fill="#eef4f6"/><text x="8" y="138">2. Exception</text><text x="8" y="154" font-weight="400" fill="#5b6675" font-size="9.5">Highveld Retail</text><text x="8" y="168" font-weight="400" fill="#5b6675" font-size="9.5">four linked findings</text>
+      <rect x="0" y="232" width="118" height="92" fill="#eef4f6"/><text x="8" y="254">3. Human review</text><text x="8" y="270" font-weight="400" fill="#5b6675" font-size="9.5">Qiloane Hardware</text><text x="8" y="284" font-weight="400" fill="#5b6675" font-size="9.5">memory and sign-off</text>
+    </g>
+    <g stroke="#5b6675" stroke-width="1.5" fill="none" marker-end="url(#b)">
+      <path d="M232 54 H262"/><path d="M382 54 H412"/>
+      <path d="M232 166 H252"/><path d="M352 166 H372"/><path d="M472 166 H492"/><path d="M592 166 H612"/>
+      <path d="M222 282 H242"/><path d="M332 282 H352"/><path d="M442 282 H462"/><path d="M552 282 H572"/><path d="M662 282 H682"/>
+    </g>
+    <g fill="#fff" stroke="#0f2a47" stroke-width="1.2">
+      <rect x="128" y="26" width="104" height="56" rx="6"/><rect x="262" y="26" width="120" height="56" rx="6"/><rect x="412" y="26" width="150" height="56" rx="6" fill="#e6f4ec" stroke="#1f7a45"/>
+      <rect x="128" y="136" width="104" height="60" rx="6"/><rect x="252" y="136" width="100" height="60" rx="6"/><rect x="372" y="136" width="100" height="60" rx="6"/><rect x="492" y="136" width="100" height="60" rx="6"/><rect x="612" y="136" width="140" height="60" rx="6" fill="#fff4e0" stroke="#b86e00"/>
+      <rect x="128" y="252" width="94" height="60" rx="6"/><rect x="242" y="252" width="90" height="60" rx="6"/><rect x="352" y="252" width="90" height="60" rx="6"/><rect x="462" y="252" width="90" height="60" rx="6"/><rect x="572" y="252" width="90" height="60" rx="6"/><rect x="682" y="252" width="70" height="60" rx="6" fill="#fff4e0" stroke="#b86e00"/>
+    </g>
+    <g fill="#1b2430" font-size="8.8">
+      <text x="136" y="48">Filing and</text><text x="136" y="61">records received</text>
+      <text x="270" y="48">Rules run: none</text><text x="270" y="61">fires; checks logged</text>
+      <text x="420" y="48">Filing review saved;</text><text x="420" y="61">no case, no officer</text><text x="420" y="74">work created</text>
+      <text x="136" y="158">Filings received,</text><text x="136" y="171">4 patterns fire</text><text x="136" y="184">(loss, fees, loans)</text>
+      <text x="260" y="158">Case opens on the</text><text x="260" y="171">Risk analysis desk,</text><text x="260" y="184">ranked by exposure</text>
+      <text x="380" y="158">AI brief drafted</text><text x="380" y="171">and read; analyst</text><text x="380" y="184">refers to Special Sectors</text>
+      <text x="500" y="158">Request sent for</text><text x="500" y="171">loan agreements;</text><text x="500" y="184">documents arrive</text>
+      <text x="620" y="158">Officer records outcome</text><text x="620" y="171">with reason; new</text><text x="620" y="184">finding if evidence differs</text>
+      <text x="134" y="274">New fees arrive</text><text x="134" y="287">after an earlier</text><text x="134" y="300">decision</text>
+      <text x="248" y="274">Pattern raised</text><text x="248" y="287">again, not</text><text x="248" y="300">exempted</text>
+      <text x="358" y="274">DEC-0007 shown as</text><text x="358" y="287">context; fees fall</text><text x="358" y="300">outside its terms</text>
+      <text x="468" y="274">Officer reviews,</text><text x="468" y="287">asks the records</text><text x="468" y="300">(chat) for history</text>
+      <text x="578" y="274">Explained as</text><text x="578" y="287">legitimate; above</text><text x="578" y="300">threshold</text>
+      <text x="688" y="274">Team lead</text><text x="688" y="287">second</text><text x="688" y="300">sign-off</text>
+    </g>
+  </g>
+</svg>
+<div class="cap">Figure 2. Three journeys. Green: ordinary result. Amber: a human conclusion is recorded. In every case the system proposes and an officer decides. A fourth path, a figure that looks wrongly captured (Lebelo), goes to data review and never into company memory.</div>
+</div>
+
+<h2>5. Architecture, data and design for Lesotho</h2>
+<div class="fig">
+<svg viewBox="0 0 760 232" role="img" aria-label="Architecture">
+  <g font-family="Helvetica,Arial,sans-serif" font-size="10" text-anchor="middle">
+    <defs><marker id="c" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#0e7c86"/></marker></defs>
+    <rect x="2" y="8" width="150" height="214" rx="8" fill="#eef4f6"/><text x="77" y="26" font-weight="700" fill="#0f2a47">RSL records</text>
+    <g fill="#fff" stroke="#0f2a47"><rect x="14" y="36" width="126" height="22" rx="4"/><rect x="14" y="62" width="126" height="22" rx="4"/><rect x="14" y="88" width="126" height="22" rx="4"/><rect x="14" y="114" width="126" height="22" rx="4"/><rect x="14" y="140" width="126" height="22" rx="4"/><rect x="14" y="166" width="126" height="22" rx="4"/><rect x="14" y="192" width="126" height="22" rx="4"/></g>
+    <g fill="#1b2430" font-size="9.4"><text x="77" y="51">eTax: CIT, VAT, PAYE</text><text x="77" y="77">WHT schedule (Excel)</text><text x="77" y="103">eCustoms (ASYCUDA)</text><text x="77" y="129">Lekuka e-invoicing</text><text x="77" y="155">Refund letters</text><text x="77" y="181">Company registry</text><text x="77" y="207">Earlier decisions</text></g>
+    <g stroke="#0e7c86" stroke-width="2" fill="none" marker-end="url(#c)"><path d="M154 115 H182"/><path d="M322 115 H350"/><path d="M490 115 H518"/><path d="M630 115 H650"/></g>
+    <g fill="#0f2a47"><rect x="184" y="70" width="136" height="90" rx="8"/><rect x="352" y="70" width="136" height="90" rx="8"/><rect x="520" y="70" width="110" height="90" rx="8"/><rect x="652" y="70" width="106" height="90" rx="8"/></g>
+    <g fill="#fff" font-weight="700" font-size="11"><text x="252" y="94">Intake</text><text x="420" y="94">Analysis</text><text x="575" y="94">Case workspace</text><text x="705" y="94">Officer</text></g>
+    <g fill="#bcd3e6" font-size="9.2"><text x="252" y="112">validate, version,</text><text x="252" y="125">never edit source</text><text x="252" y="138">link by company</text><text x="420" y="112">14 rules, wording</text><text x="420" y="125">policy, evidence</text><text x="420" y="138">ladder, memory</text><text x="575" y="112">findings, requests,</text><text x="575" y="125">documents, outcomes,</text><text x="575" y="138">sign-off</text><text x="705" y="112">approves, edits,</text><text x="705" y="125">concludes</text></g>
+    <rect x="352" y="172" width="276" height="50" rx="8" fill="#fff" stroke="#0e7c86" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="490" y="190" font-weight="700" fill="#0e7c86">AI: local model, fact sheet in, cited text out</text>
+    <text x="490" y="205" fill="#5b6675" font-size="9.2">guard checks IDs, figures and wording; plain lookup if it fails</text>
+    <text x="490" y="217" fill="#5b6675" font-size="9.2">brief and chat, officer approves</text>
+    <path d="M420 162 V172" stroke="#0e7c86" stroke-width="1.6" marker-end="url(#c)"/><path d="M575 172 V162" stroke="#0e7c86" stroke-width="1.6" marker-end="url(#c)"/>
+    <rect x="184" y="172" width="136" height="50" rx="8" fill="#fff" stroke="#0f2a47"/><text x="252" y="192" font-weight="700" fill="#0f2a47">Audit log</text><text x="252" y="206" fill="#5b6675" font-size="9.2">hash-chained, tamper-evident</text>
+    <rect x="652" y="172" width="106" height="50" rx="8" fill="#fff" stroke="#0f2a47"/><text x="705" y="192" font-weight="700" fill="#0f2a47">WhatsApp</text><text x="705" y="206" fill="#5b6675" font-size="9.2">no taxpayer details</text>
+  </g>
+</svg>
+<div class="cap">Figure 3. Records flow in once, stay unedited, and every claim downstream cites them. The model sees only the compact fact sheet for one case, never the database.</div>
+</div>
+
+<div class="grid2">
+<div class="box">
+<h3>Data required</h3>
+<p class="note">Confirmed with RSL in discovery; pilot uses approved extracts or masked history, not live access.</p>
+<ul>
+<li>CIT and VAT returns; PAYE; WHT payment schedules</li>
+<li>Customs imports; Lekuka monthly summaries</li>
+<li>Refund claim letters; registration and group register</li>
+<li>Past officer decisions, to seed company memory</li>
+</ul>
+<p class="note"><b>Dependencies:</b> RSL IT (eTax, eCustoms, Lekuka owners), the companies registry for group data, Meta for WhatsApp approval, and RSL hosting policy.</p>
+</div>
+<div class="box">
+<h3>Designed for Lesotho</h3>
+<ul>
+<li><b>Limited connectivity:</b> light server-rendered pages, no heavy front end, resumable uploads <span class="tag t-pilot">PILOT</span></li>
+<li><b>Language:</b> officer screens in English; Sesotho versions of notifications and taxpayer information-request letters <span class="tag t-pilot">PILOT</span></li>
+<li><b>Record keeping:</b> intake reads the formats RSL already uses (CSV, the emailed WHT Excel schedule, scanned letters)</li>
+<li><b>Explainable:</b> every statement cites a record; every outcome carries its reason</li>
+</ul>
+</div>
+</div>
+
+<h2>6. Pilot proposal</h2>
+<table>
+<tr><th style="width:22%">Element</th><th>Proposal</th></tr>
+<tr><td>Business owner</td><td>Deputy Commissioner, Special Sectors, with a named working lead from each of the three teams.</td></tr>
+<tr><td>User group</td><td>About 12 officers: 4 risk analysts, 4 refund auditors, 4 Special Sectors auditors, plus 1–2 team leads for second sign-off.</td></tr>
+<tr><td>Taxpayers</td><td>An agreed list of wholesale and retail FMCG taxpayers with related-party transactions or recurring VAT credits (about 40–60), using approved extracts.</td></tr>
+<tr><td>Test period</td><td>Back-test on masked history in months 5–6; live officer pilot of 12 weeks in months 7–9 (Jun–Aug 2027), after a baseline taken in months 2–3.</td></tr>
+<tr><td>Baseline</td><td>Measured from RSL's own records: time to review a case, time to assemble evidence, refund processing time, share of cases escalated and outcomes of earlier reviews.</td></tr>
+<tr><td>Success measures</td><td>Findings supported by valid cited records; false positives and missed patterns on the back-test; review time and evidence-assembly time against baseline; <b>no legitimate refund delayed</b>; share of cases needing extra information; officer adoption and usefulness of the brief and chat; completeness of recorded decisions. Targets are agreed with RSL before the pilot starts.</td></tr>
+<tr><td>Test immediately</td><td>Officer walk-through of the prototype; rule workshops on the 14 patterns; back-test on masked historical records.</td></tr>
+<tr><td>Needs agreement or change</td><td>Written data-sharing authority and extract formats; registry data-sharing agreement; hosting and AI-location decision; WhatsApp approval for operational use; confirmation of the legal basis cited on each rule; ownership and licence terms for the platform and RSL's rules and data.</td></tr>
+</table>
+
+<div class="fig">
+<svg viewBox="0 0 760 256" role="img" aria-label="Twelve-month roadmap">
+  <g font-family="Helvetica,Arial,sans-serif" font-size="10">
+    <g fill="#5b6675" font-size="9" text-anchor="middle">
+      <text x="213" y="14">Dec 26</text><text x="263" y="14">Jan</text><text x="313" y="14">Feb</text><text x="363" y="14">Mar</text><text x="413" y="14">Apr</text><text x="463" y="14">May</text><text x="513" y="14">Jun</text><text x="563" y="14">Jul</text><text x="613" y="14">Aug</text><text x="663" y="14">Sep</text><text x="713" y="14">Oct</text><text x="753" y="14">Nov</text>
+    </g>
+    <g stroke="#e3e8ee"><path d="M238 20 V250"/><path d="M288 20 V250"/><path d="M338 20 V250"/><path d="M388 20 V250"/><path d="M438 20 V250"/><path d="M488 20 V250"/><path d="M538 20 V250"/><path d="M588 20 V250"/><path d="M638 20 V250"/><path d="M688 20 V250"/><path d="M738 20 V250"/></g>
+    <g fill="#0f2a47" font-weight="600"><text x="2" y="36">Mobilise, agreements, server</text><text x="2" y="62">Discovery, data, baseline</text><text x="2" y="88">Build and harden</text><text x="2" y="114">Back-test on masked history</text><text x="2" y="140">Officer pilot (12 weeks)</text><text x="2" y="166">Evaluation and report</text><text x="2" y="192">Training and handover</text><text x="2" y="218">Scale-up and support</text></g>
+    <rect x="188" y="26" width="50" height="14" rx="3" fill="#0e7c86"/>
+    <rect x="238" y="52" width="100" height="14" rx="3" fill="#0e7c86"/>
+    <rect x="288" y="78" width="150" height="14" rx="3" fill="#0f2a47"/>
+    <rect x="438" y="104" width="100" height="14" rx="3" fill="#b86e00"/>
+    <rect x="488" y="130" width="150" height="14" rx="3" fill="#1f7a45"/>
+    <rect x="638" y="156" width="50" height="14" rx="3" fill="#5b4bb0"/>
+    <rect x="588" y="182" width="150" height="14" rx="3" fill="#0e7c86"/>
+    <rect x="688" y="208" width="68" height="14" rx="3" fill="#5b4bb0"/>
+    <g fill="#fff" font-size="8.5"><text x="192" y="37">M1</text><text x="242" y="63">M2-3</text><text x="292" y="89">M3-5</text><text x="442" y="115">M5-6</text><text x="492" y="141">M7-9</text><text x="642" y="167">M10</text><text x="592" y="193">M9-11</text><text x="692" y="219">M11-12</text></g>
+    <g fill="#5b6675" font-size="8.6"><text x="2" y="248">Dates assume work starts after the 20 Nov 2026 results; they move with RSL's approvals and data access. Selection creates no access to live systems.</text></g>
+  </g>
+</svg>
+<div class="cap">Figure 4. The 12-month plan. The pilot starts only after the back-test, the security test and the data and hosting agreements are in place.</div>
+</div>
+
+<h2>7. Resources, budget and operating cost</h2>
+<p>I am submitting as an individual and will lead and architect the work. Skills are brought in <b>when a milestone needs them</b>, part-time, not carried for the whole year. All figures are in Maloti and are estimates for discovery to confirm; they are not a request for payment, and selection creates no procurement commitment.</p>
+
+<h3>7.1 Who is needed, and when</h3>
+<table>
+<tr><th style="width:24%">Role</th><th style="width:15%">When</th><th class="n" style="width:11%">Effort</th><th>What they deliver</th></tr>
+<tr><td>Senior developer and architect (lead)</td><td>Months 1–12</td><td class="n">full time</td><td>Architecture, rules, AI integration, delivery, RSL liaison</td></tr>
+<tr><td>Junior developers (2)</td><td>Months 1–12</td><td class="n">full time</td><td>Pipelines, screens, tests, documentation, support</td></tr>
+<tr><td>Linux server engineer</td><td>Month 1, then monthly</td><td class="n">8 days + retainer</td><td>Build, harden and back up the Linux server; monitoring; updates</td></tr>
+<tr><td>UX and product designer</td><td>Months 2–5</td><td class="n">20 days</td><td>Officer workflows, usability testing with RSL staff, Sesotho content</td></tr>
+<tr><td>International tax and VAT specialist</td><td>Months 2–6</td><td class="n">24 days</td><td>Rule workshops, thresholds, back-test review, wording review</td></tr>
+<tr><td>Data-protection and legal adviser</td><td>Months 1 and 6</td><td class="n">6 days</td><td>Data-sharing terms, retention, pilot safeguards</td></tr>
+<tr><td>Independent security tester</td><td>Month 6</td><td class="n">fixed</td><td>Penetration and configuration test before the pilot</td></tr>
+<tr><td>Trainer and technical writer</td><td>Months 9–11</td><td class="n">8 days</td><td>Officer training, administrator handover pack</td></tr>
+</table>
+<p class="note"><b>RSL contributes:</b> a business owner and working leads, data extracts, about 12 officers for the pilot, access to hosting, and prompt decisions on the agreements above.</p>
+
+<h3>7.2 Year-one budget</h3>
+<table>
+<tr><th>Item</th><th>Basis</th><th class="n">Amount (M)</th></tr>
+<tr><td>Senior developer and architect</td><td>M26,000 × 12 months</td><td class="n">312,000</td></tr>
+<tr><td>Two junior developers</td><td>M10,000 × 2 × 12 months</td><td class="n">240,000</td></tr>
+<tr><td>Claude coding subscription</td><td>3 seats × 12 months × about M1,900</td><td class="n">68,400</td></tr>
+<tr><td>UX and product designer</td><td>20 days × M1,500</td><td class="n">30,000</td></tr>
+<tr><td>Linux server engineer</td><td>8 days setup, then M1,500 a month</td><td class="n">30,000</td></tr>
+<tr><td>International tax and VAT specialist</td><td>24 days × M2,500</td><td class="n">60,000</td></tr>
+<tr><td>Data-protection and legal adviser</td><td>6 days × M3,000</td><td class="n">18,000</td></tr>
+<tr><td>Independent security test</td><td>Fixed</td><td class="n">20,000</td></tr>
+<tr><td>Trainer and technical writer</td><td>8 days × M1,500</td><td class="n">12,000</td></tr>
+<tr><td>Linux server, backups, domain and SSL</td><td>12 months</td><td class="n">25,500</td></tr>
+<tr><td>Local AI inference machine</td><td>One-off allowance</td><td class="n">45,000</td></tr>
+<tr><td>WhatsApp messaging</td><td>Allowance</td><td class="n">3,000</td></tr>
+<tr><td>Subtotal</td><td></td><td class="n">863,900</td></tr>
+<tr><td>Contingency</td><td>10%</td><td class="n">86,390</td></tr>
+<tr class="tot"><td>Year-one total</td><td></td><td class="n">950,290</td></tr>
+</table>
+<div class="bar">
+  <span style="width:58.1%;background:#0f2a47"></span><span style="width:7.2%;background:#0e7c86"></span><span style="width:17.9%;background:#b86e00"></span><span style="width:7.7%;background:#1f7a45"></span><span style="width:9.1%;background:#9aa6b2"></span>
+</div>
+<div class="legend"><span><i style="background:#0f2a47"></i>Development team 58%</span><span><i style="background:#0e7c86"></i>Claude subscription 7%</span><span><i style="background:#b86e00"></i>Specialists 18%</span><span><i style="background:#1f7a45"></i>Hosting and AI machine 8%</span><span><i style="background:#9aa6b2"></i>Contingency and other 9%</span></div>
+<p class="note" style="margin-top:2mm">The coding subscription is a development tool. It is used only with fictional or masked data, never with taxpayer records. The subscription price and exchange rate are assumptions to confirm.</p>
+
+<h3>7.3 Operating cost after year one (estimate)</h3>
+<table>
+<tr><th>Item</th><th class="n">Per year (M)</th></tr>
+<tr><td>One junior developer for maintenance and support, plus about 20% of the lead's time</td><td class="n">about 182,400</td></tr>
+<tr><td>Server, backups and server-engineer retainer</td><td class="n">about 42,000</td></tr>
+<tr><td>WhatsApp messaging and licences</td><td class="n">about 6,000</td></tr>
+<tr class="tot"><td>Annual run cost</td><td class="n">about M230,000</td></tr>
+</table>
+<p class="note">A locally hosted model has no per-use fee. If RSL prefers an approved cloud model, a usage cost replaces part of the hardware allowance.</p>
+
+<h2>8. Risks, honesty about results, and ownership</h2>
+<table>
+<tr><th style="width:30%">Risk</th><th>Response</th></tr>
+<tr><td>Data arrives late or inconsistent</td><td>Discovery and profiling in months 2–3; information-gap findings instead of guesses.</td></tr>
+<tr><td>False positives burden officers</td><td>Explainable rules, lawful explanations shown first, back-test against baseline, rule owner adjusts thresholds.</td></tr>
+<tr><td>AI states something untrue</td><td>Grounded fact sheet, citation, figure and wording guard, template fallback, officer approval. The case-brief guard checks citations, not the truth of every sentence; stronger checks are a pilot deliverable.</td></tr>
+<tr><td>Disclosure of taxpayer data</td><td>Local model by default, no taxpayer details in notifications, role-based access, audit log, security test before the pilot.</td></tr>
+<tr><td>One person leads the work</td><td>Two juniors work alongside throughout; documentation and a handover pack; code and configuration available to RSL.</td></tr>
+</table>
+<div class="callout"><b>Honest about results.</b> The prototype's data was written to contain known stories. It shows the workflow and the rules behave as designed: the 17 expected findings are produced with the expected records, the two ordinary companies and three lawful decoys raise nothing (apart from one lower-risk VAT result), and a full automated test suite passes. In a trial on 10 open cases with a local model, 9 briefs passed the guard first time and the guard caught the tenth. <b>This does not show detection accuracy on real taxpayers.</b> Only the pilot can.</div>
+<p><b>Ownership.</b> The call states that ideas generated at the event remain RSL's intellectual property. We accept that RSL owns its rules, thresholds, data, decisions and outputs; the licence terms for the platform software would be agreed with RSL before the pilot.</p>
+
+<h2>9. Value and how this meets the criteria</h2>
+<table>
+<tr><th style="width:26%">Criterion</th><th>How the proposal responds</th></tr>
+<tr><td>Taxpayer and business value, 25%</td><td>Officers see one evidence-linked picture per company; legitimate refunds move through a lower-risk lane; nothing is accused.</td></tr>
+<tr><td>Performance and evidence, 20%</td><td>Rule results match the expected findings with cited rows; baseline, back-test and measured pilot; limits stated.</td></tr>
+<tr><td>Usability, 15%</td><td>Desks by role, one case workspace, a guided tour, plain language, a records chat.</td></tr>
+<tr><td>Trust and compliance, 15%</td><td>Wording and evidence ladder in code, human decisions, second sign-off, tamper-evident log, no details in notifications, local AI.</td></tr>
+<tr><td>Pilot potential, 15%</td><td>Working prototype, a 12-month plan, a costed team and an annual run cost.</td></tr>
+<tr><td>Innovation, 10%</td><td>A risk carries its evidence and reasoning from detection to conclusion, with memory that informs and never exempts.</td></tr>
+</table>
+<p><i>The aim is not to replace the judgment of tax professionals. It is to give them better-connected information, clearer evidence and a consistent way to carry an investigation forward.</i></p>
+
+<h2>Annex A. Capability map: what is built, and what is proposed</h2>
+<p class="note">Status shows what is demonstrated in the prototype today and when the remainder is delivered. Nothing marked Pilot, Year 1 or Later is claimed as built.</p>
+<table class="annex">
+<tr><th style="width:46%">Capability</th><th style="width:9%">Status</th><th>Notes</th></tr>
+<tr><td>Intake of every channel (CIT, VAT, WHT, PAYE, customs, Lekuka, refund letters, registry, decisions)</td><td><span class="tag t-built">BUILT</span></td><td>Validated file import; corrections are new versions, never edits; one analysis run per batch.</td></tr>
+<tr><td>14 detection rules; findings with cited rows, exposure range and lawful explanations</td><td><span class="tag t-built">BUILT</span></td><td>Match the expected findings word for word on the test data.</td></tr>
+<tr><td>Wording policy and evidence ladder; information-gap and data-error paths</td><td><span class="tag t-built">BUILT</span></td><td>Applies to AI output too.</td></tr>
+<tr><td>Cases, routing, role desks, worklists, ranking by exposure</td><td><span class="tag t-built">BUILT</span></td><td>Risk analysis, Refund review, Special Sectors, team lead, data team.</td></tr>
+<tr><td>Information requests and sequenced taxpayer documents</td><td><span class="tag t-built">BUILT</span></td><td>Documents appear only after a matching request and the response delay.</td></tr>
+<tr><td>Four outcomes, five-part conclusions, second sign-off</td><td><span class="tag t-built">BUILT</span></td><td>Threshold configurable; the demo uses a lower one.</td></tr>
+<tr><td>Company memory with conditions and reassessment point</td><td><span class="tag t-built">BUILT</span></td><td>Qiloane and DEC-0007; system errors kept out of memory.</td></tr>
+<tr><td>AI case brief (grounded, guarded, template fallback, officer review)</td><td><span class="tag t-built">BUILT</span></td><td>Local model through Ollama; cloud provider optional.</td></tr>
+<tr><td>Ask the records (cited answers, figure check, lookup fallback)</td><td><span class="tag t-built">BUILT</span></td><td>Page and panel on each case. Runs on the local model; answer quality to be measured with officers.</td></tr>
+<tr><td>Tamper-evident audit log with verification command</td><td><span class="tag t-built">BUILT</span></td><td>Hash chain plus database protection.</td></tr>
+<tr><td>WhatsApp notifications without taxpayer details</td><td><span class="tag t-built">BUILT</span></td><td>Four approved templates; verified test number only.</td></tr>
+<tr><td>Guided tour, officer front page, resettable demo</td><td><span class="tag t-built">BUILT</span></td><td>11-step tour; nightly reset.</td></tr>
+<tr><td>Rule-owner screen to edit thresholds with a recorded reason</td><td><span class="tag t-pilot">PILOT</span></td><td>Thresholds are already versioned settings.</td></tr>
+<tr><td>Officer adds a finding the rules missed; edit notes in place</td><td><span class="tag t-pilot">PILOT</span></td><td>Feeds catalogue review.</td></tr>
+<tr><td>Numeric cross-check of brief statements; redraft when findings change</td><td><span class="tag t-pilot">PILOT</span></td><td>Closes known limits of the guard.</td></tr>
+<tr><td>Registry and group matching on real extracts; scheduled feeds</td><td><span class="tag t-pilot">PILOT</span></td><td>Approved extracts first.</td></tr>
+<tr><td>RSL sign-in, role administration, production hosting and security test</td><td><span class="tag t-pilot">PILOT</span></td><td>Linux server, backups, monitoring.</td></tr>
+<tr><td>Sesotho notifications and letters; low-bandwidth refinements</td><td><span class="tag t-pilot">PILOT</span></td><td>Tested with officers.</td></tr>
+<tr><td>Secure taxpayer response portal</td><td><span class="tag t-y1">YEAR 1</span></td><td>Replaces emailed documents.</td></tr>
+<tr><td>Direct integrations with eTax, eCustoms, Lekuka</td><td><span class="tag t-y1">YEAR 1</span></td><td>Subject to RSL agreement.</td></tr>
+<tr><td>Management reports; semantic search across documents</td><td><span class="tag t-y1">YEAR 1</span></td><td>Outcomes, turnaround, rule performance.</td></tr>
+<tr><td>Data warehouse; forecasting and exposure modelling</td><td><span class="tag t-later">LATER</span></td><td>Needs reliable outcomes history; exposure is never shown as revenue.</td></tr>
+</table>
+
+</div>
+</body>
+</html>

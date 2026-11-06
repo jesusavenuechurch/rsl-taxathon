@@ -20,7 +20,7 @@ The full technical plan lives in [`docs/implementation-plan.md`](../implementati
 | 4 | Cases, worklists and triage | Records arrive from a page; cases open, rank and route themselves; officers take and refer | ✅ Done |
 | 5 | AI case brief | The AI consolidates every angle into one cited brief; the officer approves, edits or rejects | ✅ Done |
 | 6 | The officer's desk | Stages, role desks, hand-offs, information requests, outcomes and sign-off, WhatsApp notifications, Results, a guided tour a judge can take alone | ✅ Done |
-| | Ask the records, rule editing | Only if time remains after the submission | Not started |
+| | Rule editing | Only if time remains after the submission | Not started |
 
 ---
 
@@ -224,7 +224,9 @@ It joins each company's records, explains patterns with the exact evidence, reme
 
 ## Coming next
 
-**Ask the records**, a chat answered only from the records with citations, and **rule editing** with a full 53-step workflow trace, are designed but not built — only if time remains after the submission.
+**Rule editing** with a full 53-step workflow trace is designed but not built — only if time remains after the submission.
+
+**Ask the records** is built: a chat, on its own page and on every case page, answered only from the records with every statement cited. The question is looked up in the records first; the AI model (Ollama, so data stays inside RSL) may only word an answer from what was found, and a guard rejects any invented citation, any figure not in the records and any conclusion-wording. If the model is unreachable or fails the guard, the answer comes straight from the records, so the chat always works. It answers the five questions in the brief (related-party increases at a 30% threshold: Thaba +200%, Qiloane +300%, Tsenola +40% under DEC-0004; why Highveld was flagged; recurring VAT credits and lower risk; Qiloane's earlier review; low-tax jurisdictions). Every question and answer is stored and audited.
 
 ---
 
